@@ -19,7 +19,7 @@
 <meta property="og:url" content="https://ashmaroli.github.io/jekyll/docs/upgrading/2-to-3/">
 <meta property="og:site_name" content="Jekyll • Simple, blog-aware, static sites">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2016-08-20T05:12:42+00:00">
+<meta property="article:published_time" content="2016-08-20T06:03:59+00:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@jekyllrb">
 <meta name="google-site-verification" content="onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY">
@@ -28,7 +28,7 @@
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": "Upgrading from 2.x to 3.x",
-    "datePublished": "2016-08-20T05:12:42+00:00",
+    "datePublished": "2016-08-20T06:03:59+00:00",
     "description": "Upgrading from an older version of Jekyll? A few things have changed in 3.0that you’ll want to know about.",
     "logo": "https://ashmaroli.github.io/jekyllimg/logo-2x.png",
     "url": "https://ashmaroli.github.io/jekyll/docs/upgrading/2-to-3/"
@@ -287,7 +287,10 @@ that you’ll want to know about.</p>
 
 <p>Before we dive in, go ahead and fetch the latest version of Jekyll:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>gem update jekyll</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>gem update jekyll
+</code></pre>
+</div>
 
 <p>Please note: Jekyll 3 requires Ruby version &gt;= 2.0.0.</p>
 
@@ -318,7 +321,12 @@ A simple conversion must be made in your templates:</p>
 
 <p>For <code class="highlighter-rouge">site.collections.myCollection</code> in Jekyll 2, you now do:</p>
 
-<figure class="highlight"><pre><code class="language-liquid" data-lang="liquid"><span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">myCollection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">collections</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"myCollection"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="p">%}</span></code></pre></figure>
+<div class="language-liquid highlighter-rouge">
+<pre class="highlight"><code>
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">myCollection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">collections</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">where</span><span class="p">:</span><span class="w"> </span><span class="s2">"label"</span><span class="p">,</span><span class="w"> </span><span class="s2">"myCollection"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">first</span><span class="w"> </span><span class="p">%}</span>
+
+</code></pre>
+</div>
 
 <p>This is a bit cumbersome at first, but is easier than a big <code class="highlighter-rouge">for</code> loop.</p>
 
@@ -378,13 +386,19 @@ go back to using Pygments, set <code class="highlighter-rouge">highlighter: pygm
 created your site using Jekyll 2 and below, you may receive the following
 error when trying to <strong>serve</strong> or <strong>build</strong>:</p>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">Since v3.0, permalinks for pages in subfolders must be relative to the site
+<div class="language-text highlighter-rouge">
+<pre class="highlight"><code>Since v3.0, permalinks for pages in subfolders must be relative to the site
 source directory, not the parent directory. Check
-http://jekyllrb.com/docs/upgrading/ for more info.</code></pre></figure>
+http://jekyllrb.com/docs/upgrading/ for more info.
+</code></pre>
+</div>
 
 <p>This can be fixed by removing the following line from your <code class="highlighter-rouge">_config.yml</code> file:</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">relative_permalinks</span><span class="pi">:</span> <span class="s">true</span></code></pre></figure>
+<div class="language-yaml highlighter-rouge">
+<pre class="highlight"><code><span class="s">relative_permalinks</span><span class="pi">:</span> <span class="s">true</span>
+</code></pre>
+</div>
 
 <h3 id="permalinks-no-longer-automatically-add-a-trailing-slash">Permalinks no longer automatically add a trailing slash</h3>
 
@@ -394,15 +408,21 @@ http://jekyllrb.com/docs/upgrading/ for more info.</code></pre></figure>
 
 <p>Try adding <code class="highlighter-rouge">future: true</code> to your <code class="highlighter-rouge">_config.yml</code> file. Are they showing up now? If they are, then you were ensnared by an issue with the way Ruby parses times. Each of your posts is being read in a different timezone than you might expect and, when compared to the computer’s current time, is “in the future.” The fix for this is to add <a href="https://en.wikipedia.org/wiki/List_of_UTC_time_offsets">a timezone offset</a> to each post (and make sure you remove <code class="highlighter-rouge">future: true</code> from your <code class="highlighter-rouge">_config.yml</code> file). If you’re writing from California, for example, you would change this:</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<div class="language-yaml highlighter-rouge">
+<pre class="highlight"><code><span class="nn">---</span>
 <span class="s">date</span><span class="pi">:</span> <span class="s">2016-02-06 19:32:10</span>
-<span class="nn">---</span></code></pre></figure>
+<span class="nn">---</span>
+</code></pre>
+</div>
 
 <p>to this (note the offset):</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<div class="language-yaml highlighter-rouge">
+<pre class="highlight"><code><span class="nn">---</span>
 <span class="s">date</span><span class="pi">:</span> <span class="s">2016-02-06 19:32:10 -0800</span>
-<span class="nn">---</span></code></pre></figure>
+<span class="nn">---</span>
+</code></pre>
+</div>
 
 <h3 id="my-categories-have-stopped-working">My categories have stopped working!</h3>
 

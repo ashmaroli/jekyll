@@ -19,7 +19,7 @@
 <meta property="og:url" content="https://ashmaroli.github.io/jekyll/docs/installation/">
 <meta property="og:site_name" content="Jekyll • Simple, blog-aware, static sites">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2016-08-20T05:12:42+00:00">
+<meta property="article:published_time" content="2016-08-20T06:03:59+00:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@jekyllrb">
 <meta name="google-site-verification" content="onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY">
@@ -28,7 +28,7 @@
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": "Installation",
-    "datePublished": "2016-08-20T05:12:42+00:00",
+    "datePublished": "2016-08-20T06:03:59+00:00",
     "description": "Getting Jekyll installed and ready-to-go should only take a few minutes.If it ever becomes a pain, please file an issue(or submit a pull request) describing the issue youencountered and how we might make the process easier",
     "logo": "https://ashmaroli.github.io/jekyllimg/logo-2x.png",
     "url": "https://ashmaroli.github.io/jekyll/docs/installation/"
@@ -320,7 +320,10 @@ earlier, for CoffeeScript support).</li>
 <a href="http://rubygems.org/pages/download">RubyGems</a>. At the terminal prompt,
 simply run the following command to install Jekyll:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>gem install jekyll</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>gem install jekyll
+</code></pre>
+</div>
 
 <p>All of Jekyll’s gem dependencies are automatically installed by the above
 command, so you won’t have to worry about them at all. If you have problems
@@ -343,22 +346,31 @@ community can improve the experience for everyone.</p>
 <p>In order to install a pre-release, make sure you have all the requirements
 installed properly and run:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">gem install jekyll --pre</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>gem install jekyll --pre
+</code></pre>
+</div>
 
 <p>This will install the latest pre-release. If you want a particular pre-release,
 use the <code class="highlighter-rouge">-v</code> switch to indicate the version you’d like to install:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">gem install jekyll -v <span class="s1">'2.0.0.alpha.1'</span></code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>gem install jekyll -v <span class="s1">'2.0.0.alpha.1'</span>
+</code></pre>
+</div>
 
 <p>If you’d like to install a development version of Jekyll, the process is a bit
 more involved. This gives you the advantage of having the latest and greatest,
 but may be unstable.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>git clone git://github.com/jekyll/jekyll.git
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>git clone git://github.com/jekyll/jekyll.git
 <span class="gp">$ </span><span class="nb">cd </span>jekyll
 <span class="gp">$ </span>script/bootstrap
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rake build
-<span class="gp">$ </span>ls pkg/<span class="k">*</span>.gem | head -n 1 | xargs gem install -l</code></pre></figure>
+<span class="gp">$ </span>ls pkg/<span class="k">*</span>.gem | head -n 1 | xargs gem install -l
+</code></pre>
+</div>
 
 <h2 id="optional-extras">Optional Extras</h2>
 

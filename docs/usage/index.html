@@ -19,7 +19,7 @@
 <meta property="og:url" content="https://ashmaroli.github.io/jekyll/docs/usage/">
 <meta property="og:site_name" content="Jekyll • Simple, blog-aware, static sites">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2016-08-20T05:12:42+00:00">
+<meta property="article:published_time" content="2016-08-20T06:03:59+00:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@jekyllrb">
 <meta name="google-site-verification" content="onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY">
@@ -28,7 +28,7 @@
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": "Basic Usage",
-    "datePublished": "2016-08-20T05:12:42+00:00",
+    "datePublished": "2016-08-20T06:03:59+00:00",
     "description": "The Jekyll gem makes a jekyll executable available to you in your Terminalwindow. You can use this command in a number of ways:",
     "logo": "https://ashmaroli.github.io/jekyllimg/logo-2x.png",
     "url": "https://ashmaroli.github.io/jekyll/docs/usage/"
@@ -285,7 +285,8 @@
           <p>The Jekyll gem makes a <code class="highlighter-rouge">jekyll</code> executable available to you in your Terminal
 window. You can use this command in a number of ways:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>jekyll build
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>jekyll build
 <span class="c"># =&gt; The current folder will be generated into ./_site</span>
 
 <span class="gp">$ </span>jekyll build --destination &lt;destination&gt;
@@ -296,7 +297,9 @@ window. You can use this command in a number of ways:</p>
 
 <span class="gp">$ </span>jekyll build --watch
 <span class="c"># =&gt; The current folder will be generated into ./_site,</span>
-<span class="c">#    watched for changes, and regenerated automatically.</span></code></pre></figure>
+<span class="c">#    watched for changes, and regenerated automatically.</span>
+</code></pre>
+</div>
 
 <div class="note info">
   <h5>Changes to _config.yml are not included during automatic regeneration.</h5>
@@ -328,14 +331,17 @@ window. You can use this command in a number of ways:</p>
 <p>Jekyll also comes with a built-in development server that will allow you to
 preview what the generated site will look like in your browser locally.</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>jekyll serve
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>jekyll serve
 <span class="c"># =&gt; A development server will run at http://localhost:4000/</span>
 <span class="c"># Auto-regeneration: enabled. Use `--no-watch` to disable.</span>
 
 <span class="gp">$ </span>jekyll serve --detach
 <span class="c"># =&gt; Same as `jekyll serve` but will detach from the current terminal.</span>
 <span class="c">#    If you need to kill the server, you can `kill -9 1234` where "1234" is the PID.</span>
-<span class="c">#    If you cannot find the PID, then do, `ps aux | grep jekyll` and kill the instance. [Read more](http://unixhelp.ed.ac.uk/shell/jobz5.html).</span></code></pre></figure>
+<span class="c">#    If you cannot find the PID, then do, `ps aux | grep jekyll` and kill the instance. [Read more](http://unixhelp.ed.ac.uk/shell/jobz5.html).</span>
+</code></pre>
+</div>
 
 <div class="note info">
   <h5>Be aware of default behavior</h5>
@@ -344,8 +350,11 @@ preview what the generated site will look like in your browser locally.</p>
   </p>
 </div>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>jekyll serve --no-watch
-<span class="c"># =&gt; Same as `jekyll serve` but will not watch for changes.</span></code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>jekyll serve --no-watch
+<span class="c"># =&gt; Same as `jekyll serve` but will not watch for changes.</span>
+</code></pre>
+</div>
 
 <p>These are just a few of the available <a href="../configuration/">configuration options</a>.
 Many configuration options can either be specified as flags on the command line,
@@ -354,13 +363,19 @@ file at the root of the source directory. Jekyll will automatically use the
 options from this file when run. For example, if you place the following lines
 in your <code class="highlighter-rouge">_config.yml</code> file:</p>
 
-<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">source</span><span class="pi">:</span>      <span class="s">_source</span>
-<span class="s">destination</span><span class="pi">:</span> <span class="s">_deploy</span></code></pre></figure>
+<div class="language-yaml highlighter-rouge">
+<pre class="highlight"><code><span class="s">source</span><span class="pi">:</span>      <span class="s">_source</span>
+<span class="s">destination</span><span class="pi">:</span> <span class="s">_deploy</span>
+</code></pre>
+</div>
 
 <p>Then the following two commands will be equivalent:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>jekyll build
-<span class="gp">$ </span>jekyll build --source _source --destination _deploy</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>jekyll build
+<span class="gp">$ </span>jekyll build --source _source --destination _deploy
+</code></pre>
+</div>
 
 <p>For more about the possible configuration options, see the
 <a href="../configuration/">configuration</a> page.</p>

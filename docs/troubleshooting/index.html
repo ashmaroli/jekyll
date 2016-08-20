@@ -19,7 +19,7 @@
 <meta property="og:url" content="https://ashmaroli.github.io/jekyll/docs/troubleshooting/">
 <meta property="og:site_name" content="Jekyll • Simple, blog-aware, static sites">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2016-08-20T05:12:42+00:00">
+<meta property="article:published_time" content="2016-08-20T06:03:59+00:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@jekyllrb">
 <meta name="google-site-verification" content="onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY">
@@ -28,7 +28,7 @@
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": "Troubleshooting",
-    "datePublished": "2016-08-20T05:12:42+00:00",
+    "datePublished": "2016-08-20T06:03:59+00:00",
     "description": "If you ever run into problems installing or using Jekyll, here are a few tipsthat might be of help. If the problem you’re experiencing isn’t covered below,please check out our other help resources as well.",
     "logo": "https://ashmaroli.github.io/jekyllimg/logo-2x.png",
     "url": "https://ashmaroli.github.io/jekyll/docs/troubleshooting/"
@@ -300,44 +300,68 @@ that might be of help. If the problem you’re experiencing isn’t covered belo
 the header files for compiling extension modules for Ruby 2.0.0. This
 can be done on Ubuntu or Debian by running:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">sudo apt-get install ruby2.0.0-dev</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo apt-get install ruby2.0.0-dev
+</code></pre>
+</div>
 
 <p>On Red Hat, CentOS, and Fedora systems you can do this by running:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">sudo yum install ruby-devel</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo yum install ruby-devel
+</code></pre>
+</div>
 
 <p>If you installed the above - specifically on Fedora 23 - but the extensions would still not compile, you are probably running a Fedora image that misses the <code class="highlighter-rouge">redhat-rpm-config</code> package. To solve this, simply run:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">sudo dnf install redhat-rpm-config</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo dnf install redhat-rpm-config
+</code></pre>
+</div>
 
 <p>On <a href="https://www.nearlyfreespeech.net/">NearlyFreeSpeech</a> you need to run the
 following commands before installing Jekyll:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">export </span><span class="nv">GEM_HOME</span><span class="o">=</span>/home/private/gems
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="nb">export </span><span class="nv">GEM_HOME</span><span class="o">=</span>/home/private/gems
 <span class="nb">export </span><span class="nv">GEM_PATH</span><span class="o">=</span>/home/private/gems:/usr/local/lib/ruby/gems/1.8/
 <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/private/gems/bin
-<span class="nb">export </span><span class="nv">RB_USER_INSTALL</span><span class="o">=</span><span class="s1">'true'</span></code></pre></figure>
+<span class="nb">export </span><span class="nv">RB_USER_INSTALL</span><span class="o">=</span><span class="s1">'true'</span>
+</code></pre>
+</div>
 
 <p>To install RubyGems on Gentoo:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">sudo emerge -av dev-ruby/rubygems</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo emerge -av dev-ruby/rubygems
+</code></pre>
+</div>
 
 <p>On Windows, you may need to install <a href="https://wiki.github.com/oneclick/rubyinstaller/development-kit">RubyInstaller
 DevKit</a>.</p>
 
 <p>On Mac OS X, you may need to update RubyGems (using <code class="highlighter-rouge">sudo</code> only if necessary):</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">sudo gem update --system</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo gem update --system
+</code></pre>
+</div>
 
 <p>If you still have issues, you can download and install new Command Line
 Tools (such as <code class="highlighter-rouge">gcc</code>) using the command</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">xcode-select --install</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>xcode-select --install
+</code></pre>
+</div>
 
 <p>which may allow you to install native gems using this command (again using
 <code class="highlighter-rouge">sudo</code> only if necessary):</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">sudo gem install jekyll</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo gem install jekyll
+</code></pre>
+</div>
 
 <p>Note that upgrading Mac OS X does not automatically upgrade Xcode itself
 (that can be done separately via the App Store), and having an out-of-date
@@ -353,16 +377,25 @@ longer available. Given these changes, there are a couple of simple ways to get
 up and running. One option is to change the location where the gem will be
 installed (again using <code class="highlighter-rouge">sudo</code> only if necessary):</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">sudo gem install -n /usr/local/bin jekyll</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>sudo gem install -n /usr/local/bin jekyll
+</code></pre>
+</div>
 
 <p>Alternatively, Homebrew can be installed and used to set up Ruby. This can be
 done as follows:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span></code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+</code></pre>
+</div>
 
 <p>Once Homebrew is installed, the second step is easy:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">brew install ruby</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>brew install ruby
+</code></pre>
+</div>
 
 <p>Advanced users (with more complex needs) may find it helpful to choose one of a
 number of Ruby version managers (<a href="https://rvm.io">RVM</a>, <a href="http://rbenv.org">rbenv</a>, <a href="https://github.com/postmodern/chruby">chruby</a>, <a href="https://github.com/rvm/rvm/blob/master/docs/alt.md">etc</a>.) in
@@ -371,11 +404,17 @@ which to install Jekyll.</p>
 <p>If you elect to use one of the above methods to install Ruby, it might be
 necessary to modify your <code class="highlighter-rouge">$PATH</code> variable using the following command:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:<span class="nv">$PATH</span></code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:<span class="nv">$PATH</span>
+</code></pre>
+</div>
 
 <p>GUI apps can modify the <code class="highlighter-rouge">$PATH</code> as follows:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">launchctl setenv PATH <span class="s2">"/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">"</span></code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>launchctl setenv PATH <span class="s2">"/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre>
+</div>
 
 <p>Either of these approaches are useful because <code class="highlighter-rouge">/usr/local</code> is considered a
 “safe” location on systems which have SIP enabled, they avoid potential
@@ -399,15 +438,24 @@ in order to have the <code class="highlighter-rouge">jekyll</code> executable be
 
 <p>If you are using base-url option like:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">jekyll serve --baseurl <span class="s1">'/blog'</span></code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>jekyll serve --baseurl <span class="s1">'/blog'</span>
+</code></pre>
+</div>
 
 <p>… then make sure that you access the site at:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">http://localhost:4000/blog/index.html</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>http://localhost:4000/blog/index.html
+</code></pre>
+</div>
 
 <p>It won’t work to just access:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">http://localhost:4000/blog</code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code>http://localhost:4000/blog
+</code></pre>
+</div>
 
 <h2 id="configuration-problems">Configuration problems</h2>
 
@@ -436,7 +484,10 @@ problems.</p>
 templates. Unlike previous versions, using <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span></code> in 2.0 triggers the
 following error:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="s1">'{{'</span> was not properly terminated with regexp: /<span class="se">\}\}</span>/  <span class="o">(</span>Liquid::SyntaxError<span class="o">)</span></code></pre></figure>
+<div class="language-sh highlighter-rouge">
+<pre class="highlight"><code><span class="s1">'{{'</span> was not properly terminated with regexp: /<span class="se">\}\}</span>/  <span class="o">(</span>Liquid::SyntaxError<span class="o">)</span>
+</code></pre>
+</div>
 
 <h3 id="excerpts">Excerpts</h3>
 

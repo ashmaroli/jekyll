@@ -19,7 +19,7 @@
 <meta property="og:url" content="https://ashmaroli.github.io/jekyll/docs/github-pages/">
 <meta property="og:site_name" content="Jekyll • Simple, blog-aware, static sites">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2016-08-20T05:12:42+00:00">
+<meta property="article:published_time" content="2016-08-20T06:03:59+00:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@jekyllrb">
 <meta name="google-site-verification" content="onQcXpAvtHBrUI5LlroHNE_FP0b2qvFyPq7VZw36iEY">
@@ -28,7 +28,7 @@
     "@context": "http://schema.org",
     "@type": "BlogPosting",
     "headline": "GitHub Pages",
-    "datePublished": "2016-08-20T05:12:42+00:00",
+    "datePublished": "2016-08-20T06:03:59+00:00",
     "description": "GitHub Pages are public web pages for users,organizations, and repositories, that are freely hosted on GitHub’sgithub.io domain or on a custom domain name of your choice. GitHub Pages arepowered by Jekyll behind the scenes, so in addition to supporting regular HTMLcontent, they’re also a great way to host your Jekyll-powered website for free.",
     "logo": "https://ashmaroli.github.io/jekyllimg/logo-2x.png",
     "url": "https://ashmaroli.github.io/jekyll/docs/github-pages/"
@@ -300,10 +300,15 @@ branch to GitHub. However, the subdirectory-like URL structure GitHub uses for
 Project Pages complicates the proper resolution of URLs. In order to assure your
 site builds properly, use <code class="highlighter-rouge">site.github.url</code> in your URL’s.</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Useful for styles with static names... --&gt;</span>
+<div class="language-html highlighter-rouge">
+<pre class="highlight"><code>
+<span class="c">&lt;!-- Useful for styles with static names... --&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"{{ site.github.url }}/path/to/css.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
 <span class="c">&lt;!-- and for documents/pages whose URL's can change... --&gt;</span>
-<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ page.url | prepend: site.github.url }}"</span><span class="nt">&gt;</span>{{ page.title }}<span class="nt">&lt;/a&gt;</span></code></pre></figure>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ page.url | prepend: site.github.url }}"</span><span class="nt">&gt;</span>{{ page.title }}<span class="nt">&lt;/a&gt;</span>
+
+</code></pre>
+</div>
 
 <p>This way you can preview your site locally from the site root on localhost,
 but when GitHub generates your pages from the gh-pages branch all the URLs
@@ -328,26 +333,26 @@ few minor details.</p>
     currently-deployed version of the gem in your project, add the
     following to your <code>Gemfile</code>:
 
+```ruby
+source 'https://rubygems.org'
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
+require 'json'
+require 'open-uri'
+versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 
-<span class="nb">require</span> <span class="s1">'json'</span>
-<span class="nb">require</span> <span class="s1">'open-uri'</span>
-<span class="n">versions</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">'https://pages.github.com/versions.json'</span><span class="p">).</span><span class="nf">read</span><span class="p">)</span>
-
-<span class="n">gem</span> <span class="s1">'github-pages'</span><span class="p">,</span> <span class="n">versions</span><span class="p">[</span><span class="s1">'github-pages'</span><span class="p">]</span></code></pre></figure>
-
+gem 'github-pages', versions['github-pages']
+```
 
     This will ensure that when you run <code>bundle install</code>, you
     have the correct version of the <code>github-pages</code> gem.
 
     If that fails, simplify it:
 
+```ruby
+source 'https://rubygems.org'
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
-
-<span class="n">gem</span> <span class="s1">'github-pages'</span></code></pre></figure>
-
+gem 'github-pages'
+```
 
     And be sure to run <code>bundle update</code> often.
 
