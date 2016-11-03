@@ -19,9 +19,9 @@ class TestSite < JekyllUnitTest
 
     should "have an array for plugins if passed as an array" do
       site = Site.new(site_configuration({
-        "plugins_dir" => ["/tmp/plugins", "/tmp/otherplugins"]
+        "plugins_dir" => ["/tmp/plugins", "tmp/otherplugins"]
       }))
-      assert_equal ["/tmp/plugins", "/tmp/otherplugins"], site.plugins
+      assert_equal ["/tmp/plugins", "tmp/otherplugins"], site.plugins
     end
 
     should "have an empty array for plugins if nothing is passed" do
