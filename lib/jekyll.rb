@@ -186,3 +186,6 @@ require_all "jekyll/generators"
 require_all "jekyll/tags"
 
 require "jekyll-sass-converter"
+
+# Require jekyll-plus if installed.
+Jekyll::External.require_if_present("jekyll-plus")
