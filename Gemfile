@@ -4,8 +4,11 @@ gemspec :name => "jekyll"
 gem "rake", "~> 11.0"
 
 # Dependency of jekyll-mentions. RubyGems in Ruby 2.1 doesn't shield us from this.
-# gem "activesupport", "~> 4.2", :groups => [:test_legacy, :site] if RUBY_VERSION < '2.2.2'
-gem "activesupport", "~> 5.0"
+if RUBY_VERSION < '2.2.2'
+  gem "activesupport", "~> 4.2", :groups => [:test_legacy, :site]
+else
+  gem "activesupport", "~> 5.0"
+end
 
 group :development do
   gem "launchy", "~> 2.3"
