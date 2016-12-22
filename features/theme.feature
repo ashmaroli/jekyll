@@ -34,6 +34,15 @@ Feature: Writing themes
     And I should see "I'm in the project." in "_site/index.html"
     And I should see "<span class=\"sample\">include.html from test-theme</span>" in "_site/index.html"
 
+Scenario: A theme with assets
+    Given I have a configuration file with "theme" set to "test-theme"
+    And I have an assets directory
+    And I have a "assets/jslmain.min.js" file that contains "/* in-project comment */"
+    When I run jekyll build
+    Then I should get a zero exit status
+    And the _site directory should exist
+    And I should see "/* in-project comment */" in "_site/assets/js/main.min.js"'
+    
   Scenario: A theme with a layout
     Given I have a configuration file with "theme" set to "test-theme"
     And I have an _layouts directory
