@@ -34,6 +34,15 @@ Feature: Writing themes
     And I should see "I'm in the project." in "_site/index.html"
     And I should see "<span class=\"sample\">include.html from test-theme</span>" in "_site/index.html"
 
+  Scenario: A theme with assets
+    Given I have a configuration file with "theme" set to "test-theme"
+    And I have an assets/js directory
+    And I have an "assets/js/main.min.js" file that contains "/* A script file at source.*/"
+    When I run jekyll build
+    Then I should get a zero exit status
+    And the _site directory should exist
+    And I should see "/* A script file at source.*/" in "_site/assets/js/main.min.js"
+
   Scenario: A theme with a layout
     Given I have a configuration file with "theme" set to "test-theme"
     And I have an _layouts directory
