@@ -5,7 +5,7 @@ gem "rake", "~> 11.0"
 
 if RUBY_VERSION >= '2.4'
   gem "json", "~> 2.0"
-  gem "yajl-ruby", "~> 1.3"
+  gem "pygments.rb", "~> 1.1"
 end
 
 # Dependency of jekyll-mentions. RubyGems in Ruby 2.1 doesn't shield us from this.
@@ -79,7 +79,7 @@ group :jekyll_optional_dependencies do
 
   platform :ruby, :mswin, :mingw, :x64_mingw do
     gem "rdiscount", "~> 2.0"
-    gem "pygments.rb", "~> 1.0"
+    gem "pygments.rb", "~> 0.6"
     gem "redcarpet", "~> 3.2", ">= 3.2.3"
     gem "classifier-reborn", "~> 2.0"
     gem "liquid-c", "~> 3.0"
