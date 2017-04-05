@@ -156,6 +156,7 @@ Create another page for testing called `about.md` with similar front matter tags
 If you don't specify a layout in your pages, Jekyll will simply render that page as an unstyled basic HTML page.
 
 
+
 ## 4. Add a configuration file
 
 Add a `_config.yml` file in your root directory. In `_config.yml`, you can optionally specify the markdown filter you want. By default, [kramdown](https://kramdown.gettalong.org/) is used (without the need to specify it). If no other filter is specified, your config file will automatically apply the following as a default setting:
@@ -277,6 +278,7 @@ layout: home
 In this case, contents of `blog.md` will be pushed into the `{% raw %}{{ content }}{% endraw %}` tag in the `home` layout. Then the `home` layout will be pushed into the `{% raw %}{{ content }}{% endraw %}` tag of the `default` layout.
 
 
+
 ### How layouts work
 
 When a layout specifies another layout, it means the content of the first layout will be stuffed into the `{% raw %}{{ content }}{% endraw %}` tag of the second layout. As an analogy, think of Russian dolls that fit into each other. Each layout fits into another layout that it specifies.
@@ -294,6 +296,7 @@ In your browser, go to `blog.html` and see the list of posts. <br />(Note that y
 
 {: .note .info}
 At minimum, a layout should contain `{% raw %}{{ content }}{% endraw %}`, which acts as a receiver for the *content* to be rendered.
+
 
 
 ### For loops
