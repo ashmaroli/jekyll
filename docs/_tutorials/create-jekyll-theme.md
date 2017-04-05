@@ -1,30 +1,25 @@
 ---
 layout: tutorials
-permalink: /tutorials/convert-existing-html-sites-to-jekyll-templates/
-title: Convert existing HTML sites to Jekyll Templates
+permalink: /tutorials/create-jekyll-theme/
+title: Create your first Jekyll theme
 ---
 
 If you're looking for themes for your Jekyll site, you don't have to restrict yourself to existing Jekyll themes. It's pretty easy to convert almost any static HTML site into a Jekyll theme.
 
-In many ways, any site that is currently a static site is *already* a Jekyll site. Jekyll just allows you to automate parts of the site (like inserting pages into templates, rendering lists for navigation, generating feeds and sitemaps, and more) as it processes the files.
+In many ways, any site that is currently a static site *already* is a Jekyll site. Jekyll just allows you to automate parts of the site (like inserting pages into templates, rendering lists for navigation, generating feeds and sitemaps, and more) as it processes the files.
 
-Understanding how to convert any HTML site into a Jekyll template will open your world to many more options for Jekyll themes. Instead of searching online for "Jekyll themes," you can choose from the large variety of HTML templates for your site, quickly Jekyll-ize the HTML template as you need to, and build the output with Jekyll.
+Understanding how to convert any HTML site into a Jekyll website will open your world to many more options for Jekyll themes. Instead of searching online for "Jekyll themes," you can choose from the large variety of HTML templates for your site, quickly Jekyll-ize the HTML template as you need to, and build the output with Jekyll.
 
 Although websites can have sophisticated features and controls, we'll keep things simple in this tutorial. This tutorial contains the following sections:
 
 * TOC
 {:toc}
 
-## Understanding a basic Jekyll site
+## Understand a basic Jekyll site
 
 First, let's start with a grounding in the basics. Stripping a Jekyll site down to an extremely basic level will help clarify what happens in a Jekyll site. If you haven't already installed the jekyll gem, [install it]({% link _docs/installation.md %}).
 
-A bare boned Jekyll Site consists of:
-
-  * an empty `_config.yml`
-  * an `index.html` containing the entire source-code for your site's homepage.
-
-But for this tutorial, we'll start with a *basic Jekyll site* consisting of 3 files:
+A simple Jekyll site might consist of just 3 files:
 
 ```
 ├── _config.yaml
@@ -33,12 +28,11 @@ But for this tutorial, we'll start with a *basic Jekyll site* consisting of 3 fi
 └── index.md
 ```
 
-Manually create these 3 files in a folder called `myjekyllsite`. (Place `default.html` inside a folder named `_layouts`.) Then populate the content of the `default.html` and `index.md` files as follows:
+Manually create these 3 files in a folder called `myjekyllsite`. (Put `default.html` inside a folder called `_layouts`.) Then populate the content of the `default.html` and `index.md` files as follows:
 
 **_layouts/default.html**
 
 ```html
-<!DOCTYPE html>
 <html>
   <body>
      {% raw %}{{ content }}{% endraw %}
@@ -57,19 +51,19 @@ layout: default.html
 Some **bold** content.
 ```
 
-Now `cd` to `myjekyllsite` and serve the site with the built-in server:
+Now `cd` to `myjekyllsite` and build the site:
 
 ```
 jekyll serve
 ```
 
-When you serve the site, you get a preview URL such as `http://127.0.0.1:4001/` (which is the same as `http://localhost:4001/`). The site's files are built into the `_site` folder by default.
+When you build the site, you get a preview URL such as `http://127.0.0.1:4001/`. The site's files are built in the `_site` folder.
 
-This is a Jekyll site at the most basic functional level. Here's what is happening:
+This is a Jekyll site at the most basic level. Here's what is happening:
 
 * The `_config.yml` file contains settings that Jekyll uses as it processes your site. An empty config file will use default values for building a Jekyll site. For example, to convert Markdown to HTML, Jekyll will automatically use the [kramdown Markdown filter](https://rubygems.org/gems/kramdown/), without any need to specify it.
 * Jekyll looks for files with [front matter tags]({% link _docs/frontmatter.md %}) (the two sets of dashed lines `---` like those in `index.md`) and processes the files (populating site variables, rendering any [Liquid](https://shopify.github.io/liquid/), and converting Markdown to HTML).
-* Jekyll pushes the content from all pages and posts into the `{% raw %}{{ content }}{% endraw %}` tag in the layout specified (`default`) in the front matter tags.
+* Jekyll pushes the content from all pages and posts into the `{% raw %}{{ content }}{% endraw %}` tags in the layout specified (`default`) in the front matter tags.
 * The processed files get written as `.html` files in the `_site` directory.
 
 You can read more about how Jekyll processes the files in [Order of Interpretation](/tutorials/orderofinterpretation/).
@@ -156,10 +150,9 @@ Create another page for testing called `about.md` with similar front matter tags
 If you don't specify a layout in your pages, Jekyll will simply render that page as an unstyled basic HTML page.
 
 
-
 ## 4. Add a configuration file
 
-Add a `_config.yml` file in your root directory. In `_config.yml`, you can optionally specify the markdown filter you want. By default, [kramdown](https://kramdown.gettalong.org/) is used (without the need to specify it). If no other filter is specified, your config file will automatically apply the following as a default setting:
+Add a `_config.yml` file in your root directory. In `_config.yml`, you can optionally specify the markdown filter you want. By default, [kramdown](https://kramdown.gettalong.org/)) is used (without the need to specify it). If no other filter is specified, your config file will automatically apply the following as a default setting:
 
 ```
 markdown: kramdown
@@ -220,7 +213,7 @@ title: ACME Website
 
 Any properties you add in your `_config.yml` file are accessible through the `site` namespace. Similarly, any properties in your page's front matter are accessible through the `page` namespace. Use dot notation after `site` or `page` to access the value.
 
-Stop your Jekyll server <kbd>Ctrl</kbd> + <kbd>C</kbd> and restart it. Verify that the `title` tags are populating correctly.
+Stop your Jekyll server (**Ctrl + C**) and restart it. Verify that the `title` tags are populating correctly.
 
 {: .note .info}
 Every time you modify your config file, you have to restart Jekyll for the changes to take effect. When you modify other files, Jekyll automatically picks up the changes when it rebuilds.
@@ -230,7 +223,7 @@ If you have other variables to populate in your site, do so following this same 
 
 ## 7. Show posts on a page
 
-It's common to show a list of posts on the homepage. First, let's create some posts so that we have something to showcase.
+It's common to show a list of posts on the homepage. First, let's create some posts so that our loop will have something to display.
 
 Add some posts in a `_posts` folder following the standard `YYYY-MM-DD-title.md` post format:
 
@@ -249,15 +242,14 @@ layout: default
 Some sample content...
 ```
 
-Now let's create a layout that will display the posts. Create a new file in `_layouts` called `home.html` and add the following logic:
+Now let's create a layout that will display the posts. Create a new file in `_layouts` called `home.html`. In your `home.html` layout, add the following logic:
 
 ```
 ---
 layout: default
 ---
 
-{% raw %}{{ content}}
-<ul class="myposts">
+{% raw %}<ul class="myposts">
 {% for post in site.posts %}
     <li><a href="{{ post.url }}">{{ post.title}}</a>
     <span class="postDate">{{ post.date | date: "%b %-d, %Y" }}</span>
@@ -275,8 +267,7 @@ layout: home
 ---
 ```
 
-In this case, contents of `blog.md` will be pushed into the `{% raw %}{{ content }}{% endraw %}` tag in the `home` layout. Then the `home` layout will be pushed into the `{% raw %}{{ content }}{% endraw %}` tag of the `default` layout.
-
+In this case, `home.md` will be pushed into the `{% raw %}{{ content }}{% endraw %}` tags in the `home` layout. Then the `home` layout will be pushed into the `{% raw %}{{ content }}{% endraw %}` tags of the `default` layout.
 
 
 ### How layouts work
@@ -287,21 +278,19 @@ The following diagram shows how layouts work in Jekyll:
 
 <img src="../../img/jekylllayoutconcept.png" alt="Concept of Jekyll layouts" />
 
-{: .image-description}
-In this example, the content from a Markdown document `document.md` that specifies `layout: docs` gets pushed into the `{% raw %}{{ content }}{% endraw %}` tag of the layout file `docs.html`. Because the `docs` layout itself specifies `layout: page`, the content from `docs.html` gets pushed into the `{% raw %}{{ content }}{% endraw %}` tag in the layout file `page.html`. Finally because the `page` layout specifies `layout: default`, the content from `page.html` gets pushed into the `{% raw %}{{ content }}{% endraw %}` tag of the layout file `default.html`.
+In this case, the content from a page that specifies the layout `page` gets pushed into the `{% raw %}{{ content }}{% endraw %}` tag of the layout file named `page`. Because the `page` layout itself specifies another layout (`docs`), the content from `page` gets pushed into the `{% raw %}{{ content }}{% endraw %}` tag in the `docs` layout. Because the `docs` layout specifies another layout (`default`), the content from docs gets pushed into the `{% raw %}{{ content }}{% endraw %}` tag of the `default` layout.
 
 You don't need multiple layouts. You could just use one: `default`. You have options for how you design your site. In general, it's common to define one layout for pages and another layout for posts, but for both of these layouts to inherit the `default` template (which usually defines the top and bottom parts of the site).
 
-In your browser, go to `blog.html` and see the list of posts. <br />(Note that you don't have to use the method described here. You could have simply added the `for` loop to any page, such as `index.md`, to display these posts. But given that you may have more complex logic for other features, it can be helpful to store your logic in templates separate from the page area where you frequently type your content.)
+In your browser, go to `home.html` and see the list of posts. (Note that you didn't have to use the method described here. You could have simply added the `for` loop to any page, such as `index.md`, to display these posts. But given that you may have more complex logic for other features, it can be helpful to store your logic in templates separate from the page area where you frequently type your content.)
 
 {: .note .info}
 At minimum, a layout should contain `{% raw %}{{ content }}{% endraw %}`, which acts as a receiver for the *content* to be rendered.
 
 
-
 ### For loops
 
-By the way, let's pause here to look at the `for` loop logic a little more closely. [For loops in Liquid](https://help.shopify.com/themes/liquid/tags/iteration-tags#for) are one of the most commonly used Liquid tags. *For loops* let you iterate through content in your Jekyll site and build out a result. The `for` loop also has [certain properties available](https://help.shopify.com/themes/liquid/objects/for-loops) (like first or last iteration) based on the loop's position in the loop as well.
+By the way, let's pause here to look at the `for` loop logic a little more closely. [For loops in Liquid](https://help.shopify.com/themes/liquid/tags/iteration-tags#for) are one of the most commonly used Liquid tags. For loops let you iterate through content in your Jekyll site and build out a result. The `for` loop also has [certain properties available](https://help.shopify.com/themes/liquid/objects/for-loops) (like first or last iteration) based on the loop's position in the loop as well.
 
 We've only scratched the surface of what you can do with `for` loops in retrieving posts. For example, if you wanted to display posts from a specific category, you could do so by adding a `categories` property to your post's front matter and then look in those categories. Further, you could limit the number of results by adding a `limit` property. Here's an example:
 
@@ -349,7 +338,7 @@ You could also iterate through a list of pages that you maintain in a separate d
 
 To manage page links this way, create a folder in your Jekyll project called `_data`. In this folder, create a file called `sidebar_links.yml` with this content:
 
-```yaml
+```
 - title: Sample page 1
   url: /sample1/
 
@@ -360,7 +349,7 @@ To manage page links this way, create a folder in your Jekyll project called `_d
   url: /sample3/
 ```
 
-You can store additional properties for each item in this data file as desired. Arrange the list items in the order you want them to appear.
+(You can store additional properties for each item in this data file as desired. Arrange the list items in the order you want them to appear.
 
 To print the list of pages from the data file, use code like this:
 
@@ -377,13 +366,13 @@ If you have more sophisticated requirements around navigation, such as when buil
 
 ## 9. Simplify your site with includes
 
-Let's suppose your `default.html` file is massive and hard to work with. You can break up your layout by putting some of the HTML code in "include-files".
+Let's suppose your `default.html` file is massive and hard to work with. You can break up your layout by putting some of the content in include files.
 
 Add a folder called `_includes` in your root directory. In that folder, add a file there called `sidebar.html`.
 
 Remove your sidebar code from your `default.html` layout and insert it into the `sidebar.html` file.
 
-Where the sidebar code previously existed in `default.html`, pull in your "include" like this:
+In place of sidebar code in `default.html`, pull in your include like this:
 
 ```liquid
 {% raw %}{% include sidebar.html %}{% endraw %}
@@ -489,7 +478,7 @@ For more details on services for static sites, see the [Third Parties](https://l
 
 Your Jekyll pages consist of HTML, CSS, and JavaScript, so pretty much any code you need to embed will work without a problem.
 
-As you integrate code for these services, note that **if a page in your Jekyll site doesn't have front matter tags, Jekyll won't process any of the content in that page.** The page will just be passed to the `_site` folder when you build your site.
+As you integrate code for these services, not that if a page in your Jekyll site doesn't have front matter tags, Jekyll won't process any of the content. The page will just be passed to the `_site` folder when you build your site.
 
 If you do want Jekyll to process some page content (for example, to populate a variable that you define in your site's config file), just add front matter tags to the page. If you don't want any layout applied to the page, specify `layout: null` like this:
 
