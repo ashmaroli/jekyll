@@ -6,6 +6,7 @@ branches:
   only:
     - master
     - themes
+    - exec
 
 build: off
 
