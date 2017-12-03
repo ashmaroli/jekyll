@@ -16,4 +16,5 @@ RUBY=$(cat <<RUBY
 RUBY
 )
 
+bundle show
 bundle exec ruby -r ./lib/jekyll -e "${RUBY}"
