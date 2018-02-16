@@ -1,9 +1,5 @@
 bundler_args: --without benchmark:site:development
-script:
-  - gem build jekyll.gemspec -V
-  - ls -a
-  - gem unpack jekyll-3.7.2.gem
-
+script: bundle exec cucumber features/theme_gem.feature:11
 cache: bundler
 language: ruby
 sudo: false
