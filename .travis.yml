@@ -1,5 +1,5 @@
 bundler_args: --without benchmark:site:development
-script: script/cibuild
+script: gem build jekyll.gemspec -V
 cache: bundler
 language: ruby
 sudo: false
@@ -31,6 +31,7 @@ branches:
   only:
     - master
     - themes
+    - gem-test
     - /*-stable/
 
 notifications:
