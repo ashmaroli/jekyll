@@ -5,20 +5,92 @@ layout: default
   <section class="docs">
     <div class="grid">
 
-      {% include docs_contents_mobile.html %}
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+        <select onchange="if (this.value) window.location.href=this.value">
+          <option value="">Navigate the docs…</option>
+          {% for section in site.data.docs %}
+            <optgroup label="{{ section.title }}">
+              {% for item in section.docs %}
+                {% assign item_url = item | prepend:"/docs/" | append:"/" %}
+                {% assign doc = site.docs | where: "url", item_url | first %}
+                <option value="{{ doc.url }}">{{ doc.title }}</option>
+              {% endfor %}
+            </optgroup>
+          {% endfor %}
+        </select>
+      </div>
 
       <div class="unit four-fifths">
         <article>
           <div class="improve right hide-on-mobiles">
-            <a href="https://github.com/jekyll/jekyll/edit/master/docs/{{ page.path }}"><i class="fa fa-pencil"></i> &nbsp;Improve this page</a>
+            <a href="https://github.com/jekyll/jekyll/edit/master/docs/{{ page.path }}">
+              <i class="fa fa-pencil"></i> &nbsp;Improve this page
+            </a>
           </div>
           <h1>{{ page.title }}</h1>
+
           {{ content }}
-          {% include section_nav.html %}
+
+          {% comment %}
+          Map grabs the doc sections, giving us an array of arrays. Join, flattens all
+          the items to a comma delimited string. Split turns it into an array again.
+          {% endcomment %}
+          {% assign docs = site.data.docs | map: 'docs' | join: ',' | split: ',' %}
+
+          {% comment %}
+          Because this is built for every page, lets find where we are in the ordered
+          document list by comparing url strings. Then if there's something previous or
+          next, lets build a link to it.
+          {% endcomment %}
+
+          {% for document in docs %}
+            {% assign document_url = document | prepend:"/docs/" | append:"/" %}
+            {% if document_url == page.url %}
+              <div class="section-nav">
+                <div class="left align-right">
+                    {% if forloop.first %}
+                      <span class="prev disabled">Back</span>
+                    {% else %}
+                      {% assign previous = forloop.index0 | minus: 1 %}
+                      {% assign previous_page = docs[previous] | prepend:"/docs/" | append:"/" %}
+                      <a href="{{ previous_page }}" class="prev">Back</a>
+                    {% endif %}
+                </div>
+                <div class="right align-left">
+                    {% if forloop.last %}
+                      <span class="next disabled">Next</span>
+                    {% else %}
+                      {% assign next = forloop.index0 | plus: 1 %}
+                      {% assign next_page = docs[next] | prepend:"/docs/" | append:"/" %}
+                      <a href="{{ next_page }}" class="next">Next</a>
+                    {% endif %}
+                </div>
+              </div>
+              <div class="clear"></div>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
         </article>
       </div>
 
-      {% include docs_contents.html %}
+      <div class="unit one-fifth hide-on-mobiles">
+        <aside>
+          {% for section in site.data.docs %}
+            <h4>{{ section.title }}</h4>
+            <ul>
+              {% for item in section.docs %}
+                {% assign item_url = item | prepend:"/docs/" | append:"/" %}
+                {% assign p = site.docs | where:"url", item_url | first %}
+                <li class="{% if item_url == page.url %}current{% endif %}">
+                  <a href="{{ p.url }}">{{ p.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+
+          {% endfor %}
+        </aside>
+      </div>
 
       <div class="clear"></div>
 

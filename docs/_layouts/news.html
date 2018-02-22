@@ -5,13 +5,56 @@ layout: default
   <section class="news">
     <div class="grid">
 
-      {% include news_contents_mobile.html %}
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+        <select onchange="if (this.value) window.location.href=this.value">
+          <option value="">Navigate the blog…</option>
+          <option value="/news/">Home</option>
+          <optgroup label="v1.x">
+            {% for post in site.posts %}
+              <option value="{{ post.url }}">{{ post.title }}</option>
+            {% endfor %}
+          </optgroup>
+        </select>
+      </div>
 
       <div class="unit four-fifths">
         {{ content }}
       </div>
 
-      {% include news_contents.html %}
+      <div class="unit one-fifth hide-on-mobiles">
+        <aside>
+          <ul>
+            <li class="{% if page.title == 'News' %}current{% endif %}">
+              <a href="/news/">All News</a>
+            </li>
+            <li class="{% if page.title == 'Releases' %}current{% endif %}">
+              <a href="/news/releases/">Jekyll Releases</a>
+            </li>
+          </ul>
+          <h4>Recent Releases</h4>
+          <ul>
+            {% for post in site.categories.release limit:5 %}
+            <li class="{% if page.title == post.title %}current{% endif %}">
+              <a href="{{ post.url }}">Version {{ post.version }}</a>
+            </li>
+            {% endfor %}
+            <li>
+              <a href="/docs/history/">History »</a>
+            </li>
+          </ul>
+          <h4>Other News</h4>
+          <ul>
+              {% for post in site.posts %}
+              {% unless post.categories contains 'release' %}
+              <li class="{% if page.title == post.title %}current{% endif %}">
+                <a href="{{ post.url }}">{{ post.title }}</a>
+              </li>
+              {% endunless %}
+              {% endfor %}
+          </ul>
+        </aside>
+      </div>
+
 
       <div class="clear"></div>
 
