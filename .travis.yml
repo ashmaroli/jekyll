@@ -1,5 +1,4 @@
-bundler_args: --without benchmark:site:development
-script: script/cibuild
+script: script/stackprof
 cache: bundler
 language: ruby
 sudo: false
@@ -9,16 +8,10 @@ rvm:
   - &ruby2 2.4.3
   - &ruby3 2.3.6
   - &ruby4 2.2.9
-  - &jruby jruby-9.1.15.0
 
 env:
   matrix:
     - TEST_SUITE=fmt
-
-# regular test configuration
-after_success:
-  - bundle install --with site
-  - bundle exec jekyll build --profile --source docs
 
 before_install:
   - gem update --system
