@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Renderer#render_document'
+  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Renderer#place_in_layouts'
 cache: bundler
 language: ruby
 sudo: false
