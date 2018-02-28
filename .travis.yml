@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Renderer#place_in_layouts'
+  - bundle exec stackprof stackprof-cpu.dump --method 'Liquid::Context#stack'
 cache: bundler
 language: ruby
 sudo: false
