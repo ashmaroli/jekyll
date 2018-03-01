@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Renderer#convert'
+  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Document#trigger_hooks'
 cache: bundler
 language: ruby
 sudo: false
