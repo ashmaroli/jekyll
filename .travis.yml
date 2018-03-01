@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Document#trigger_hooks'
+  - bundle exec stackprof stackprof-cpu.dump --method 'String#to_s'
 cache: bundler
 language: ruby
 sudo: false
