@@ -11,7 +11,9 @@ result = RubyProf.profile do
 end
 
 puts "\nProcessing result.."
+RubyProf::FlatPrinter.new(result).print
 
+=begin
 dir_path  = File.expand_path("../tmp", __dir__)
 file_path = File.join(dir_path, "rubyprof-#{Time.now.strftime('%Y%m%d%H%M%S')}")
 
@@ -21,3 +23,4 @@ File.open(file_path, "wb") do |file|
 end
 
 puts "Profile result printed to #{file_path.cyan}"
+=end
