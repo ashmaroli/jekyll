@@ -30,7 +30,7 @@ end
 
 options = {
   sort: true,
-  limit: 300,
+  limit: 1000000,
   format: :text,
 }
 
