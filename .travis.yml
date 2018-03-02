@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Drops::Drop#\[\]'
+  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Mentions.mentionify'
 cache: bundler
 language: ruby
 sudo: false
