@@ -1,6 +1,5 @@
 script:
-  - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Drops::Drop#\[\]'
+  - bundle exec jekyll build --source docs
 cache: bundler
 language: ruby
 sudo: false
