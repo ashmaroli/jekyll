@@ -15,5 +15,9 @@ env:
   matrix:
     - TEST_SUITE=fmt
 
+before_script:
+  - script/install-rbspy 0.2.2
+  - rbspy --version
+
 before_install:
   - gem update --system
