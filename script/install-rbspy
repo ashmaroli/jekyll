@@ -2,7 +2,6 @@
 
 set -ex
 
-mkdir -p ./rbspy-$1/bin/
+mkdir -p ./rbspy-$1/bin
 wget https://github.com/rbspy/rbspy/releases/download/v$1/rbspy-v$1-x86_64-unknown-linux-musl.tar.gz
-tar -xzvf rbspy-v$1-x86_64-unknown-linux-musl.tar.gz -C rbspy-$1/bin/
-export PATH=$PATH:$PWD/rbspy-$1/bin/
+tar -xvf rbspy-v$1-x86_64-unknown-linux-musl.tar.gz -C rbspy-$1/bin/
