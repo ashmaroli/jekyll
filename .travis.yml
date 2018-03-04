@@ -1,5 +1,6 @@
 script:
-  - bundle exec jekyll build --source docs
+  - script/stackprof
+  - bundle exec stackprof stackprof-cpu.dump --method 'Addressable::URI.parse'
 cache: bundler
 language: ruby
 sudo: false
