@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'HTML::Pipeline::EmojiFilter#call'
+  - bundle exec stackprof stackprof-cpu.dump --method 'Nokogiri::XML::Node#to_html'
 cache: bundler
 language: ruby
 sudo: false
