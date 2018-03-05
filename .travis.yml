@@ -1,37 +1,35 @@
 script:
-  # - script/stackprof
+  - script/stackprof
   # - bundle exec stackprof stackprof-cpu.dump --method 'Addressable::URI.parse'
-  # - mkdir -p ./docs/_rbspy && pushd docs
-  - gem list
-  - rbspy help
-  # - jekyll build
-  # - popd
 cache: bundler
 language: ruby
 sudo: false
 
 rvm:
-  - &ruby1 2.5.0
+  - 2.5.0
+  - 2.4.3
+  - 2.3.6
+  - 2.2.9
 
-env:
-  matrix:
-    - RBSPY_VERSION=0.2.2
+# env:
+#   matrix:
+#     - RBSPY_VERSION=0.2.2
 
-before_script:
-  - script/install-rbspy $RBSPY_VERSION
-  - PATH=$PATH:$PWD
-  - PATH=$PATH:$PWD/rbspy-$RBSPY_VERSION/bin
+# before_script:
+#   - script/install-rbspy $RBSPY_VERSION
+#   - PATH=$PATH:$PWD
+#   - PATH=$PATH:$PWD/rbspy-$RBSPY_VERSION/bin
 
 before_install:
   - gem update --system
 
-deploy:
-  provider: pages
-  github-token: $GITHUB_TOKEN
-  local-dir: "./rbspy"
-  skip-cleanup: true
-  keep-history: true
-  target-branch: rbspy-report
-  verbose: true
-  on:
-    branch: master
+# deploy:
+#   provider: pages
+#   github-token: $GITHUB_TOKEN
+#   local-dir: "./rbspy"
+#   skip-cleanup: true
+#   keep-history: true
+#   target-branch: rbspy-report
+#   verbose: true
+#   on:
+#     branch: master

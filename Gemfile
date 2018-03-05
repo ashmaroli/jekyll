@@ -100,7 +100,7 @@ group :site do
   end
 
   gem "jekyll-avatar"
-  gem "jekyll-mentions"
+  gem "jekyll-mentions", :git => "https://github.com/ashmaroli/jekyll-mentions.git", :branch => "mentionify-if-relevant"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jemoji"
