@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  # - bundle exec stackprof stackprof-cpu.dump --method 'Addressable::URI.parse'
+  - bundle exec stackprof stackprof-cpu.dump --method 'HTML::Pipeline::EmojiFilter#call'
 cache: bundler
 language: ruby
 sudo: false
