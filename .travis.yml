@@ -1,9 +1,11 @@
 script:
   # - script/stackprof
   # - bundle exec stackprof stackprof-cpu.dump --method 'Addressable::URI.parse'
-  - mkdir -p ./docs/_rbspy && pushd docs
-  - jekyll build
-  - popd
+  # - mkdir -p ./docs/_rbspy && pushd docs
+  - gem list
+  - rbspy help
+  # - jekyll build
+  # - popd
 cache: bundler
 language: ruby
 sudo: false
@@ -17,6 +19,7 @@ env:
 
 before_script:
   - script/install-rbspy $RBSPY_VERSION
+  - PATH=$PATH:$PWD
   - PATH=$PATH:$PWD/rbspy-$RBSPY_VERSION/bin
 
 before_install:
