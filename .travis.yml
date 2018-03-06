@@ -1,7 +1,7 @@
 script:
-#   - script/stackprof
-#   - bundle exec stackprof stackprof-cpu.dump --method 'Nokogiri::XML::Node#to_html'
-  - bundle exec jekyll build --source docs
+  - script/stackprof
+  - bundle exec stackprof stackprof-cpu.dump --method 'Nokogiri::XML::Node#to_html'
+#   - bundle exec jekyll build --source docs
 
 cache: bundler
 language: ruby
