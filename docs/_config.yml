@@ -34,11 +34,12 @@ defaults:
 plugins:
 - jekyll-avatar
 - jekyll-feed
-- jekyll-mentions
+# - jekyll-mentions
 - jekyll-redirect-from
 - jekyll-seo-tag
 - jekyll-sitemap
-- jemoji
+# - jemoji
+- jekyll-mentioji
 sass:
   style: compressed
 exclude:
