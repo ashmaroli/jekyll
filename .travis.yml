@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-#   - bundle exec stackprof stackprof-cpu.dump --method 'Nokogiri::XML::Node#to_html'
+  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Tags::IncludeTag#render'
 #   - bundle exec jekyll build --source docs
 
 cache: bundler
