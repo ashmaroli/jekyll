@@ -1,6 +1,6 @@
 script:
   - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Tags::IncludeTag#render'
+  - bundle exec stackprof stackprof-cpu.dump --method 'Liquid::Context#stack'
 #   - bundle exec jekyll build --source docs
 
 cache: bundler
