@@ -40,6 +40,8 @@ plugins:
 # - jekyll-sitemap
 # - jemoji
 # - jekyll-mentioji
+- jekyll-commonmark
+markdown: CommonMark
 sass:
   style: compressed
 exclude:

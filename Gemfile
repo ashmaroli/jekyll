@@ -100,6 +100,7 @@ group :site do
   end
 
   gem "jekyll-avatar"
+  gem "jekyll-commonmark"
   # gem "jekyll-mentions"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
