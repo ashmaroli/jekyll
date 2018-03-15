@@ -32,14 +32,14 @@ defaults:
     layout: news_item
     image: "/img/twitter-card.png"
 plugins:
-- jekyll-avatar
-- jekyll-feed
+# - jekyll-avatar
+# - jekyll-feed
 # - jekyll-mentions
-- jekyll-redirect-from
-- jekyll-seo-tag
-- jekyll-sitemap
+# - jekyll-redirect-from
+# - jekyll-seo-tag
+# - jekyll-sitemap
 # - jemoji
-- jekyll-mentioji
+# - jekyll-mentioji
 sass:
   style: compressed
 exclude:
