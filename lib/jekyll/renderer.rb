@@ -88,7 +88,7 @@ module Jekyll
         output = place_in_layouts(output, payload, info)
       end
 
-      output
+      output.gsub(/\n\s*/, "").squeeze(" ")
     end
     # rubocop: enable AbcSize
 
