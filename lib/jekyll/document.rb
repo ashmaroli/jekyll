@@ -25,7 +25,7 @@ module Jekyll
     def initialize(path, relations = {})
       @site = relations[:site]
       @path = path
-      @extname = File.extname(path)
+      @extname = File.extname(path).freeze
       @collection = relations[:collection]
       @has_yaml_header = nil
 
