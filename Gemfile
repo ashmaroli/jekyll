@@ -75,7 +75,7 @@ group :jekyll_optional_dependencies do
   gem "jekyll-gist"
   gem "jekyll-paginate"
   gem "jekyll-redirect-from"
-  gem "kramdown", "~> 1.14"
+  gem "kramdown", :git => "https://github.com/ashmaroli/kramdown.git", :branch => "frozen-empty-string" # "~> 1.14"
   gem "mime-types", "~> 3.0"
   gem "rdoc", RUBY_VERSION >= "2.2.2" ? "~> 6.0" : "~> 5.1"
   gem "tomlrb", "~> 1.2"
