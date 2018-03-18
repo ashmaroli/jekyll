@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 gemspec :name => "jekyll"
 
+gem "memory_profiler"
 gem "rake", "~> 12.0"
 
 gem "rouge", ENV["ROUGE"] if ENV["ROUGE"]
