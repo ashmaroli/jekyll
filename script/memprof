@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "json"
 require "memory_profiler"
 require File.expand_path("../lib/jekyll", __dir__)
 
