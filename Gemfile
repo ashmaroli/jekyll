@@ -105,4 +105,5 @@ group :site do
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jemoji"
+  gem "jekyll-commonmark"
 end
