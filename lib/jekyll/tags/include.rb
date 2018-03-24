@@ -122,26 +122,29 @@ MSG
       end
 
       def render(context)
-        site = context.registers[:site]
+        @render_cache ||= {}
+        @render_cache[context.hash] ||= begin
+          site = context.registers[:site]
 
-        file = render_variable(context) || @file
-        validate_file_name(file)
+          file = render_variable(context) || @file
+          validate_file_name(file)
 
-        path = locate_include_file(context, file, site.safe)
-        return unless path
+          path = locate_include_file(context, file, site.safe)
+          return unless path
 
-        add_include_to_dependency(site, path, context)
+          add_include_to_dependency(site, path, context)
 
-        partial = load_cached_partial(path, context)
+          partial = load_cached_partial(path, context)
 
-        context.stack do
-          context["include"] = parse_params(context) if @params
-          begin
-            partial.render!(context)
-          rescue Liquid::Error => e
-            e.template_name = path
-            e.markup_context = "included " if e.markup_context.nil?
-            raise e
+          context.stack do
+            context["include"] = parse_params(context) if @params
+            begin
+              partial.render!(context)
+            rescue Liquid::Error => e
+              e.template_name = path
+              e.markup_context = "included " if e.markup_context.nil?
+              raise e
+            end
           end
         end
       end
