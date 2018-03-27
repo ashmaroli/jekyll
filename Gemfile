@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-gemspec :name => "jekyll"
+# gemspec :name => "jekyll"
 
+gem "jekyll", "3.7.3"
 gem "rake", "~> 12.0"
 
 gem "rouge", ENV["ROUGE"] if ENV["ROUGE"]
