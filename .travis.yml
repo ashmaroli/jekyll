@@ -1,5 +1,6 @@
 script:
-  - script/stackprof
+  - rbspy record ruby script/rbspy-jbuild
+#   - script/stackprof
 #   - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Converters::Markdown::KramdownParser#convert'
 #   - bundle exec jekyll build --source docs
 
@@ -8,19 +9,19 @@ language: ruby
 sudo: false
 
 rvm:
-  - 2.5.0
+#   - 2.5.0
   - 2.4.3
-  - 2.3.6
-  - 2.2.9
+#   - 2.3.6
+#   - 2.2.9
 
-# env:
-#   matrix:
-#     - RBSPY_VERSION=0.2.2
+env:
+  matrix:
+    - RBSPY_VERSION=0.2.2
 
-# before_script:
-#   - script/install-rbspy $RBSPY_VERSION
-#   - PATH=$PATH:$PWD
-#   - PATH=$PATH:$PWD/rbspy-$RBSPY_VERSION/bin
+before_script:
+  - script/install-rbspy $RBSPY_VERSION
+  - PATH=$PATH:$PWD
+  - PATH=$PATH:$PWD/rbspy-$RBSPY_VERSION/bin
 
 before_install:
   - gem update --system
