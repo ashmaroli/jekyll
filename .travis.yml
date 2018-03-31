@@ -4,7 +4,7 @@ script:
 #   - sed -i 's/{% asset_path/{% asset/g' _includes/head.html
 #   - echo -e "exclude:\n- Gemfile\n- Gemfile.lock\n- node_modules\n- vendor/bundle/\n- vendor/cache/\n- vendor/gems/\n- vendor/ruby/\n- autoprefixer.yml\n- README.md\n- LICENSE.md\n- tags/*.md\n- Rakefile" >> _config_custom.yml
 #   - bundle exec jekyll build --profile --config _config.yml,_config_custom.yml
-  - travis_wait bundle exec ruby script/profile-repo Renderer
+  - travis_wait bundle exec ruby script/profile-repo Cloudinary::CloudinaryTag
 #   - rbspy record ruby script/rbspy-jbuild
 #   - script/stackprof
 #   - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Document#related_posts'
