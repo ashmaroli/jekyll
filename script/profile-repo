@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require "method_profiler"
+require "jekyll"
+
+Dir.chdir(File.join(Dir.pwd, "profile-repo")) do
+  Jekyll::PluginManager.require_from_bundler
+  site  = Jekyll::Site.new(Jekyll.configuration(
+    "exclude" => %w(
+      Gemfile Gemfile.lock node_modules vendor/bundle/ vendor/cache/ vendor/gems/
+      vendor/ruby/ autoprefixer.yml README.md LICENSE.md tags/*.md Rakefile
+    ),
+    "trace"   => true,
+  ))
+  klass = Jekyll.const_get(ARGV[0], false)
+
+  Jekyll.logger.info "-" * 80
+  Jekyll.logger.info "Profiling:", klass.name.cyan
+  Jekyll.logger.info "-" * 80
+
+  profiler = MethodProfiler.observe(klass)
+  site.process
+
+  Jekyll.logger.info ""
+  Jekyll.logger.info profiler.report.sort_by(:method).order(:ascending)
+end

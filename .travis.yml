@@ -1,7 +1,13 @@
+bundler_args: ""
 script:
+#   - cd profile-repo
+#   - sed -i 's/{% asset_path/{% asset/g' _includes/head.html
+#   - echo -e "exclude:\n- Gemfile\n- Gemfile.lock\n- node_modules\n- vendor/bundle/\n- vendor/cache/\n- vendor/gems/\n- vendor/ruby/\n- autoprefixer.yml\n- README.md\n- LICENSE.md\n- tags/*.md\n- Rakefile" >> _config_custom.yml
+#   - bundle exec jekyll build --profile --config _config.yml,_config_custom.yml
+  - travis_wait bundle exec ruby script/profile-repo Renderer
 #   - rbspy record ruby script/rbspy-jbuild
-  - script/stackprof
-  - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Document#related_posts'
+#   - script/stackprof
+#   - bundle exec stackprof stackprof-cpu.dump --method 'Jekyll::Document#related_posts'
 #   - bundle exec jekyll build --source docs
 
 cache: bundler
@@ -25,6 +31,12 @@ rvm:
 
 before_install:
   - gem update --system
+  - git clone --depth=50 --branch=travis-benchmarks https://github.com/DirtyF/nicolas-hoizey.com.git profile-repo
+  - echo -e "\n gem 'method_profiler'" >> $PWD/profile-repo/Gemfile
+  - BUNDLE_GEMFILE=$PWD/profile-repo/Gemfile
+
+install:
+  bundle install --path /home/travis/build/ashmaroli/jekyll/vendor/bundle
 
 # deploy:
 #   provider: pages
