@@ -3,7 +3,8 @@
 require "bundler/setup"
 require "json"
 require "stackprof"
-require File.expand_path("../lib/jekyll", __dir__)
+# require File.expand_path("../lib/jekyll", __dir__)
+require "jekyll"
 
 MODE = ARGV.first || "cpu"
 PROF_OUTPUT_FILE = File.expand_path("stackprof-#{MODE}.dump")
@@ -20,7 +21,19 @@ unless File.exist?(PROF_OUTPUT_FILE)
     puts "GC Stats:", JSON.pretty_generate(GC.stat)
     GC.disable
 
-    Jekyll::Commands::Build.process({'source' => 'docs'})
+    Dir.chdir(File.join(Dir.pwd, "profile-repo")) do
+      Jekyll::PluginManager.require_from_bundler
+      site  = Jekyll::Site.new(Jekyll.configuration(
+        "exclude" => %w(
+          Gemfile Gemfile.lock node_modules vendor/bundle/ vendor/cache/ vendor/gems/
+          vendor/ruby/ autoprefixer.yml README.md LICENSE.md tags/*.md Rakefile
+        ),
+        "trace"   => true,
+      ))
+      start = Time.now
+      site.process
+      Jekyll.logger.info "", "done in #{(Time.now - start).round(3)} seconds."
+    end
 
     puts 'GC Stats:'
     GC.start(full_mark: true, immediate_sweep: false)
@@ -30,7 +43,7 @@ end
 
 options = {
   sort: true,
-  limit: 1000000,
+  limit: 1000,
   format: :text,
 }
 
