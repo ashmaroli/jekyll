@@ -27,8 +27,18 @@ module RuboCop
       #   )
       #
       class AssertEqualLiteralActual < Cop
-        MSG = "Provide the 'expected value' as the first argument to `assert_equal`.".freeze
+        MSG = "Provide the 'expected value' as the first argument to `%{method_name}`.".freeze
 
+        
+		    EXP_ACT_MSG_PATTERN_METHODS = %i(
+		      assert_equal
+		      refute_equal
+		      assert_match
+		      refute_match
+		      assert_same
+		      refute_same
+		    ).freeze
+        
         SIMPLE_LITERALS = %i(
           true
           false
@@ -52,16 +62,16 @@ module RuboCop
         ).freeze
 
         def_node_matcher :literal_actual?, <<-PATTERN
-          (send nil? :assert_equal $(send ...) $#literal?)
+          (send nil? #assert_pattern? $(send ...) $#literal?)
         PATTERN
 
         def_node_matcher :literal_actual_with_msg?, <<-PATTERN
-          (send nil? :assert_equal $(send ...) $#literal? $#opt_msg?)
+          (send nil? #assert_pattern? $(send ...) $#literal? $#opt_msg?)
         PATTERN
 
         def on_send(node)
           return unless literal_actual?(node) || literal_actual_with_msg?(node)
-          add_offense(node, location: :expression)
+          add_offense(node, location: :expression, message: format(MSG, method_name: node.method_name))
         end
 
         def autocorrect(node)
@@ -91,56 +101,67 @@ module RuboCop
             node.each_child_node.all?(&method(:literal?))
         end
 
+        def assert_pattern?(method)
+          EXP_ACT_MSG_PATTERN_METHODS.include?(method)
+        end
+
+        def line_length_max
+          config.for_cop('Metrics/LineLength')['Max'] # Defaults to 80
+        end
+
         def replacement(node)
           _, _, first_param, second_param, optional_param = *node
 
           replaced_text = \
             if second_param.type == :hash
-              replace_hash_with_variable(first_param.source, second_param.source)
+              replace_hash_with_variable(node, first_param.source, second_param.source)
             elsif second_param.type == :array && second_param.source != "[]"
-              replace_array_with_variable(first_param.source, second_param.source)
+              replace_array_with_variable(node, first_param.source, second_param.source)
             else
-              replace_based_on_line_length(first_param.source, second_param.source)
+              replace_based_on_line_length(node, first_param.source, second_param.source)
             end
 
           return "#{replaced_text}, #{optional_param.source}" if optional_param
           replaced_text
         end
 
-        def replace_based_on_line_length(first_expression, second_expression)
-          result = "assert_equal #{second_expression}, #{first_expression}"
-          return result if result.length < 80
+        def replace_based_on_line_length(node, first_expression, second_expression)
+          result = "#{node.method_name} #{second_expression}, #{first_expression}"
+          return result if result.length < line_length_max
 
           # fold long lines independent of Rubocop configuration for better readability
+          block_start_col = node.source_range.column
           <<~TEXT
-            assert_equal(
-              #{second_expression},
-              #{first_expression}
+            #{node.method_name}(
+            #{' ' * block_start_col}  #{second_expression},
+            #{' ' * block_start_col}  #{first_expression}
             )
           TEXT
         end
 
-        def replace_hash_with_variable(first_expression, second_expression)
+        def replace_hash_with_variable(node, first_expression, second_expression)
           expect_expression = if second_expression.start_with?("{")
                                 second_expression
                               else
                                 "{#{second_expression}}"
                               end
+          block_start_col = node.source_range.column
           <<~TEXT
             expected = #{expect_expression}
-            assert_equal expected, #{first_expression}
+            #{' ' * block_start_col}#{node.method_name} expected, #{first_expression}
           TEXT
         end
 
-        def replace_array_with_variable(first_expression, second_expression)
+        def replace_array_with_variable(node, first_expression, second_expression)
           expect_expression = if second_expression.start_with?("%")
                                 second_expression
                               else
                                 Array(second_expression)
                               end
+          block_start_col = node.source_range.column
           <<~TEXT
             expected = #{expect_expression}
-            assert_equal expected, #{first_expression}
+            #{' ' * block_start_col}#{node.method_name} expected, #{first_expression}
           TEXT
         end
       end
