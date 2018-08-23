@@ -18,6 +18,7 @@ end
 
 group :test do
   gem "codeclimate-test-reporter", "~> 1.0.5"
+  gem "coveralls", :require => false
   gem "cucumber", "~> 3.0"
   gem "httpclient"
   gem "jekyll_test_plugin"

@@ -13,6 +13,8 @@ end
 
 if ENV["CI"]
   require "simplecov"
+  require "coveralls"
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
   SimpleCov.start
 else
   require File.expand_path("simplecov_custom_profile", __dir__)

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "simplecov"
+require "coveralls"
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 
 SimpleCov.profiles.define "gem" do
   add_filter "/test/"
