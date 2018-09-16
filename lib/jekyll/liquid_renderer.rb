@@ -18,6 +18,7 @@ module Jekyll
 
     def reset
       @stats = {}
+      @file_handler = {}
     end
 
     def file(filename)
@@ -28,7 +29,7 @@ module Jekyll
         else
           Regexp.last_match(2)
         end
-      LiquidRenderer::File.new(self, filename).tap do
+      file_handler[filename] ||= LiquidRenderer::File.new(self, filename).tap do
         @stats[filename] ||= new_profile_hash
         @stats[filename][:count] += 1
       end
@@ -52,8 +53,12 @@ module Jekyll
 
     private
 
+    def file_handler
+      @file_handler ||= {}
+    end
+
     def filename_regex
-      @filename_regex ||= %r!\A(#{source_dir}/|#{theme_dir}/|\W*)(.*)!i
+      @filename_regex ||= %r!\A(#{source_dir}/|#{theme_dir}/|/*)(.*)!i
     end
 
     def new_profile_hash
