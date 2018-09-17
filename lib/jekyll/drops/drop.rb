@@ -2,6 +2,18 @@
 
 module Jekyll
   module Drops
+    def self.drop_reader_methods(drop_klass)
+      @drop_reader_methods ||= {}
+      @drop_reader_methods[drop_klass] ||= begin
+        (drop_klass.instance_methods \
+          - Jekyll::Drops::Drop::instance_methods \
+          - Jekyll::Drops::Drop::NON_CONTENT_METHODS
+        ).map!(&:to_s).reject { |method| method.end_with?("=") }
+      end
+    end
+
+#
+
     class Drop < Liquid::Drop
       include Enumerable
 
@@ -84,13 +96,7 @@ module Jekyll
       #
       # Returns an Array of strings which represent method-specific keys.
       def content_methods
-        @content_methods ||= (
-          self.class.instance_methods \
-            - Jekyll::Drops::Drop.instance_methods \
-            - NON_CONTENT_METHODS
-        ).map(&:to_s).reject do |method|
-          method.end_with?("=")
-        end
+        @content_methods ||= Jekyll::Drops.drop_reader_methods(self.class)
       end
 
       # Check if key exists in Drop
