@@ -4,6 +4,7 @@ source "https://rubygems.org"
 gemspec :name => "jekyll"
 
 gem "rake", "~> 12.0"
+gem "method_profiler"
 
 group :development do
   gem "launchy", "~> 2.3"
