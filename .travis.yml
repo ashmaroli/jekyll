@@ -1,4 +1,5 @@
-script: bundle exec jekyll build --verbose --source docs --destination docs/_site
+# script: bundle exec jekyll build --verbose --source docs --destination docs/_site
+script: script/profile_class
 cache: bundler
 language: ruby
 sudo: false
