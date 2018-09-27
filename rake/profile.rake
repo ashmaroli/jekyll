@@ -49,7 +49,7 @@ namespace :profile do
     Jekyll::Commands::Build.process(
       "source"      => File.expand_path("docs"),
       "destination" => File.expand_path("docs/_site"),
-      "verbose"     => true,
+      "verbose"     => false,
       "trace"       => true,
     )
 
