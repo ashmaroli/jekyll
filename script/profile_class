@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 set -e
-bundle exec rake profile:class[ClassifierReborn::LSI]
+bundle exec rake profile:class[Jekyll::RelatedPosts]
