@@ -74,7 +74,7 @@ group :jekyll_optional_dependencies do
   gem "tomlrb", "~> 1.2"
 
   platform :ruby, :mswin, :mingw, :x64_mingw do
-    gem "classifier-reborn", "~> 2.2.0"
+    gem "classifier-reborn", :git => "https://github.com/ashmaroli/classifier-reborn.git", :branch => "playground"
     gem "liquid-c", "~> 3.0"
     gem "pygments.rb", "~> 1.0"
     gem "yajl-ruby", "~> 1.4"
