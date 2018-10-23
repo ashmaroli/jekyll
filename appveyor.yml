@@ -2,11 +2,6 @@ version: "{build}"
 
 clone_depth: 5
 
-branches:
-  only:
-    - master
-    - themes
-
 build: off
 
 environment:

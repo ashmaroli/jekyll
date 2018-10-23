@@ -203,3 +203,21 @@ require_all "jekyll/generators"
 require_all "jekyll/tags"
 
 require "jekyll-sass-converter"
+
+def where(cmd)
+  exts = ENV["PATHEXT"].to_s.split(File::PATH_SEPARATOR)
+  exts.push("") if exts.empty?
+
+  ENV["PATH"].to_s
+    .split(File::PATH_SEPARATOR)
+    .each do |path|
+      exts.each do |ext|
+        exe = File.join(path, "git#{ext}")
+        puts exe.magenta
+        return exe if File.executable?(exe)
+      end
+    end
+  nil
+end
+
+puts where("git").to_s.cyan
