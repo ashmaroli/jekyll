@@ -222,7 +222,7 @@ module Jekyll
     def write(dest)
       path = destination(dest)
       FileUtils.mkdir_p(File.dirname(path))
-      Jekyll.logger.info "Writing:", path
+      Jekyll.logger.info "Writing:", path.sub("#{site.dest}/", "")
       File.write(path, output, :mode => "wb")
       Jekyll::Hooks.trigger hook_owner, :post_write, self
     end
