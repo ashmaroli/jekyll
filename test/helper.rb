@@ -199,5 +199,7 @@ class JekyllUnitTest < Minitest::Test
   rescue Errno::EACCES
     skip "Permission denied for creating a symlink to #{target.inspect} " \
          "on this machine".magenta
+  rescue NotImplementedError => error
+    skip error.to_s.magenta
   end
 end
