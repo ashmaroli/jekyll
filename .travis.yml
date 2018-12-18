@@ -29,11 +29,6 @@ env:
   matrix:
     - TEST_SUITE=test
     - TEST_SUITE=cucumber
-branches:
-  only:
-    - master
-    - themes
-    - /.*-stable/
 
 notifications:
   slack:

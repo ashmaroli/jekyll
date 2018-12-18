@@ -2,12 +2,6 @@ version: "{build}"
 
 clone_depth: 10
 
-branches:
-  only:
-    - master
-    - themes
-    - /.*-stable/
-
 build: off
 
 install:
