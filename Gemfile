@@ -7,6 +7,7 @@ gemspec :name => "jekyll"
 # refinements introduced in i18n-1.3.0
 gem "i18n", "~> 1.2.0" if RUBY_ENGINE == "jruby"
 
+gem "memory_profiler"
 gem "rake", "~> 12.0"
 
 group :development do
@@ -60,14 +61,13 @@ end
 #
 
 group :jekyll_optional_dependencies do
-  gem "coderay", "~> 1.1.0"
   gem "jekyll-coffeescript"
   gem "jekyll-docs", :path => "../docs" if Dir.exist?("../docs") && ENV["JEKYLL_VERSION"]
   gem "jekyll-feed", "~> 0.9"
   gem "jekyll-gist"
   gem "jekyll-paginate"
   gem "jekyll-redirect-from"
-  gem "kramdown", "~> 1.14"
+  gem "kramdown-syntax-coderay"
   gem "mime-types", "~> 3.0"
   gem "rdoc", "~> 6.0"
   gem "tomlrb", "~> 1.2"

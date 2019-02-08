@@ -1,5 +1,4 @@
-bundler_args: --without benchmark:site:development
-script: script/cibuild
+script: bundle exec ruby script/memprof
 cache: bundler
 language: ruby
 sudo: false
@@ -9,44 +8,6 @@ rvm:
   - &ruby2 2.5.3
   - &ruby3 2.3.8
   - &jruby jruby-9.1.16.0
-
-matrix:
-  include:
-    - rvm: *ruby1
-      env: TEST_SUITE=fmt
-      name: "🤖️ Code Format"
-    - rvm: *ruby1
-      env: TEST_SUITE=default-site
-      name: "🏠️ Default Site"
-  exclude:
-    - rvm: *jruby
-      env: TEST_SUITE=cucumber
-
-env:
-  matrix:
-    - TEST_SUITE=test
-    - TEST_SUITE=cucumber
-branches:
-  only:
-    - master
-    - themes
-    - /.*-stable/
-
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
-notifications:
-  slack:
-    secure: "\
-      dNdKk6nahNURIUbO3ULhA09/vTEQjK0fNbgjVjeYPEvROHgQBP1cIP3AJy8aWs8rl5Yyow4Y\
-      GEilNRzKPz18AsFptVXofpwyqcBxaCfmHP809NX5PHBaadydveLm+TNVao2XeLXSWu+HUNAY\
-      O1AanCUbJSEyJTju347xCBGzESU=\
-    "
 
 before_install:
   - gem update --system
