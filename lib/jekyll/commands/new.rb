@@ -88,13 +88,17 @@ module Jekyll
             group :jekyll_plugins do
               gem "jekyll-feed", "~> 0.6"
             end
-            # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-            # and associated library.
-            gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-            gem "tzinfo", "~> 2.0"
 
-            # Performance-booster for watching directories on Windows
-            gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
+            # Windows-specific gems
+            if Gem.win_platform?
+              # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+              # and associated library.
+              gem "tzinfo", "~> 2.0"
+              gem "tzinfo-data"
+
+              # Performance-booster for watching directories on Windows
+              gem "wdm", "~> 0.1.1"
+            end
 
           RUBY
         end
