@@ -6,6 +6,7 @@ branches:
   only:
     - master
     - themes
+    - trials
     - /.*-stable/
 
 build: off

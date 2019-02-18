@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+ruby -e 'p RUBY_PLATFORM'
 script/branding
 
 set -e

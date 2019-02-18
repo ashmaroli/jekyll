@@ -30,6 +30,7 @@ branches:
   only:
     - master
     - themes
+    - trials
     - /.*-stable/
 
 before_script:
