@@ -23,10 +23,15 @@ group :test do
   gem "httpclient"
   gem "jekyll_test_plugin"
   gem "jekyll_test_plugin_malicious"
+  gem "minitest"
+  gem "minitest-profile"
+  gem "minitest-reporters"
   gem "nokogiri", "~> 1.7"
   gem "rspec"
   gem "rspec-mocks"
   gem "rubocop", "~> 0.64.0"
+  gem "shoulda"
+  gem "simplecov"
   gem "test-dependency-theme", :path => File.expand_path("test/fixtures/test-dependency-theme", __dir__)
   gem "test-theme", :path => File.expand_path("test/fixtures/test-theme", __dir__)
   gem "test-theme-symlink", :path => File.expand_path("test/fixtures/test-theme-symlink", __dir__)
@@ -38,12 +43,6 @@ end
 
 group :test_legacy do
   gem "test-unit" if RUBY_PLATFORM =~ %r!cygwin!
-
-  gem "minitest"
-  gem "minitest-profile"
-  gem "minitest-reporters"
-  gem "shoulda"
-  gem "simplecov"
 end
 
 #
@@ -62,14 +61,7 @@ end
 group :jekyll_optional_dependencies do
   gem "coderay", "~> 1.1.0"
   gem "jekyll-coffeescript"
-  gem "jekyll-docs", :path => "../docs" if Dir.exist?("../docs") && ENV["JEKYLL_VERSION"]
-  gem "jekyll-feed", "~> 0.9"
-  gem "jekyll-gist"
   gem "jekyll-paginate"
-  gem "jekyll-redirect-from"
-  gem "kramdown", "~> 1.14"
-  gem "mime-types", "~> 3.0"
-  gem "rdoc", "~> 6.0"
   gem "tomlrb", "~> 1.2"
 
   platform :ruby, :mswin, :mingw, :x64_mingw do
@@ -88,7 +80,11 @@ group :site do
   gem "html-proofer", "~> 3.4" if ENV["PROOF"]
 
   gem "jekyll-avatar"
+  gem "jekyll-docs", :path => "../docs" if Dir.exist?("../docs") && ENV["JEKYLL_VERSION"]
+  gem "jekyll-feed", "~> 0.9"
+  gem "jekyll-gist"
   gem "jekyll-mentions"
+  gem "jekyll-redirect-from"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jemoji"
