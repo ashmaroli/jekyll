@@ -1,20 +1,21 @@
+parameters:
+  name: ''
+  suite: ''
+
 jobs:
-- job: suite
+- job: ${{ parameters.name }}
   variables:
     CI: true
-    ruby_version: '2.5.0'
+    TEST_SUITE: ${{ parameters.suite }}
+    ruby_version: '>= 2.5.0'
   strategy:
     matrix:
-      Cucumber:
-        TEST_SUITE: cucumber
-      RuboCop:
-        TEST_SUITE: fmt
-      Default_Site:
-        TEST_SUITE: default-site
-      Profile_Docs:
-        TEST_SUITE: profile-docs
+      Linux:
+        vmagent: 'ubuntu-16.04'
+      Windows:
+        vmagent: 'vs2017-win2016'
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: $(vmagent)
   steps:
   - task: UseRubyVersion@0
     inputs:

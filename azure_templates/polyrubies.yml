@@ -9,11 +9,19 @@ jobs:
   strategy:
     matrix:
       Ruby24:
-        ruby_version: '2.4.3'
+        vmagent: 'ubuntu-16.04'
+        ruby_version: '>= 2.4.3'
       Ruby25:
-        ruby_version: '2.5.0'
+        vmagent: 'ubuntu-16.04'
+        ruby_version: '>= 2.5.0'
+      Ruby24_mingw:
+        vmagent: 'vs2017-win2016'
+        ruby_version: '>= 2.4.3'
+      Ruby25_mingw:
+        vmagent: 'vs2017-win2016'
+        ruby_version: '>= 2.5.0'
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: $(vmagent)
   steps:
   - task: UseRubyVersion@0
     inputs:
