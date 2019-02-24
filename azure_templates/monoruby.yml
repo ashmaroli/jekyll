@@ -1,0 +1,27 @@
+parameters:
+  name: ''
+  suite: ''
+
+jobs:
+- job: ${{ parameters.name }}
+  variables:
+    CI: true
+    TEST_SUITE: ${{ parameters.suite }}
+    ruby_version: '2.5.0'
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: UseRubyVersion@0
+    inputs:
+      versionSpec: $(ruby_version)
+
+  - bash: |
+      gem update --system
+      gem install bundler
+      bundle install --retry=3 --jobs=4
+
+    displayName: install
+
+  - bash: script/cibuild
+    displayName: build
+
