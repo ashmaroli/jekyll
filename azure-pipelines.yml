@@ -1,0 +1,35 @@
+# Ruby
+# Package your Ruby project.
+# Add steps that install rails, analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/ruby
+
+# trigger:
+# - master
+
+jobs:
+- job: Test
+  variables:
+    TEST_SUITE: test
+  strategy:
+    matrix:
+      Ruby23:
+        RUBY_FOLDER_VERSION: '23'
+      Ruby25:
+        RUBY_FOLDER_VERSION: '25'
+
+  pool:
+    vmImage: 'vs2017-win2016'
+
+  steps:
+  - task: UseRubyVersion@0
+    inputs:
+      versionSpec: '>= 2.3'
+
+  - bash: |
+      gem install bundler
+      bundle install --retry=3 --jobs=4
+
+    displayName: 'bundle install'
+
+  - bash: 'script/cibuild'
+    displayName: 'script/cibuild'
