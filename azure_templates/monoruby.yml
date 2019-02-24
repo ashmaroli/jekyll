@@ -1,13 +1,18 @@
-parameters:
-  name: ''
-  suite: ''
-
 jobs:
-- job: ${{ parameters.name }}
+- job: suite
   variables:
     CI: true
-    TEST_SUITE: ${{ parameters.suite }}
     ruby_version: '2.5.0'
+  strategy:
+    matrix:
+      Cucumber:
+        TEST_SUITE: cucumber
+      RuboCop:
+        TEST_SUITE: fmt
+      Default_Site:
+        TEST_SUITE: default-site
+      Profile_Docs:
+        TEST_SUITE: profile-docs
   pool:
     vmImage: 'vs2017-win2016'
   steps:

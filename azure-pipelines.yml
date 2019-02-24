@@ -12,18 +12,3 @@ jobs:
     name: Test
     suite: test
 - template: azure_templates/monoruby.yml
-  parameters:
-    name: Cucumber
-    suite: cucumber
-- template: azure_templates/monoruby.yml
-  parameters:
-    name:  RuboCop
-    suite: fmt
-- template: azure_templates/monoruby.yml
-  parameters:
-    name: DefaultSite
-    suite: default-site
-- template: azure_templates/monoruby.yml
-  parameters:
-    name: ProfileDocs
-    suite: profile-docs
