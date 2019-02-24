@@ -12,10 +12,10 @@ jobs:
     TEST_SUITE: test
   strategy:
     matrix:
-      Ruby23:
-        RUBY_FOLDER_VERSION: '23'
+      Ruby24:
+        ruby_version: '2.4.3'
       Ruby25:
-        RUBY_FOLDER_VERSION: '25'
+        ruby_version: '2.5.0'
 
   pool:
     vmImage: 'vs2017-win2016'
@@ -23,7 +23,7 @@ jobs:
   steps:
   - task: UseRubyVersion@0
     inputs:
-      versionSpec: '>= 2.3'
+      versionSpec: $(ruby_version)
 
   - bash: |
       gem install bundler
@@ -31,5 +31,5 @@ jobs:
 
     displayName: 'bundle install'
 
-  - bash: 'script/cibuild'
-    displayName: 'script/cibuild'
+  - bash: 'script/fmt'
+    displayName: 'Build script'
