@@ -1,5 +1,5 @@
 bundler_args: --without benchmark:development
-script: script/cibuild
+script: script/cucumber features/permalinks.feature
 cache: bundler
 language: ruby
 sudo: false
