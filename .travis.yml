@@ -1,5 +1,5 @@
 bundler_args: --without benchmark:development
-script: script/cucumber features/permalinks.feature
+script: script/cucumber
 cache: bundler
 language: ruby
 sudo: false
@@ -10,25 +10,8 @@ rvm:
   - &ruby3 2.4.5
   - &ruby4 2.3.8
 
-env:
-  matrix:
-    - TEST_SUITE=cucumber
-
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
 notifications:
-  slack:
-    secure: "\
-      dNdKk6nahNURIUbO3ULhA09/vTEQjK0fNbgjVjeYPEvROHgQBP1cIP3AJy8aWs8rl5Yyow4Y\
-      GEilNRzKPz18AsFptVXofpwyqcBxaCfmHP809NX5PHBaadydveLm+TNVao2XeLXSWu+HUNAY\
-      O1AanCUbJSEyJTju347xCBGzESU=\
-    "
+  email: false
 
 before_install:
   - gem update --system
