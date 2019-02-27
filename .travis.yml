@@ -10,30 +10,9 @@ rvm:
   - &ruby3 2.3.8
   - &jruby jruby-9.1.16.0
 
-matrix:
-  include:
-    - rvm: *ruby1
-      env: TEST_SUITE=fmt
-      name: "🤖️ Code Format"
-    - rvm: *ruby1
-      env: TEST_SUITE=default-site
-      name: "🏠️ Default Site"
-    - rvm: *ruby1
-      env: TEST_SUITE=profile-docs
-      name: "Profile Docs"
-  exclude:
-    - rvm: *jruby
-      env: TEST_SUITE=cucumber
-
 env:
   matrix:
-    - TEST_SUITE=test
     - TEST_SUITE=cucumber
-branches:
-  only:
-    - master
-    - themes
-    - /.*-stable/
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
