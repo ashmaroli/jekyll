@@ -57,43 +57,43 @@ module Jekyll
     end
 
     class PostUrl < Liquid::Tag
-      def initialize(tag_name, post, tokens)
+      def initialize(tag_name, markup, parse_context)
         super
-        @orig_post = post.strip
+        @markup = markup.strip
+
         begin
-          @post = PostComparer.new(@orig_post)
-        rescue StandardError => e
+          @comparer = PostComparer.new(@markup)
+        rescue StandardError => error
           raise Jekyll::Errors::PostURLError, <<~MSG
-            Could not parse name of post "#{@orig_post}" in tag 'post_url'.
-             Make sure the post exists and the name is correct.
-             #{e.class}: #{e.message}
+            Could not parse name of post "#{@markup}" in tag 'post_url'.
+            Make sure the post exists and the name is correct.
+
+            #{error.class}: #{error.message}
+
           MSG
         end
       end
 
       def render(context)
         site = context.registers[:site]
-
-        site.posts.docs.each do |p|
-          return p.url if @post == p
+        site.posts.docs.each do |post|
+          return post.url if @comparer == post
         end
 
-        # New matching method did not match, fall back to old method
-        # with deprecation warning if this matches
+        # New matching method did not match, fall back to old method with deprecation warning
+        # if this matches
+        site.posts.docs.each do |post|
+          next unless @comparer.deprecated_equality(post)
 
-        site.posts.docs.each do |p|
-          next unless @post.deprecated_equality p
-
-          Jekyll::Deprecator.deprecation_message "A call to "\
-            "'{% post_url #{@post.name} %}' did not match " \
-            "a post using the new matching method of checking name " \
-            "(path-date-slug) equality. Please make sure that you " \
-            "change this tag to match the post's name exactly."
-          return p.url
+          # Use `Liquid::Tag#raw` to obtain the tag's name with markup
+          Jekyll::Deprecator.deprecation_message "A call to '{% #{raw} %}' did not match a post " \
+            "using the new matching method of checking name (path-date-slug) equality. Please " \
+            "make sure that you change this tag to match the post's name exactly."
+          return post.url
         end
 
         raise Jekyll::Errors::PostURLError, <<~MSG
-          Could not find post "#{@orig_post}" in tag 'post_url'.
+          Could not find post "#{@markup}" in tag 'post_url'.
           Make sure the post exists and the name is correct.
         MSG
       end
