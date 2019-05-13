@@ -53,13 +53,15 @@ module Jekyll
         next unless entry =~ matcher
 
         path = @site.in_source_dir(File.join(dir, magic_dir, entry))
-        Document.new(path,
-                     :site       => @site,
-                     :collection => @site.posts)
+        Document.new(path, relations)
       end.reject(&:nil?)
     end
 
     private
+
+    def relations
+      @relations ||= { :site => @site, :collection => @site.posts }
+    end
 
     def processable?(doc)
       if doc.content.nil?
