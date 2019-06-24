@@ -202,7 +202,7 @@ module Jekyll
     def matching_sets(path, type)
       @matched_set_cache ||= {}
       @matched_set_cache[path] ||= {}
-      @matched_set_cache[path][type] ||= begin
+      @matched_set_cache[path][type.to_s] ||= begin
         valid_sets.select do |set|
           !set.key?("scope") || applies?(set["scope"], path, type)
         end
