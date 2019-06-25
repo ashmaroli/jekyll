@@ -73,6 +73,7 @@ module Jekyll
       reset
       read
       generate
+      return
       render
       cleanup
       write
