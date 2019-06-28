@@ -73,8 +73,8 @@ module Jekyll
       reset
       read
       generate
-      return
       render
+      return
       cleanup
       write
       print_stats if config["profile"]
