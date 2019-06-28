@@ -100,6 +100,9 @@ module Jekyll
       def locate_include_file(context, file, safe)
         includes_dirs = tag_includes_dirs(context)
         includes_dirs.each do |dir|
+          p " DIR: #{dir}"
+          p "FILE: #{file}"
+          puts
           path = File.join(dir.to_s, file.to_s)
           return path if valid_include_file?(path, dir.to_s, safe)
         end
