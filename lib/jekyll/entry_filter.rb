@@ -16,6 +16,7 @@ module Jekyll
       @base_directory = derive_base_directory(
         @site, base_directory.to_s.dup
       )
+      @excludables = site.exclude - site.include
     end
 
     def base_directory
@@ -63,7 +64,7 @@ module Jekyll
     end
 
     def excluded?(entry)
-      glob_include?(site.exclude - site.include, relative_to_source(entry)).tap do |excluded|
+      glob_include?(@excludables, relative_to_source(entry)).tap do |excluded|
         if excluded
           Jekyll.logger.debug(
             "EntryFilter:",
