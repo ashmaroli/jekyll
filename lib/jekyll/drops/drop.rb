@@ -102,7 +102,10 @@ module Jekyll
         return false if key.nil?
         return true if self.class.mutable? && mutations.key?(key)
 
-        puts caller(1..7)
+        p respond_to?(key)
+        p respond_to?(key).__id__
+        p fallback_data.key?(key)
+        p fallback_data.key?(key).__id__
         puts
 
         respond_to?(key) || fallback_data.key?(key)
