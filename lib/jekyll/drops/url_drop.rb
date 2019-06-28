@@ -3,6 +3,8 @@
 module Jekyll
   module Drops
     class UrlDrop < Drop
+      FALLBACK_DATA = {}
+
       extend Forwardable
 
       mutable false
@@ -125,7 +127,7 @@ module Jekyll
       private
 
       def fallback_data
-        @fallback_data ||= {}
+        FALLBACK_DATA
       end
     end
   end
