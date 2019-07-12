@@ -74,7 +74,6 @@ module Jekyll
       read
       generate
       render
-      return
       cleanup
       write
       print_stats if config["profile"]
