@@ -180,10 +180,14 @@ module Jekyll
         false
       end
 
+      def self.contents(file)
+        @contents ||= {}
+        @contents[file] ||= yield
+      end
+
       # This method allows to modify the file content by inheriting from the class.
       def read_file(file, context)
-        context.registers[:cached_includes] ||= {}
-        context.registers[:cached_includes][file] ||= File.read(file, file_read_opts(context))
+        self.class.contents(file) { File.read(file, file_read_opts(context)) }
       end
 
       private
