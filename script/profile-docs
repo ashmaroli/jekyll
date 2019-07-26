@@ -7,4 +7,4 @@
 # Usage: bash script/profile-docs
 
 SOURCE_DIR=$PWD/docs
-bundle exec jekyll build -s $SOURCE_DIR -d $SOURCE_DIR/_site --profile --trace --verbose
+bundle exec jekyll build -s $SOURCE_DIR -d $SOURCE_DIR/_site --trace
