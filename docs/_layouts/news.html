@@ -15,5 +15,9 @@ layout: default
 
       <div class="clear"></div>
 
+      {% for entry in site.related_posts %}
+        <div class="related-post">{{ entry.title }}</div>
+      {% endfor %}
+
     </div>
   </section>
