@@ -22,7 +22,8 @@ namespace :profile do
         Jekyll.configuration(
           "source"      => File.expand_path("../docs", __dir__),
           "destination" => File.expand_path("../docs/_site", __dir__),
-          "safe"        => safe_mode
+          "safe"        => safe_mode,
+          "lsi"         => true
         )
       )
 
