@@ -3,16 +3,12 @@ script: script/cibuild
 cache: bundler
 language: ruby
 
-rvm:
-  - &ruby1 2.7.0
-  - &ruby2 2.5.7
-
 matrix:
   include:
-    - rvm: *ruby1
+    - rvm: 2.7.0
       env: TEST_SUITE=profile-docs
       name: "Profile Docs"
-    - rvm: *ruby2
+    - rvm: 2.5.7
       env: TEST_SUITE=memprof
       name: "Profile Memory Allocation"
 
