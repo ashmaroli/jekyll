@@ -93,7 +93,7 @@ end
 group :site do
   gem "html-proofer", "~> 3.4" if ENV["PROOF"]
 
-  gem "jekyll-avatar"
+  gem "jekyll-avatar", github: "benbalter/jekyll-avatar", ref: "refs/pull/45/head"
   gem "jekyll-mentions"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
