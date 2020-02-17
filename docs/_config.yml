@@ -38,11 +38,9 @@ future: true
 plugins:
 - jekyll-avatar
 - jekyll-feed
-- jekyll-mentions
 - jekyll-redirect-from
 - jekyll-seo-tag
 - jekyll-sitemap
-- jemoji
 feed:
   categories:
   - release
