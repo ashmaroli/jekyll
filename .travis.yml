@@ -1,5 +1,5 @@
 bundler_args: --without benchmark:development
-script: ruby script/rubyprof
+script: bundle exec ruby script/rubyprof
 cache: bundler
 language: ruby
 
