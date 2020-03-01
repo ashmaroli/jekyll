@@ -16,8 +16,4 @@ dir_path  = File.expand_path("../tmp", __dir__)
 file_path = File.join(dir_path, "rubyprof-#{Time.now.strftime('%Y%m%d%H%M%S')}")
 
 FileUtils.mkdir_p(dir_path) unless Dir.exist?(dir_path)
-File.open(file_path, "wb") do |file|
-  RubyProf::FlatPrinter.new(result).print(file)
-end
-
-puts "Profile result printed to #{file_path.cyan}"
+RubyProf::FlatPrinter.new(result).print
