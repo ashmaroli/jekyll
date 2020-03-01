@@ -29,6 +29,7 @@ group :test do
   gem "rspec-mocks"
   gem "rubocop", "~> 0.80.0"
   gem "rubocop-performance"
+  gem "ruby-prof"
   gem "test-dependency-theme", :path => File.expand_path("test/fixtures/test-dependency-theme", __dir__)
   gem "test-theme", :path => File.expand_path("test/fixtures/test-theme", __dir__)
   gem "test-theme-skinny", :path => File.expand_path("test/fixtures/test-theme-skinny", __dir__)
@@ -55,7 +56,6 @@ group :benchmark do
   if ENV["BENCHMARK"]
     gem "benchmark-ips"
     gem "rbtrace"
-    gem "ruby-prof"
     gem "stackprof"
   end
 end
