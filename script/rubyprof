@@ -20,7 +20,6 @@ module RubyProf
         t << :separator
         t.style = { :alignment => :right, :border_top => false, :border_bottom => false }
         t.align_column(0, :left)
-        t.align_column(5, :left)
       end
       puts table
     end
