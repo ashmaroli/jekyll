@@ -1,7 +1,80 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "ruby-prof"
+require "terminal-table"
 require File.expand_path("../lib/jekyll", __dir__)
+
+module RubyProf
+  class StatPrinter < AbstractPrinter
+    def print(options = {})
+      @options = options
+      table = Terminal::Table.new do |t|
+        t << %w[name total self child calls location]
+        t << :separator
+        data = []
+        @result.threads.each do |thread|
+          data.concat print_methods(thread)
+        end
+        data.each { |entry| t << entry }
+        t << :separator
+        t.style = { :alignment => :right, :border_top => false, :border_bottom => false }
+        t.align_column(0, :left)
+        t.align_column(5, :left)
+      end
+      puts table
+    end
+
+    def print_methods(thread)
+      puts "THREAD: #{thread.id}"
+      total_time = thread.total_time
+
+      results = []
+      methods = thread.methods.sort_by(&:total_time).last(100).reverse
+      methods.each do |method|
+        self_percent = (method.self_time / total_time) * 100
+        next if self_percent < min_percent
+
+        results << [
+          format_name(method.full_name),         # method_name
+          format_time(method.total_time),        # total
+          format_time(method.self_time),         # self
+          format_time(method.children_time),     # children
+          method.called,                         # calls
+          format_path(method_location(method))   # location
+        ]
+      end
+      results
+    end
+
+    def format_name(name)
+      if name =~ %r!<Class::(.*)>#(.*)!
+        "#{Regexp.last_match(1)}.#{Regexp.last_match(2)}"
+      else
+        name
+      end
+    end
+
+    def format_time(seconds)
+      "%.3fs" % (seconds)
+    end
+
+    def format_path(path)
+      @normalize_path ||= {}
+      @normalize_path[path] ||= begin
+        if %r!(/gems/.*)*/gems/(?<gemname>[^/]+)(?<rest>.*)! =~ path
+          "#{gemname}#{rest}"
+        elsif %r!ruby/2\.[^/]+/(?<stdlib>[^/.]+)(?<rest>.*)! =~ path
+          "ruby/lib/#{stdlib}#{rest}"
+        elsif %r!(?<app>[^/]+/(bin|app|lib))(?<rest>.*)! =~ path
+          "#{app}#{rest}"
+        else
+          path
+        end
+      end
+    end
+  end
+end
 
 result = RubyProf.profile do
   Jekyll::Commands::Build.process({
@@ -16,4 +89,4 @@ dir_path  = File.expand_path("../tmp", __dir__)
 file_path = File.join(dir_path, "rubyprof-#{Time.now.strftime('%Y%m%d%H%M%S')}")
 
 FileUtils.mkdir_p(dir_path) unless Dir.exist?(dir_path)
-RubyProf::FlatPrinter.new(result).print
+RubyProf::StatPrinter.new(result).print
