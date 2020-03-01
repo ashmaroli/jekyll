@@ -10,7 +10,7 @@ module RubyProf
     def print(options = {})
       @options = options
       table = Terminal::Table.new do |t|
-        t << %w[name total self child calls location]
+        t << %w[name total self child calls]
         t << :separator
         data = []
         @result.threads.each do |thread|
@@ -41,7 +41,6 @@ module RubyProf
           format_time(method.self_time),         # self
           format_time(method.children_time),     # children
           method.called,                         # calls
-          format_path(method_location(method))   # location
         ]
       end
       results
@@ -57,21 +56,6 @@ module RubyProf
 
     def format_time(seconds)
       "%.3fs" % (seconds)
-    end
-
-    def format_path(path)
-      @normalize_path ||= {}
-      @normalize_path[path] ||= begin
-        if %r!(/gems/.*)*/gems/(?<gemname>[^/]+)(?<rest>.*)! =~ path
-          "#{gemname}#{rest}"
-        elsif %r!ruby/2\.[^/]+/(?<stdlib>[^/.]+)(?<rest>.*)! =~ path
-          "ruby/lib/#{stdlib}#{rest}"
-        elsif %r!(?<app>[^/]+/(bin|app|lib))(?<rest>.*)! =~ path
-          "#{app}#{rest}"
-        else
-          path
-        end
-      end
     end
   end
 end
