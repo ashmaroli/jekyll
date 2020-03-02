@@ -18,21 +18,22 @@ module RubyProf
         end
         data.each { |entry| t << entry }
         t << :separator
-        t.style = { :alignment => :right, :border_top => false, :border_bottom => false }
-        t.align_column(0, :left)
+        t.style = { alignment: :left, border_top: false, border_bottom: false, border_y: ' ', border_i: '-' }
+        t.align_column(4, :right)
       end
+      puts
       puts table
     end
 
     def print_methods(thread)
-      puts "THREAD: #{thread.id}"
       total_time = thread.total_time
 
       results = []
-      methods = thread.methods.sort_by(&:total_time).last(100).reverse
+      methods = thread.methods.sort_by(&:called).last(100).sort_by(&:total_time).reverse
       methods.each do |method|
         self_percent = (method.self_time / total_time) * 100
         next if self_percent < min_percent
+        next if method_location(method)&.include?(__FILE__)
 
         results << [
           format_name(method.full_name),         # method_name
@@ -46,7 +47,7 @@ module RubyProf
     end
 
     def format_name(name)
-      if name =~ %r!<Class::(.*)>#(.*)!
+      if name =~ %r!<(?:Class|Module)::(.*)>#(.*)!
         "#{Regexp.last_match(1)}.#{Regexp.last_match(2)}"
       else
         name
