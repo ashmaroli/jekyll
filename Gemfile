@@ -98,4 +98,5 @@ group :site do
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jemoji"
+  gem "kramdown", github: "ashmaroli/kramdown", branch: "gemspec"
 end
