@@ -47,6 +47,7 @@ group :test_legacy do
   gem "minitest-reporters"
   gem "shoulda"
   gem "simplecov"
+  gem "stackprof"
 end
 
 #
@@ -56,7 +57,6 @@ group :benchmark do
     gem "benchmark-ips"
     gem "rbtrace"
     gem "ruby-prof"
-    gem "stackprof"
   end
 end
 

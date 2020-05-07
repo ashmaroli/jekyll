@@ -20,7 +20,10 @@ unless File.exist?(PROF_OUTPUT_FILE)
     puts "GC Stats:", JSON.pretty_generate(GC.stat)
     GC.disable
 
-    Jekyll::Commands::Build.process({'source' => 'docs'})
+    Jekyll::Commands::Build.process({
+      'source'      => File.expand_path("../docs", __dir__),
+      "destination" => File.expand_path("../docs/_site", __dir__),
+    })
 
     puts 'GC Stats:'
     GC.start(full_mark: true, immediate_sweep: false)
@@ -30,13 +33,14 @@ end
 
 options = {
   sort: true,
-  limit: 30,
+  limit: 50,
   format: :text,
 }
 
 # You can also do other things. Examples:
 # https://github.com/tmm1/stackprof/blob/master/bin/stackprof
-report = StackProf::Report.new(Marshal.load(IO.binread(PROF_OUTPUT_FILE)))
+dump_data = IO.binread(PROF_OUTPUT_FILE)
+report = StackProf::Report.new(Marshal.load(dump_data))
 report.print_text(
   options[:sort],
   options[:limit],
@@ -46,4 +50,5 @@ report.print_text(
   options[:reject_names]
 )
 
-puts "Results stored in #{PROF_OUTPUT_FILE}"
+puts "\n\n"
+puts dump_data
