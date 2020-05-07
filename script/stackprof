@@ -53,4 +53,4 @@ report.print_text(
 )
 
 puts "\n\n"
-puts dump_data
+puts JSON.pretty_generate(Marshal.load(dump_data))
