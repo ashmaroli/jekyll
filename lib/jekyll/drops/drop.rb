@@ -134,7 +134,7 @@ module Jekyll
       #
       # Returns a pretty generation of the hash representation of the Drop.
       def inspect
-        JSON.pretty_generate to_h
+      #   JSON.pretty_generate to_h
       end
 
       # Generate a Hash for use in generating JSON.

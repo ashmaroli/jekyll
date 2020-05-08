@@ -371,8 +371,8 @@ module Jekyll
     # input - The Object to be converted
     #
     # Returns a String representation of the object.
-    def inspect(input)
-      xml_escape(input.inspect)
+    def inspect# (input)
+    #   xml_escape(input.inspect)
     end
 
     private
