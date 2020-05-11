@@ -3,7 +3,8 @@ version: "{build}"
 clone_depth: 5
 
 build: off
-
+image:
+  - Visual Studio 2019
 environment:
   BUNDLE_WITHOUT: "benchmark:development"
   RUBY_FOLDER_VER: "27"
