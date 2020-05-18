@@ -4,7 +4,7 @@ module Jekyll
   class StaticFile
     extend Forwardable
 
-    attr_reader :relative_path, :extname, :name, :data
+    attr_reader :relative_path, :extname, :name
 
     def_delegator :to_liquid, :to_json, :to_json
 
@@ -34,9 +34,12 @@ module Jekyll
       @collection = collection
       @relative_path = File.join(*[@dir, @name].compact)
       @extname = File.extname(@name)
-      @data = @site.frontmatter_defaults.all(relative_path, type)
     end
     # rubocop: enable Metrics/ParameterLists
+
+    def data
+      @data ||= @site.frontmatter_defaults.all(relative_path, type)
+    end
 
     # Returns source file path.
     def path
