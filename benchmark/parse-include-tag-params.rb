@@ -3,8 +3,8 @@
 
 # For pull request: https://github.com/jekyll/jekyll/pull/8192
 
-require 'benchmark/ips'
 require 'bundler/setup'
+require 'benchmark/ips'
 require 'memory_profiler'
 require 'jekyll'
 
