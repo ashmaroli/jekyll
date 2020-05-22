@@ -1,8 +1,8 @@
 name: Build and deploy Jekyll documentation site
 on:
-  pull_request:
+  push:
     branches:
-      - master
+      - gh-actions-trials
 jobs:
   deploy_docs:
     if: "!contains(github.event.commits[0].message, '[ci skip]')"
