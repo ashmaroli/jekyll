@@ -12,6 +12,11 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7.x
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: foo-gems
       - name: Set up dependencies
         run: bash .github/actions/bootstrap
       - name: Build and Deploy

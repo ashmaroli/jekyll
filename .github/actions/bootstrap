@@ -4,4 +4,5 @@ set -e
 
 gem update --system --no-document
 gem update bundler --no-document
+bundle config path vendor/bundle
 bundle install --jobs 4 --retry 3
