@@ -7,7 +7,7 @@ namespace :profile do
   task :memory, [:file, :mode] do |_t, args|
     args.with_defaults(file: "memprof.txt", mode: "lite")
 
-    build_phases = [:reset, :read, :generate, :render, :cleanup, :write]
+    build_phases = ENV["BUILD_PHASES"].split(",").map(&:to_sym)
     safe_mode    = false
 
     if args.mode == "lite"
