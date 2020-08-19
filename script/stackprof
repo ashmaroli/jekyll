@@ -21,5 +21,5 @@ StackProf.run(
   })
 end
 
-StackProf::Report.new(Marshal.load(IO.binread(PROF_OUTPUT_FILE))).print_text
+StackProf::Report.new(Marshal.load(IO.binread(PROF_OUTPUT_FILE))).print_method('Jekyll::Emoji.emojify')
 puts "Results stored in #{PROF_OUTPUT_FILE}"
