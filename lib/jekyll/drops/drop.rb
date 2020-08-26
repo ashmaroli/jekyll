@@ -22,6 +22,12 @@ module Jekyll
         @is_mutable
       end
 
+      def self.content_methods
+        @content_methods ||= begin
+          instance_methods - Jekyll::Drops::Drop.instance_methods - NON_CONTENT_METHODS
+        ).map(&:to_s).reject { |method| method.end_with?("=") }
+      end
+
       # Create a new Drop
       #
       # obj - the Jekyll Site, Collection, or Document required by the
@@ -84,13 +90,7 @@ module Jekyll
       #
       # Returns an Array of strings which represent method-specific keys.
       def content_methods
-        @content_methods ||= (
-          self.class.instance_methods \
-            - Jekyll::Drops::Drop.instance_methods \
-            - NON_CONTENT_METHODS
-        ).map(&:to_s).reject do |method|
-          method.end_with?("=")
-        end
+        self.class.content_methods
       end
 
       # Check if key exists in Drop
