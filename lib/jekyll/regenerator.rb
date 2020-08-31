@@ -24,14 +24,19 @@ module Jekyll
 
       case document
       when Page
-        regenerate_page?(document)
+        regenerate_page?(document).tap { |regen| debug(document) if regen }
       when Document
-        regenerate_document?(document)
+        regenerate_document?(document).tap { |regen| debug(document) if regen }
       else
         source_path = document.respond_to?(:path) ? document.path : nil
         dest_path = document.destination(@site.dest) if document.respond_to?(:destination)
-        source_modified_or_dest_missing?(source_path, dest_path)
+        source_modified_or_dest_missing?(source_path, dest_path).tap { |regen| debug(document) if regen }
       end
+    end
+
+    def debug(document)
+      msg = document.respond_to?(:relative_path) ? document.relative_path : document.inspect
+      Jekyll.logger.info "Regenerating:", msg
     end
 
     # Add a path to the metadata
