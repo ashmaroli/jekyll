@@ -38,9 +38,9 @@ namespace :profile do
       Jekyll.logger.info ""
     end
 
-    # if ENV["CI"]
-    #   report.pretty_print(scale_bytes: true, color_output: false, normalize_paths: true)
-    # else
+    if ENV["CI"]
+      report.pretty_print(scale_bytes: true, color_output: false, normalize_paths: true)
+    else
     #   FileUtils.mkdir_p("tmp")
     #   report_file = File.join("tmp", args.file)
 
@@ -52,6 +52,6 @@ namespace :profile do
 
     #   report.pretty_print(to_file: report_file, scale_bytes: true, normalize_paths: true)
     #   Jekyll.logger.info "\nDetailed Report saved into:", report_file.cyan
-    # end
+    end
   end
 end
