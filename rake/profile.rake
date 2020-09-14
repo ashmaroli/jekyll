@@ -17,59 +17,6 @@ namespace :profile do
 
     require "memory_profiler"
 
-    module MemoryProfiler
-      class Reporter
-        def object_list(generation)
-          rvalue_size = GC::INTERNAL_CONSTANTS[:RVALUE_SIZE]
-          helper = Helpers.new
-
-          result = StatHash.new.compare_by_identity
-
-          ObjectSpace.each_object do |obj|
-            next unless ObjectSpace.allocation_generation(obj) == generation
-
-            file = ObjectSpace.allocation_sourcefile(obj) || "(no name)"
-            next if @ignore_files && @ignore_files =~ file
-            next if @allow_files && !(@allow_files =~ file)
-
-            klass = obj.class rescue nil
-            unless Class === klass
-              # attempt to determine the true Class when .class returns something other than a Class
-              klass = Kernel.instance_method(:class).bind(obj).call
-            end
-            next if @trace && !trace.include?(klass)
-
-            begin
-              line       = ObjectSpace.allocation_sourceline(obj)
-              location   = helper.lookup_location(file, line)
-              class_name = helper.lookup_class_name(klass)
-              gem        = helper.guess_gem(file)
-
-              # we do memsize first to avoid freezing as a side effect and shifting
-              # storage to the new frozen string, this happens on @hash[s] in lookup_string
-              memsize = ObjectSpace.memsize_of(obj)
-
-              if klass == Array
-                puts location.to_s.cyan
-                puts obj.inspect
-                puts ""
-              end
-
-              string = klass == String ? helper.lookup_string(obj) : nil
-
-              # compensate for API bug
-              memsize = rvalue_size if memsize > 100_000_000_000
-              result[obj.__id__] = MemoryProfiler::Stat.new(class_name, gem, file, location, memsize, string)
-            rescue
-              # give up if any any error occurs inspecting the object
-            end
-          end
-
-          result
-        end
-      end
-    end
-
     report = MemoryProfiler.report(allow_files: "lib/jekyll/") do
       site = Jekyll::Site.new(
         Jekyll.configuration(
