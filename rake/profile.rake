@@ -70,7 +70,7 @@ namespace :profile do
       end
     end
 
-    report = MemoryProfiler.report(trace: [Array], allow_files: "lib/jekyll/drops/") do
+    report = MemoryProfiler.report(allow_files: "lib/jekyll/") do
       site = Jekyll::Site.new(
         Jekyll.configuration(
           "source"      => File.expand_path("../docs", __dir__),
