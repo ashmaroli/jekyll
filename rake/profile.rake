@@ -17,7 +17,7 @@ namespace :profile do
 
     require "memory_profiler"
 
-    report = MemoryProfiler.report(allow_files: "lib/jekyll/") do
+    report = MemoryProfiler.report(trace: [Time], allow_files: "lib/jekyll/") do
       site = Jekyll::Site.new(
         Jekyll.configuration(
           "source"      => File.expand_path("../docs", __dir__),
