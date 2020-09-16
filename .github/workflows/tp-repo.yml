@@ -30,7 +30,7 @@ jobs:
       run: |
         gem update --system --no-document
         gem update bundler --no-document
-        ruby .github/actions/munge_sandbox_gemfile.rb
+        ruby jekyll/.github/workflows/actions/munge_sandbox_gemfile.rb
         bundle config gemfile sandbox/Gemfile
         bundle config path sandbox/vendor/bundle
         bundle install --jobs 4 --retry 3
