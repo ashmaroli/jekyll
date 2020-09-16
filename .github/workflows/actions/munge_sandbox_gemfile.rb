@@ -17,3 +17,4 @@ CONTENTS = <<~RUBY
 RUBY
 
 File.open(SANDBOX_GEMFILE, 'wb') { |f| f.puts(CONTENTS) }
+File.open(File.expand_path('../../../../sandbox/Gemfile.lock', __dir__), "wb") { |f| f.puts "" }
