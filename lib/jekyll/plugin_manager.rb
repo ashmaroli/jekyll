@@ -46,7 +46,7 @@ module Jekyll
     end
 
     def self.require_from_bundler
-      if !ENV["JEKYLL_NO_BUNDLER_REQUIRE"] && File.file?(site.in_source_dir("Gemfile"))
+      if !ENV["JEKYLL_NO_BUNDLER_REQUIRE"]
         require "bundler"
 
         Bundler.setup
