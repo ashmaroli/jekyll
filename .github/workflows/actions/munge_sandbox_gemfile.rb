@@ -14,6 +14,8 @@ CONTENTS = <<~RUBY
     gem 'jekyll-seo'
     gem 'jekyll-sitemap'
   end
+
+  gem 'memory_profiler'
 RUBY
 
 File.open(SANDBOX_GEMFILE, 'wb') { |f| f.puts(CONTENTS) }
