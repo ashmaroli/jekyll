@@ -13,7 +13,7 @@ jobs:
     - name: Checkout Third Party Repository
       uses: actions/checkout@v2
       with:
-        repository: tomjoht/tomjoht.github.io
+        repository: ashmaroli/tomjoht.github.io
         path: sandbox
     - name: Ruby
       uses: actions/setup-ruby@v1
@@ -23,14 +23,13 @@ jobs:
       uses: actions/cache@v1
       with:
         path: sandbox/vendor/bundle
-        key: ubuntu-latest-gems-${{ hashFiles('sandbox/Gemfile') }}
+        key: ubuntu-latest-gems-
         restore-keys: |
           ubuntu-latest-gems-
     - name: Set up dependencies
       run: |
         gem update --system --no-document
         gem update bundler --no-document
-        ruby jekyll/.github/workflows/actions/munge_sandbox_gemfile.rb
         bundle config gemfile sandbox/Gemfile
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
