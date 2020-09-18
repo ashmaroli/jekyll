@@ -275,7 +275,11 @@ module Jekyll
       path = destination(dest)
       FileUtils.mkdir_p(File.dirname(path))
       Jekyll.logger.debug "Writing:", path
-      File.write(path, output, :mode => "wb")
+      File.write(
+        path,
+        output,
+        :mode => "wb"
+      )
 
       trigger_hooks(:post_write)
     end
