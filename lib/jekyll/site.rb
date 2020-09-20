@@ -202,6 +202,8 @@ module Jekyll
 
       payload = site_payload
 
+      return
+
       Jekyll::Hooks.trigger :site, :pre_render, self, payload
 
       render_docs(payload)
