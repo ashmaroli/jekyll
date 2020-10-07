@@ -15,6 +15,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: ashmaroli/tomjoht.github.io
+        ref: stackprof
         path: sandbox
     - name: Set up Ruby
       uses: actions/setup-ruby@v1
@@ -41,3 +42,5 @@ jobs:
         bundle exec jekyll build -s sandbox -d sandbox/_site --trace
     - name: Memory Analysis of Jekyll Build
       run: bundle exec ruby jekyll/.github/workflows/actions/memprof.rb sandbox
+    - name: Call stack Profile of Jekyll Build
+      run: bundle exec ruby jekyll/.github/workflows/actions/stackprof.rb sandbox
