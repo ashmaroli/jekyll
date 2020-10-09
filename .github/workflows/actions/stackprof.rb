@@ -5,7 +5,7 @@ require "stackprof"
 
 PROF_OUTPUT_FILE = File.expand_path(".stackprof-cpu.dump", __dir__).freeze
 
-StackProf.run(mode: :object, out: PROF_OUTPUT_FILE) do
+StackProf.run(mode: :cpu, out: PROF_OUTPUT_FILE) do
   Jekyll::PluginManager.require_from_bundler
   Jekyll::Commands::Build.process({
     "source"             => File.expand_path(ARGV[0]),
