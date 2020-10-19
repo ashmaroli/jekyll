@@ -198,6 +198,8 @@ module Jekyll
     #
     # Returns nothing.
     def render
+      return nil
+
       relative_permalinks_are_deprecated
 
       payload = site_payload
