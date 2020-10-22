@@ -61,7 +61,7 @@ module Jekyll
           Jekyll.logger.info "Destination:", destination
           Jekyll.logger.info "Incremental build:",
                              (incremental ? "enabled" : "disabled. Enable with --incremental")
-          Jekyll.logger.info "Generating..."
+          Jekyll.logger.info "Processing..."
           process_site(site)
           Jekyll.logger.info "", "done in #{(Time.now - t).round(3)} seconds."
         end
