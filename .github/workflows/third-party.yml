@@ -83,6 +83,10 @@ jobs:
         bundle exec jekyll build -s sandbox -d sandbox/_site --trace
         bundle exec jekyll build -s sandbox -d sandbox/_site --trace
     - name: Memory Analysis of Jekyll Build
-      run: bundle exec ruby jekyll/.github/workflows/actions/memprof.rb sandbox
+      run: |
+        bundle exec jekyll clean
+        bundle exec ruby jekyll/.github/workflows/actions/memprof.rb sandbox
     - name: Call stack Profile of Jekyll Build
-      run: bundle exec ruby jekyll/.github/workflows/actions/stackprof.rb sandbox
+      run: |
+        bundle exec jekyll clean
+        bundle exec ruby jekyll/.github/workflows/actions/stackprof.rb sandbox
