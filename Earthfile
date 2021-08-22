@@ -25,7 +25,7 @@ profile-docs:
     FROM +deps
     RUN bundle install --jobs 4
     RUN script/profile-docs
-    RUN script/memprof
+    RUN --secret CI=+secrets/CI script/memprof
 
 # Install dependencies and copy in source
 # used in above steps
