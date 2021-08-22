@@ -61,13 +61,15 @@ end
 
 #
 
+# rubocop:disable Layout/LineLength
+
 group :jekyll_optional_dependencies do
   gem "jekyll-coffeescript"
   gem "jekyll-docs", :path => "../docs" if Dir.exist?("../docs") && ENV["JEKYLL_VERSION"]
   gem "jekyll-feed", "~> 0.9"
   gem "jekyll-gist"
   gem "jekyll-paginate"
-  gem "jekyll-redirect-from"
+  gem "jekyll-redirect-from", :github => "jekyll/jekyll-redirect-from", :branch => "refactor-redirectable"
   gem "kramdown-syntax-coderay"
   gem "mime-types", "~> 3.0"
   gem "rdoc", "~> 6.0"
@@ -86,6 +88,8 @@ group :jekyll_optional_dependencies do
     gem "tzinfo-data"
   end
 end
+
+# rubocop:enable Layout/LineLength
 
 #
 
