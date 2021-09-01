@@ -2,11 +2,6 @@ name: Third-Party Repository Profiling
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
 jobs:
   build_n_profile:
     if: "!contains(github.event.commits[0].message, '[ci skip]')"
@@ -30,7 +25,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7
+        ruby-version: "3.0"
         bundler-cache: true
     - name: Run Jekyll Build 3 times
       run: |
