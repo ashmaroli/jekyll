@@ -1,0 +1,44 @@
+name: Diff Jekyll Builds
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  diff_jekyll_builds:
+    runs-on: 'ubuntu-latest'
+    env:
+      BUNDLE_JOBS: 4
+      BUNDLE_RETRY: 3
+    steps:
+    - name: Checkout Jekyll master
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+        path: jekyll-master
+    - name: Checkout Jekyll ref
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 5
+        path: sandbox
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+        bundler-cache: true
+    - name: 'Build Jekyll Docs @ master'
+      env:
+        BUNDLE_GEMFILE: 'jekyll-master/Gemfile'
+        BUNDLE_PATH: 'jekyll-master/vendor/bundle'
+      run: |
+        bundle install
+        bundle exec jekyll build -s jekyll-master/docs -d jekyll-master/docs/_site --trace
+    - name: 'Build Jekyll Docs @ master'
+      env:
+        BUNDLE_GEMFILE: 'sandbox/Gemfile'
+        BUNDLE_PATH: 'sandbox/vendor/bundle'
+      run: |
+        bundle install
+        bundle exec jekyll build -s sandbox/docs -d sandbox/docs/_site --trace
+    - name: Diff two dest dirs
+      run: diff -u jekyll-master/docs/_site sandbox/docs/_site
