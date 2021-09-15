@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-diff -urq --color=always $@
+diff -ur --color=always $@
 exit 0

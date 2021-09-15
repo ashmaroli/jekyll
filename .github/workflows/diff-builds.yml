@@ -6,8 +6,11 @@ on:
 
 jobs:
   diff_jekyll_builds:
+    name: Diff Jekyll Builds
     runs-on: 'ubuntu-latest'
     env:
+      BUNDLE_GEMFILE: 'sandbox/Gemfile'
+      BUNDLE_PATH: 'vendor/bundle'
       BUNDLE_JOBS: 4
       BUNDLE_RETRY: 3
     steps:
@@ -23,28 +26,14 @@ jobs:
         path: sandbox
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      env:
-        BUNDLE_GEMFILE: 'master/Gemfile'
-        BUNDLE_PATH: 'master/vendor/bundle'
       with:
         ruby-version: 2.7
         bundler-cache: true
-    - name: Cache ref dependencies
-      uses: actions/cache@v2
-      with:
-        path: 'sandbox/vendor/bundle'
-        key: ${{ runner.os }}-${{ hashFiles('sandbox/Gemfile') }}
     - name: 'Build Jekyll Docs @ master'
-      env:
-        BUNDLE_GEMFILE: 'master/Gemfile'
-        BUNDLE_PATH: 'master/vendor/bundle'
       run: |
         bundle install
         bundle exec jekyll build -s master/docs -d master/docs/_site --trace
     - name: 'Build Jekyll Docs @ ref'
-      env:
-        BUNDLE_GEMFILE: 'sandbox/Gemfile'
-        BUNDLE_PATH: 'sandbox/vendor/bundle'
       run: |
         bundle install
         bundle exec jekyll build -s sandbox/docs -d sandbox/docs/_site --trace
