@@ -29,6 +29,11 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
+    - name: Cache ref dependencies
+      uses: actions/cache@v2
+      with:
+        path: 'sandbox/vendor/bundle'
+        key: ${{ runner.os }}-${{ hashFiles('sandbox/Gemfile') }}
     - name: 'Build Jekyll Docs @ master'
       env:
         BUNDLE_GEMFILE: 'master/Gemfile'
@@ -45,5 +50,5 @@ jobs:
         bundle exec jekyll build -s sandbox/docs -d sandbox/docs/_site --trace
     - name: Diff two dest dirs
       run: |
-        diff -u jekyll-master/docs/_site sandbox/docs/_site --color
+        diff -u master/docs/_site sandbox/docs/_site --color
         exit 0
