@@ -49,6 +49,4 @@ jobs:
         bundle install
         bundle exec jekyll build -s sandbox/docs -d sandbox/docs/_site --trace
     - name: Diff two dest dirs
-      run: |
-        diff -u master/docs/_site sandbox/docs/_site --color
-        exit 0
+      run: bash sandbox/.github/workflows/actions/diff-builds master/docs/_site sandbox/docs/_site
