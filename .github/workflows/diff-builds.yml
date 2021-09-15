@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 2
-        path: jekyll-master
+        path: master
     - name: Checkout Jekyll ref
       uses: actions/checkout@v2
       with:
@@ -23,17 +23,20 @@ jobs:
         path: sandbox
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
+      env:
+        BUNDLE_GEMFILE: 'master/Gemfile'
+        BUNDLE_PATH: 'master/vendor/bundle'
       with:
         ruby-version: 2.7
         bundler-cache: true
     - name: 'Build Jekyll Docs @ master'
       env:
-        BUNDLE_GEMFILE: 'jekyll-master/Gemfile'
-        BUNDLE_PATH: 'jekyll-master/vendor/bundle'
+        BUNDLE_GEMFILE: 'master/Gemfile'
+        BUNDLE_PATH: 'master/vendor/bundle'
       run: |
         bundle install
-        bundle exec jekyll build -s jekyll-master/docs -d jekyll-master/docs/_site --trace
-    - name: 'Build Jekyll Docs @ master'
+        bundle exec jekyll build -s master/docs -d master/docs/_site --trace
+    - name: 'Build Jekyll Docs @ ref'
       env:
         BUNDLE_GEMFILE: 'sandbox/Gemfile'
         BUNDLE_PATH: 'sandbox/vendor/bundle'
@@ -41,4 +44,6 @@ jobs:
         bundle install
         bundle exec jekyll build -s sandbox/docs -d sandbox/docs/_site --trace
     - name: Diff two dest dirs
-      run: diff -u jekyll-master/docs/_site sandbox/docs/_site
+      run: |
+        diff -u jekyll-master/docs/_site sandbox/docs/_site --color
+        exit 0
