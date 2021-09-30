@@ -20,8 +20,9 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
-    - id: jekyll-metadata
-      run: echo "::set-output name=version::$(echo \"$(bundle exec jekyll --version)\")"
+    - name: Extract Jekyll Version
+      id: jekyll-metadata
+      run: echo "::set-output name=version::$(bundle exec ruby -e 'require "jekyll"; puts Jekyll::VERSION')"
       shell: bash
     - name: "Build Gem (Jekyll ${{ steps.jekyll-metadata.outputs.version }})"
       run: gem build jekyll.gemspec
