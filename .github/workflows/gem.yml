@@ -1,0 +1,32 @@
+name: Gem Tasks
+
+on:
+  push:
+
+jobs:
+  gem:
+    # if: "contains(github.event.commits[0].message, 'Release :gem:')"
+    name: "Build Gem (Ruby ${{ matrix.ruby_version }})"
+    runs-on: "ubuntu-latest"
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby_version:
+          - 2.7
+    steps:
+    - uses: actions/checkout@v2
+    - name: "Set up Ruby ${{ matrix.ruby_version }}"
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby_version }}
+        bundler-cache: true
+    - id: jekyll-metadata
+      run: echo "::set-output name=version::$(echo \"$(bundle exec jekyll --version)\")"
+      shell: bash
+    - name: "Build Gem (Jekyll ${{ steps.jekyll-metadata.outputs.version }})"
+      run: gem build jekyll.gemspec
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: "v${{ steps.jekyll-metadata.outputs.version }}"
+        path: "jekyll-${{ steps.jekyll-metadata.outputs.version }}.gem"
