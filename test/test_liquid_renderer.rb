@@ -37,6 +37,8 @@ class TestLiquidRenderer < JekyllUnitTest
         "_layouts/post.html",
         renderer.normalize_path(site.in_source_dir("_layouts", "post.html"))
       )
+      p site.theme&.root
+      p site.in_theme_dir("_layouts", "page.html")
       assert_equal(
         "test-theme/_layouts/page.html",
         renderer.normalize_path(site.in_theme_dir("_layouts", "page.html"))
