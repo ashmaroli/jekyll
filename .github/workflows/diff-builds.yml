@@ -9,8 +9,3 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: ashmaroli/diff-jekyll-builds@master
-        with:
-          base_src: docs
-          base_dest: docs/_site
-          subject_src: docs
-          subject_dest: docs/_site
