@@ -2,10 +2,10 @@
 layout: default
 ---
 
-<section class="standalone">
+<section class="standalone{%- unless page.permalink contains 'showcase' %} textual{% endunless %}">
   <div class="grid">
     <div class="unit whole">
-      <article>
+      <article class="wrapper">
         {%- if page.permalink contains "resources" %}
         <div class="improve right hide-on-mobiles">
           <a data-proofer-ignore href="https://github.com/jekyll/jekyll/edit/master/docs/{{ page.path }}"><i class="fa fa-pencil"></i> &nbsp;Improve this page</a>

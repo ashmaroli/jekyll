@@ -1,6 +1,6 @@
 {%- include top.html -%}
 
-<body class="wrap">
+<body class="{% if page.permalink == '/' %}home{% else %}{{ page.layout }}{% endif %} wrap">
   {%- include header.html -%}
 
   {{- content -}}

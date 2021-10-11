@@ -17,7 +17,7 @@ body {
   font-size: 21px;
   font-weight: 300;  
   color: #ddd;
-  background-color: #333;
+  background-color: #2e2e2e;
   @include box-shadow(inset 0 3px 30px rgba(0,0,0,.3));
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 
@@ -44,6 +44,69 @@ body {
   height: 0;
   clear: both;
   visibility: hidden;
+}
+
+.home {
+  .container {
+    max-width: 978px !important;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 980px) {
+  .wrapper {
+    padding: 0 60px;
+  }
+  .standalone {
+    .wrapper {
+      padding: 60px;
+    }
+    &.textual {
+      .wrapper {
+        padding: 90px 80px;
+      }
+    }
+  }
+  .docs, .tutorials {
+    article {
+      .improve {
+        padding-right: 40px
+      }
+      p:not(.note), header, h1, h2, h3, div[class|="language"] {
+        padding: 0 40px
+      }
+      & * + ul, & * + ol {
+        padding-right: 40px;
+        padding-left: 80px;
+        p {
+          padding-right: 0 !important;
+          padding-left: 0 !important;
+        }
+        ul, ol {
+          padding-left: 40px;
+        }
+      }
+      & * + div.highlight {
+        width: calc(100% - 80px);
+        margin: 0 auto;
+        h2, h3 {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        ul, ol {
+          padding-left: 40px;
+        }
+      }
+      table {
+        width: calc(100% - 80px);
+        margin: 0 auto;
+        p {
+          padding-right: 0 !important;
+          padding-left: 0 !important;
+        }
+      }
+    }
+  }
 }
 
 /* Sections */
@@ -435,12 +498,12 @@ footer {
 
 
 article {
-  background-color: #444;
-  @include border-radius(10px);
-  padding: 20px;
   margin: 0 10px;
-  @include box-shadow(0 3px 10px rgba(0,0,0,.1));
+  padding: 20px;
   font-size: 16px;
+  background-color: #444;
+  @include border-radius(5px);
+  @include box-shadow(0 3px 30px rgba(0,0,0,.5));
 }
 
 @media (max-width: 480px) {
@@ -453,7 +516,7 @@ article {
 
 @media (min-width: 768px) {
   article {
-    padding: 40px 40px 30px;
+    padding: 80px 40px;
     font-size: 21px;
   }
 }
@@ -615,11 +678,11 @@ article h2:first-child { margin-top: 0; }
 
 .post-category {
   display: inline-block;
-  margin-left: -30px;
-  padding: 6px 10px 8px;
-  padding-left: 50px;
-  @include border-radius(0 5px 5px 0);
   position: relative;
+  margin-left: -30px;
+  padding: 6px 10px 8px 50px;
+  text-align: right;
+  @include border-radius(0 5px 5px 0);
   @include box-shadow(0 1px 5px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255,255,255,.2), inset 0 -1px 0 rgba(0,0,0,.3));
   background-color: #9e2812;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzllMjgxMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2ZjBkMGQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -682,7 +745,7 @@ article h2:first-child { margin-top: 0; }
   padding: 15px 40px;
   border-top: 1px solid #555;
   border-radius: 0;
-  @include box-shadow(0 -1px 0 #2f2f2f);
+  @include box-shadow(0 -1px 30px rgba(0,0,0,.5));
 
   h2.post-title {
     margin-bottom: 0.45em;

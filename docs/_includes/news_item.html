@@ -1,5 +1,5 @@
 <article>
-  <h2>
+  <h2 class="wrapper">
     <a href="{{ post.url | relative_url }}">
       {{- post.title -}}
     </a>
@@ -19,7 +19,7 @@
       <span class="author-name">{{ author }}</span>
     </a>
   </div>
-  <div class="post-content">
+  <div class="post-content wrapper">
     {{- post.content -}}
   </div>
 </article>
