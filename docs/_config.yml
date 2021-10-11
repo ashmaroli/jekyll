@@ -2,6 +2,7 @@
 version: 4.2.1
 name: Jekyll • Simple, blog-aware, static sites
 description: Transform your plain text into static websites and blogs
+baseurl: /jekyll
 url: https://jekyllrb.com
 repository: https://github.com/jekyll/jekyll
 timezone: America/Los_Angeles
