@@ -2,20 +2,26 @@
 # frozen_string_literal: true
 
 require "benchmark/ips"
+require "colorator"
 require "jekyll"
+require "memory_profiler"
+require "terminal-table"
 
-CONTEXT = { "bar" => "The quick brown fox" }
-MARKUP_1 = %Q(snippet.html foo=bar lorem="ipsum \\"dolor\\"" alpha='beta \\'gamma\\'').freeze
-MARKUP_2 = %Q(snippet.html foo=bar lorem="ipsum 'dolor'" alpha='beta "gamma"').freeze
-MARKUP_3 = %Q({{ file }} foo=bar lorem="ipsum \\"dolor\\"" alpha='beta \\'gamma\\'').freeze
-MARKUP_4 = %Q({{ file }} foo=bar lorem="ipsum 'dolor'" alpha='beta "gamma"').freeze
+CONTEXT = { "variable" => "The quick brown fox" }
+
+MARKUP_1 = %Q(snippet.html alpha = "double \\"quoted\\"" betaa = 'single \\'quoted\\'' gamma = variable).freeze
+MARKUP_2 = %Q(snippet.html alpha = "double 'quoted'" betaa = 'single "quoted"' gamma = variable).freeze
+MARKUP_3 = %Q(snippet.html alpha = "double quoted" betaa = 'single quoted').freeze
+MARKUP_4 = %Q({{ file }} alpha = "double quoted" betaa = 'single quoted').freeze
+MARKUP_5 = %Q({{ file }} alpha = "double \\"quoted\\"" betaa = 'single \\'quoted\\'' gamma = variable).freeze
+MARKUP_6 = %Q({{ file }} alpha = "double 'quoted'" betaa = 'single "quoted"' gamma = variable).freeze
 
 class Base
   PARAMS_PATTERN = Jekyll::Tags::IncludeTag::VALID_SYNTAX
   VARIABLE_FILE  = Jekyll::Tags::IncludeTag::VARIABLE_SYNTAX
 
   def render
-    1000.times do
+    10000.times do
       extract_params_hash
     end
   end
@@ -127,13 +133,42 @@ class SuperOptimizedInclude < Base
   end
 end
 
-[MARKUP_1, MARKUP_2, MARKUP_3, MARKUP_4].each do |markup|
-  puts " MARKUP: #{markup}"
+class Profiler
+  KLASSES = [LegacyInclude, OptimizedInclude, SuperOptimizedInclude]
+
+  def initialize(markup)
+    @markup = markup
+    @stash  = {}
+
+    KLASSES.each do |klass|
+      @stash[klass.name] = MemoryProfiler.report { klass.new(markup).render }
+    end
+  end
+
+  def reports
+    @stash.values.map do |reporter|
+      allocated_memory  = reporter.scale_bytes(reporter.total_allocated_memsize)
+      allocated_objects = reporter.total_allocated
+      retained_memory   = reporter.scale_bytes(reporter.total_retained_memsize)
+      retained_objects  = reporter.total_retained
+
+      [
+        "#{allocated_memory} (#{allocated_objects} objects)",
+        "#{retained_memory} (#{retained_objects} objects)",
+      ]
+    end.transpose.tap { |rows| rows[0].unshift("Total allocated"); rows[1].unshift("Total retained") }
+  end
+end
+
+[MARKUP_1, MARKUP_2, MARKUP_3, MARKUP_4, MARKUP_5, MARKUP_6].each do |markup|
+  puts ""
+  puts "MARKUP: #{markup.cyan}"
+  puts ""
   puts <<~TEXT
-    RESULTS:
-               LEGACY: #{LegacyInclude.new(markup).extract_params_hash}
-            OPTIMIZED: #{OptimizedInclude.new(markup).extract_params_hash}
-      SUPER-OPTIMIZED: #{SuperOptimizedInclude.new(markup).extract_params_hash}
+    Param Hash Results #{"-" * 30}
+             LEGACY: #{LegacyInclude.new(markup).extract_params_hash}
+          OPTIMIZED: #{OptimizedInclude.new(markup).extract_params_hash}
+    SUPER-OPTIMIZED: #{SuperOptimizedInclude.new(markup).extract_params_hash}
   TEXT
   puts ""
 
@@ -143,5 +178,12 @@ end
     x.report('super-optimized') { SuperOptimizedInclude.new(markup).render }
     x.compare!
   end
-end
 
+  puts Terminal::Table.new(
+    :title    => "MEMORY PROFILE",
+    :headings => [" ", "LEGACY", "OPTIMIZED", "SUPER-OPTIMIZED"],
+    :rows     => Profiler.new(markup).reports
+  )
+  puts ""
+  puts "=" * 100
+end

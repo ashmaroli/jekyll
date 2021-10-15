@@ -1,4 +1,4 @@
-name: Benchmark
+name: Micro Benchmark Runs
 
 on:
   push:
