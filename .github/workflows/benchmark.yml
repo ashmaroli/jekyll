@@ -19,4 +19,4 @@ jobs:
         ruby-version: 2.7
         bundler-cache: true
     - name: Run Benchmark
-      run: bundle exec ruby benchmark/parse-include-tag-params.rb
+      run: bundle exec ruby benchmark/include_tag.rb
