@@ -223,8 +223,10 @@ module Jekyll
 
         add_include_to_dependency(inclusion, context) if @site.config["incremental"]
 
+        return inclusion.render(context) unless @params
+
         context.stack do
-          context["include"] = render_params(context) if @params
+          context["include"] = render_params(context)
           inclusion.render(context)
         end
       end
