@@ -26,8 +26,14 @@ module Jekyll
         else
           @file, @params = markup.split(%r!\s+!, 2)
         end
-        validate_params if @params
+
         @tag_name = tag_name
+        @params = nil if @params&.empty?
+
+        if @params
+          validate_params
+          tokenize_params
+        end
       end
 
       def syntax_example
@@ -35,19 +41,7 @@ module Jekyll
       end
 
       def parse_params(context)
-        params = {}
-        @params.scan(VALID_SYNTAX) do |key, d_quoted, s_quoted, variable|
-          value = if d_quoted
-                    d_quoted.include?('\\"') ? d_quoted.gsub('\\"', '"') : d_quoted
-                  elsif s_quoted
-                    s_quoted.include?("\\'") ? s_quoted.gsub("\\'", "'") : s_quoted
-                  elsif variable
-                    context[variable]
-                  end
-
-          params[key] = value
-        end
-        params
+        render_params(context)
       end
 
       def validate_file_name(file)
@@ -117,7 +111,7 @@ module Jekyll
         partial = load_cached_partial(path, context)
 
         context.stack do
-          context["include"] = parse_params(context) if @params
+          context["include"] = render_params(context) if @params
           begin
             partial.render!(context)
           rescue Liquid::Error => e
@@ -187,6 +181,32 @@ module Jekyll
                     ", if it is a symlink, does not point outside your site source."
                   end
       end
+
+      def render_params(context)
+        params = {}
+        @param_tokens.each do |key, d_quoted, s_quoted, variable|
+          value = if d_quoted
+                    d_quoted
+                  elsif s_quoted
+                    s_quoted
+                  elsif variable
+                    context[variable]
+                  end
+          params[key] = value
+        end
+        params
+      end
+
+      def tokenize_params
+        @param_tokens = @params.scan(VALID_SYNTAX).map! do |key, d_quoted, s_quoted, variable|
+          [
+            key,
+            (d_quoted&.include?('\\"') ? d_quoted.gsub('\\"', '"') : d_quoted),
+            (s_quoted&.include?("\\'") ? s_quoted.gsub("\\'", "'") : s_quoted),
+            variable,
+          ]
+        end
+      end
     end
 
     # Do not inherit from this class.
@@ -204,7 +224,7 @@ module Jekyll
         add_include_to_dependency(inclusion, context) if @site.config["incremental"]
 
         context.stack do
-          context["include"] = parse_params(context) if @params
+          context["include"] = render_params(context) if @params
           inclusion.render(context)
         end
       end
