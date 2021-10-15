@@ -1,0 +1,22 @@
+name: Benchmark
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  benchmark:
+    name: Benchmark (Ruby 2.7)
+    runs-on: "ubuntu-latest"
+    env:
+      BENCHMARK: true
+    steps:
+    - name: Checkout Jekyll
+      uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7
+        bundler-cache: true
+    - name: Run Benchmark
+      run: bundle exec ruby benchmark/parse-include-tag-params.rb
