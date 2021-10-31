@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-diff -ur --color=always $@
-exit 0
