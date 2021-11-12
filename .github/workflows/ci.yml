@@ -2,9 +2,6 @@ name: Continuous Integration
 
 on:
   push:
-    branches:
-    - master
-    - /.*-stable/
   pull_request:
     branches:
     - master
@@ -12,51 +9,54 @@ on:
 
 jobs:
   ci:
-    if: "!contains(github.event.commits[0].message, '[ci skip]')"
-    name: 'Ruby ${{ matrix.ruby_version }}'
-    runs-on: 'ubuntu-latest'
+    name: "Ruby ${{ matrix.ruby_version }}"
+    runs-on: "ubuntu-latest"
 
     strategy:
       fail-fast: false
       matrix:
         ruby_version:
-        - 2.5
-        - 2.7
-        - 3.0
-        - jruby:9.2.14.0
+          - "2.5"
+          - "2.7"
+          - "3.0"
+          - "jruby:9.2.14.0"
     steps:
-      - uses: actions/checkout@v2
-      - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.7/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Execute tests
-        run: earthly --build-arg RUBY=${{ matrix.ruby_version }} +test
-  profile_docs:
-    if: "!contains(github.event.commits[0].message, '[ci skip]')"
-    name: 'Profile Docs Site (Ruby ${{ matrix.ruby_version }})'
-    runs-on: 'ubuntu-latest'
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: "Set up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Run Minitest based tests
+        run: bash script/test
+      - name: Run Cucumber based tests
+        run: bash script/cucumber
+      - name: Generate and Build a new site
+        run: bash script/default-site
+
+  xtras:
+    name: "${{ matrix.job_name }} (Ruby ${{ matrix.ruby_version }})"
+    runs-on: "ubuntu-latest"
     strategy:
       fail-fast: false
       matrix:
         ruby_version:
-        - 2.5 # Minimum required Ruby version in gemspec
+          - "2.5" # Minimum required Ruby version in gemspec
+        include:
+          - job_name: "Profile Docs Site"
+            step_name: "Build and Profile docs site"
+            script_file: "profile-docs"
+          - job_name: "Style Check"
+            step_name: "Run RuboCop"
+            script_file: "fmt"
     steps:
-      - uses: actions/checkout@v2
-      - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.7/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Execute tests
-        run: earthly --build-arg RUBY=${{ matrix.ruby_version }} +profile-docs
-  style_check:
-    if: "!contains(github.event.commits[0].message, '[ci skip]')"
-    name: 'Style Check (Ruby ${{ matrix.ruby_version }})'
-    runs-on: 'ubuntu-latest'
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby_version:
-        - 2.5 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.5.7/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Execute tests
-        run: earthly --build-arg RUBY=${{ matrix.ruby_version }} +style-check
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: "Set up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: ${{ matrix.step_name }}
+        run: bash script/${{ matrix.script_file }}
