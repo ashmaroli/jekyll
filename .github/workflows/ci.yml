@@ -9,7 +9,7 @@ on:
 
 jobs:
   ci:
-    name: "Ruby ${{ matrix.ruby_version }}"
+    name: "Run Tests (Ruby ${{ matrix.ruby_version }})"
     runs-on: "ubuntu-latest"
 
     strategy:
