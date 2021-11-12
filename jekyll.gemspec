@@ -47,4 +47,5 @@ Gem::Specification.new do |s|
   # https://kramdown.gettalong.org/news.html#kramdown-200-released
   kramdown_versions = ENV["KRAMDOWN_VERSION"] ? ["~> #{ENV["KRAMDOWN_VERSION"]}"] : [">= 1.17", "< 3"]
   s.add_runtime_dependency("kramdown",              *kramdown_versions)
+  s.add_runtime_dependency "webrick", "~> 1.0"
 end
