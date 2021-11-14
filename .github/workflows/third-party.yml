@@ -28,6 +28,4 @@ jobs:
       run: |
         bundle exec jekyll build -s docs -d docs/_site --trace
         bundle exec jekyll build -s docs -d docs/_site --trace
-        bundle exec jekyll build -s docs -d docs/_site --trace
-    - name: Memory Analysis of Jekyll Build
-      run: bundle exec ruby .github/workflows/actions/memprof.rb docs
+        bundle exec jekyll build -s docs -d docs/_site --trace --profile
