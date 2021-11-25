@@ -30,4 +30,4 @@ jobs:
       - run: rbspy record --raw-file raw.gz --rate 50 -- bundle exec jekyll build -s docs -d docs/_site --disable-disk-cache
       - run: |
           rbspy report -f summary_by_line -i raw.gz -o summary.txt
-          cat summary.txt
+          bundle exec ruby .github/workflows/actions/rbspy_summary.rb summary.txt
