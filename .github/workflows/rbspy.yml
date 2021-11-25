@@ -10,17 +10,17 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "2.7"
+          ruby-version: "2.7.3"
+      - name: Install gemset
+        run: |
+          gem install bundler --version 2.2.31
+          bundle install
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: ubuntu-latest-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: |
             ubuntu-latest-gems-
-      - name: Install gemset
-        run: |
-          gem install bundler --version 2.2.31
-          bundle install
       - name: Install rbspy
         run: |
           wget https://github.com/rbspy/rbspy/releases/download/v0.8.1/rbspy-x86_64-unknown-linux-gnu.tar.gz
