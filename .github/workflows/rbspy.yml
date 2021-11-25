@@ -27,4 +27,4 @@ jobs:
           sudo tar -xf rbspy-x86_64-unknown-linux-gnu.tar.gz -C /usr/local/bin
           sudo mv /usr/local/bin/rbspy-x86_64-unknown-linux-gnu /usr/local/bin/rbspy
           sudo chmod +x /usr/local/bin/rbspy
-      - run: rbspy record -- jekyll help
+      - run: rbspy record -- bundle exec jekyll help
