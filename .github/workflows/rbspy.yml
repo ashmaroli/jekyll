@@ -11,20 +11,23 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "2.7.3"
-      - name: Install gemset
-        run: |
-          gem install bundler --version 2.2.31
-          bundle install
       - uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: ubuntu-latest-gems-${{ hashFiles('**/Gemfile') }}
           restore-keys: |
             ubuntu-latest-gems-
+      - name: Install gemset
+        run: |
+          gem install bundler --version 2.2.31
+          bundle install
       - name: Install rbspy
         run: |
           wget https://github.com/rbspy/rbspy/releases/download/v0.8.1/rbspy-x86_64-unknown-linux-gnu.tar.gz
           sudo tar -xf rbspy-x86_64-unknown-linux-gnu.tar.gz -C /usr/local/bin
           sudo mv /usr/local/bin/rbspy-x86_64-unknown-linux-gnu /usr/local/bin/rbspy
           sudo chmod +x /usr/local/bin/rbspy
-      - run: rbspy record -- bundle exec jekyll help
+      - run: rbspy record --raw-file raw.gz -- bundle exec jekyll build --disable-disk-cache
+      - run: |
+          rbspy report -f summary_by_line -i raw.gz -o summary.txt
+          cat summary.txt
