@@ -3,6 +3,17 @@
 require 'colorator'
 require 'terminal-table'
 
+module Terminal
+  class Table
+    class AsciiBorder < Border
+      def initialize
+        super
+        @data = { x: "-", y: "", i:  "" }
+      end
+    end
+  end
+end
+
 LINE_RE = %r!^ +(\d{1,2}\.\d{2}) {4}(\d{1,2}\.\d{2}) {2}(.+) - (.+)$!
 NAME_RE = %r!(/opt/hostedtoolcache/Ruby/2.7.3/x64/lib/ruby/gems/2.7.0/(gems|bin)/|/home/runner/work/jekyll/)!
 
@@ -14,6 +25,7 @@ table = Terminal::Table.new do |t|
   end
   t.style = {
     alignment: :right,
+    border: :ascii,
     border_top: false,
     border_left: false,
     border_right: false,
