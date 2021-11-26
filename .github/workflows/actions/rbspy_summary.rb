@@ -15,7 +15,7 @@ module Terminal
 end
 
 LINE_RE = %r!^ +(\d{1,2}\.\d{2}) {4}(\d{1,2}\.\d{2}) {2}(.+) - (.+)$!
-NAME_RE = %r!(/opt/hostedtoolcache/Ruby/2.7.3/x64/lib/ruby/gems/2.7.0/(gems|bin)/|/home/runner/work/jekyll/)!
+NAME_RE = %r!(/home/runner/work/jekyll/)!
 
 table = Terminal::Table.new do |t|
   t << ["% self", "% total", "", "name"]

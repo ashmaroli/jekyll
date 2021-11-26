@@ -11,16 +11,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "2.7.3"
-      - uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: jekyll-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            jekyll-
-      - name: Install gemset
-        run: |
-          gem install bundler --version 2.2.31
-          bundle install
+          bundler: "2.2.31"
+          bundler-cache: true
       - name: Install rbspy
         run: |
           wget https://github.com/rbspy/rbspy/releases/download/v0.8.1/rbspy-x86_64-unknown-linux-gnu.tar.gz
