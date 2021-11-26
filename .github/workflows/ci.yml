@@ -2,15 +2,9 @@ name: Continuous Integration
 
 on:
   push:
-    branches:
-    - 4.2-stable
-  pull_request:
-    branches:
-    - 4.2-stable
 
 jobs:
   ci:
-    if: "!contains(github.event.commits[0].message, '[ci skip]')"
     name: 'Ruby ${{ matrix.ruby_version }}'
     runs-on: 'ubuntu-latest'
     env:
@@ -19,17 +13,16 @@ jobs:
       fail-fast: false
       matrix:
         ruby_version:
-        - 2.5
-        - 2.7
-        - jruby-9.2.11.1
+          - 2.4
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 5
     - name: "Set up Ruby ${{ matrix.ruby_version }}"
-      uses: ruby/setup-ruby@v1
+      uses: ashmaroli/setup-ruby@dev
       with:
         ruby-version: ${{ matrix.ruby_version }}
+        rubygems-version: "2.7.11"
         bundler-cache: true
     - name: Run Unit Tests
       run: bash script/test
