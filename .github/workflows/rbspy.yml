@@ -27,3 +27,9 @@ jobs:
         run: |
           rbspy report -f summary_by_line -i raw.gz -o summary.txt
           bundle exec ruby .github/workflows/actions/rbspy_summary.rb summary.txt
+      - name: Upload Flamegraph
+        uses: actions/upload-artifact@v2
+        with:
+          name: Flamegraph
+          path: flamegraph.svg
+          retention-days: 5
