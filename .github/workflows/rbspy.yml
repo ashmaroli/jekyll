@@ -19,7 +19,11 @@ jobs:
           sudo tar -xf rbspy-x86_64-unknown-linux-gnu.tar.gz -C /usr/local/bin
           sudo mv /usr/local/bin/rbspy-x86_64-unknown-linux-gnu /usr/local/bin/rbspy
           sudo chmod +x /usr/local/bin/rbspy
-      - run: rbspy record --raw-file raw.gz --rate 50 -- bundle exec jekyll build -s docs -d docs/_site --disable-disk-cache
-      - run: |
+      - name: Record build profile
+        run: |
+          rbspy record --raw-file raw.gz --file flamegraph.svg --rate 50 --silent -- \
+            bundle exec jekyll build -s docs -d docs/_site --disable-disk-cache
+      - name: Print report
+        run: |
           rbspy report -f summary_by_line -i raw.gz -o summary.txt
           bundle exec ruby .github/workflows/actions/rbspy_summary.rb summary.txt

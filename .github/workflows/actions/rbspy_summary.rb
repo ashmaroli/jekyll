@@ -15,13 +15,21 @@ module Terminal
 end
 
 LINE_RE = %r!^ +(\d{1,2}\.\d{2}) {4}(\d{1,2}\.\d{2}) {2}(.+) - (.+)$!
-NAME_RE = %r!(/home/runner/work/jekyll/)!
+NAME_RE = %r!
+  (
+    /opt/hostedtoolcache/Ruby/\d\.\d\.\d/x64/lib/ruby/gems/\d\.\d\.\d/(gems|bin)/|
+    /home/runner/work/(
+      jekyll/jekyll/vendor/bundle/ruby/\d\.\d\.\d/(gems|bin)|
+      jekyll
+    )/
+  )
+!x
 
 table = Terminal::Table.new do |t|
   t << ["% self", "% total", "", "name"]
   t << :separator
   File.read(ARGV[0]).scan(LINE_RE) do |stime, total, name, loc|
-    t << [stime, total, (name.include?("c function") ? name.cyan : name), loc.gsub(NAME_RE, "")]
+    t << [stime, total, name, loc.gsub(NAME_RE, "")]
   end
   t.style = {
     alignment: :right,
