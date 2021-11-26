@@ -45,7 +45,7 @@ jobs:
       with:
         fetch-depth: 5
     - name: "Set up Ruby ${{ matrix.ruby_version }}"
-      uses: ruby/setup-ruby@v1
+      uses: ashmaroli/setup-ruby@dev
       with:
         ruby-version: ${{ matrix.ruby_version }}
         bundler-cache: true
