@@ -22,7 +22,7 @@ jobs:
       uses: ashmaroli/setup-ruby@dev
       with:
         ruby-version: ${{ matrix.ruby_version }}
-        rubygems-version: "2.7.6.3"
+        rubygems-version: "2.7.7"
         bundler-cache: true
     - name: Run Unit Tests
       run: bash script/test
