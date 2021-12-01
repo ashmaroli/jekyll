@@ -1,0 +1,47 @@
+name: JRuby Docs
+on:
+  push:
+jobs:
+  build:
+    name: "JRuby Docs (${{ matrix.name }})"
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        include:
+          - name: CRuby
+            ruby: "2.7"
+          - name: JRuby
+            ruby: jruby
+    steps:
+      - name: Checkout Docs Repo
+        uses: actions/checkout@v2
+        with:
+          repository: jruby/jruby.github.io
+      - name: Set Up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install Jekyll
+        env:
+          GEMFILE_CONTENTS: |
+            source "https://rubygems.org"
+            gem "jekyll"
+            gem "http_parser.rb", "~> 0.6.0" if RUBY_ENGINE == "jruby"
+        run: |
+          ruby -e "File.open('Gemfile', 'wb') { |f| f.puts(ENV['GEMFILE_CONTENTS']) }"
+          bundle update
+      - name: Build Docs Site
+        env:
+          SCRIPT_CONTENTS: |
+            require 'jekyll'
+            (1..20).to_a.each do |i|
+              puts "Build #{i} of 20".cyan
+              Jekyll::Commands::Build.process(
+                "source"             => File.expand_path(".", __dir__),
+                "destination"        => File.expand_path("./_site", __dir__),
+                "disable_disk_cache" => true
+              )
+            end
+        run: |
+          ruby -e "File.open('.builder.rb', 'wb') { |f| f.puts(ENV['SCRIPT_CONTENTS']) }"
+          bundle exec ruby .builder.rb
