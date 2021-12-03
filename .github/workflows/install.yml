@@ -1,0 +1,23 @@
+name: Gem installation
+on: push
+jobs:
+  install:
+    name: "Install Jekyll ${{ matrix.version }} on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - macos-11
+        version:
+          - "4.2.0"
+          - "4.2.1"
+    steps:
+      - run: gem install jekyll --version ${{ matrix.version }}
+      - uses: ruby/setup-ruby@v1
+        if: ${{ failure() }}
+        with:
+          ruby-version: "2.6.8"
+      - run: gem install jekyll --version ${{ matrix.version }}
+        if: ${{ failure() }}
