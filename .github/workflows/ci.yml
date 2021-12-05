@@ -29,7 +29,7 @@ jobs:
         uses: ashmaroli/setup-ruby@dev
         with:
           ruby-version: ${{ matrix.ruby_version }}
-          rubygems-version: ${{ matrix.rubygems_version }}
+          post-ruby-install: gem update --system 2.7.11
           bundler-cache: true
       - name: Run Minitest based tests
         run: bash script/test
