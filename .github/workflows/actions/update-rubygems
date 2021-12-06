@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+gem update --system 2.7.11
+# gem uninstall bundler --force

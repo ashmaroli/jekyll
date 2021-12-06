@@ -13,7 +13,8 @@ jobs:
         include:
           - label: Ruby 2.4
             ruby_version: "2.4"
-            rubygems_version: "2.7.11"
+            post-ruby-install: "bash .github/workflows/actions/update-rubygems"
+            bundler: default
           - label: Ruby 2.5
             ruby_version: "2.5"
           - label: Ruby 2.7
@@ -26,10 +27,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: "Set up ${{ matrix.label }}"
-        uses: ashmaroli/setup-ruby@dev
+        uses: ashmaroli/setup-ruby@hook-trials
         with:
           ruby-version: ${{ matrix.ruby_version }}
-          post-ruby-install: gem update --system 2.7.11
+          post-ruby-install: ${{ matrix.post-ruby-install }}
+          bundler: ${{ matrix.bundler }}
           bundler-cache: true
       - name: Run Minitest based tests
         run: bash script/test
