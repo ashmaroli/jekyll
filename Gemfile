@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 gemspec :name => "jekyll"
 
+gem "psych", "~> 3.3"
 gem "rake", "~> 13.0"
 
 group :development do
