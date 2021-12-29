@@ -23,7 +23,7 @@ group :test do
   gem "nokogiri", "~> 1.7"
   gem "rspec"
   gem "rspec-mocks"
-  gem "rubocop", "~> 1.23.0"
+  gem "rubocop", "~> 1.24.0"
   gem "rubocop-minitest"
   gem "rubocop-performance"
   gem "rubocop-rake"
@@ -74,7 +74,7 @@ group :jekyll_optional_dependencies do
   gem "jekyll-redirect-from"
   gem "kramdown-syntax-coderay"
   gem "mime-types", "~> 3.0"
-  gem "rdoc", "~> 6.0"
+  gem "rdoc", "~> 6.3.0"
   gem "tomlrb"
 
   platforms :ruby, :mswin, :mingw, :x64_mingw do
