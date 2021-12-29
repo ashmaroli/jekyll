@@ -19,6 +19,7 @@ group :test do
   gem "httpclient"
   gem "jekyll_test_plugin"
   gem "jekyll_test_plugin_malicious"
+  gem "matrix"
   gem "memory_profiler"
   gem "nokogiri", "~> 1.7"
   gem "rspec"
