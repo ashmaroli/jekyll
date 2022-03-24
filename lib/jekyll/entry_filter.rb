@@ -82,6 +82,7 @@ module Jekyll
     #   since we use Pathutil#in_path? now.
     # --
     def symlink?(entry)
+      warn "Testing #{entry} for symlink".yellow
       site.safe && File.symlink?(entry) && symlink_outside_site_source?(entry)
     end
 
