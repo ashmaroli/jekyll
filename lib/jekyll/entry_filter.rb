@@ -82,7 +82,6 @@ module Jekyll
     #   since we use Pathutil#in_path? now.
     # --
     def symlink?(entry)
-      $stdout.puts "Testing #{entry} for symlink".yellow
       site.safe && File.symlink?(entry) && symlink_outside_site_source?(entry)
     end
 
@@ -92,6 +91,7 @@ module Jekyll
     # Check if a path is outside of our given root.
     # --
     def symlink_outside_site_source?(entry)
+      $stdout.puts "Testing symlink #{entry.inspect.yellow}".cyan
       !Pathutil.new(entry).in_path?(
         site.in_source_dir
       )
