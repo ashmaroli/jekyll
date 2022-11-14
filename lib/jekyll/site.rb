@@ -112,6 +112,7 @@ module Jekyll
       @liquid_renderer.reset
       @site_cleaner = nil
       frontmatter_defaults.reset
+      @registered_resources_for_link_tag = false
 
       raise ArgumentError, "limit_posts must be a non-negative number" if limit_posts.negative?
 
@@ -206,6 +207,9 @@ module Jekyll
       payload = site_payload
 
       Jekyll::Hooks.trigger :site, :pre_render, self, payload
+
+      setup_resource_pool
+      register_resources_for_link_tag
 
       render_docs(payload)
       render_pages(payload)
@@ -359,7 +363,9 @@ module Jekyll
       end.to_a
     end
 
-    def each_site_file
+    def each_site_file(&block)
+      return each_pool_item(&block) if @resource_pool
+
       seen_files = []
       %w(pages static_files_to_write docs_to_write).each do |type|
         send(type).each do |item|
@@ -555,6 +561,36 @@ module Jekyll
       self.file_read_opts = {}
       file_read_opts[:encoding] = config["encoding"] if config["encoding"]
       self.file_read_opts = Jekyll::Utils.merged_file_read_opts(self, {})
+    end
+
+    def setup_resource_pool
+      @resource_pool ||= [].tap do |pool|
+        pool.concat(pages)
+        pool.concat(static_files_to_write)
+        collection_docs_to_write = []
+        collections.each_value { |c| collection_docs_to_write.concat(c.docs.select(&:write?)) }
+        pool.concat(collection_docs_to_write)
+      end
+    end
+
+    def each_pool_item
+      @resource_pool.each { |item| yield item }
+    end
+
+    def register_resources_for_link_tag
+      return if @registered_resources_for_link_tag
+
+      sanitized_baseurl = config["baseurl"].to_s.gsub("/", "")
+      sanitized_baseurl = "/{sanitized_baseurl}" unless sanitized_baseurl.empty?
+
+      registry = {}
+
+      each_site_file do |resource|
+        registry[resource.relative_path] ||= PathManager.join(sanitized_baseurl, resource.url)
+      end
+
+      Jekyll::Tags::Link.instance_variable_set(:@registry, registry)
+      @registered_resources_for_link_tag = true
     end
 
     def render_docs(payload)
