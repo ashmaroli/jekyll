@@ -16,6 +16,7 @@ module Jekyll
       read_directories
       read_included_excludes
       sort_files!
+      site.static_files_to_write.concat(site.static_files.select(&:write?))
       CollectionReader.new(site).read
       ThemeAssetsReader.new(site).read
       read_data

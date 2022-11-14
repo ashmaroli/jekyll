@@ -10,7 +10,8 @@ module Jekyll
                   :unpublished
 
     attr_reader :cache_dir, :config, :dest, :filter_cache, :includes_load_paths,
-                :liquid_renderer, :profiler, :regenerator, :source
+                :liquid_renderer, :profiler, :regenerator, :source,
+                :static_files_to_write
 
     # Public: Initialize a new Site.
     #
@@ -108,6 +109,7 @@ module Jekyll
       @collections = nil
       @documents = nil
       @docs_to_write = nil
+      @static_files_to_write = []
       @regenerator.clear_cache
       @liquid_renderer.reset
       @site_cleaner = nil
@@ -356,13 +358,6 @@ module Jekyll
       documents.select(&:write?)
     end
 
-    # Get the to be written static files
-    #
-    # Returns an Array of StaticFiles which should be written
-    def static_files_to_write
-      static_files.select(&:write?)
-    end
-
     # Get all the documents
     #
     # Returns an Array of all Documents
@@ -374,8 +369,8 @@ module Jekyll
 
     def each_site_file
       pages.each { |page| yield page }
-      static_files.each { |file| yield(file) if file.write? }
-      collections.each_value { |c| c.docs.each { |doc| yield(doc) if doc.write? } }
+      static_files_to_write.each { |file| yield(file) }
+      docs_to_write.each { |doc| yield(doc) unless doc.is_a?(Jekyll::StaticFile) }
     end
 
     # Returns the FrontmatterDefaults or creates a new FrontmatterDefaults

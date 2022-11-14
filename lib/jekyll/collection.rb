@@ -65,7 +65,10 @@ module Jekyll
           read_static_file(file_path, full_path)
         end
       end
-      site.static_files.concat(files) unless files.empty?
+      unless files.empty?
+        site.static_files.concat(files)
+        site.static_files_to_write.concat(files.select(&:write?))
+      end
       sort_docs!
     end
 
