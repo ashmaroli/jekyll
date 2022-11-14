@@ -373,8 +373,6 @@ module Jekyll
     end
 
     def each_site_file(&block)
-      return each_pool_item(&block) if @resource_pool
-
       puts "Falling back to original implementation".yellow
 
       seen_files = []
