@@ -366,6 +366,8 @@ module Jekyll
     def each_site_file(&block)
       return each_pool_item(&block) if @resource_pool
 
+      puts "Falling back to original implementation".yellow
+
       seen_files = []
       %w(pages static_files_to_write docs_to_write).each do |type|
         send(type).each do |item|
