@@ -369,7 +369,7 @@ module Jekyll
       puts "Falling back to original implementation".yellow
 
       seen_files = []
-      %w(pages static_files_to_write docs_to_write).each do |type|
+      %w(pages static_files docs_to_write).each do |type|
         send(type).each do |item|
           next if seen_files.include?(item)
 
@@ -568,10 +568,8 @@ module Jekyll
     def setup_resource_pool
       @resource_pool ||= [].tap do |pool|
         pool.concat(pages)
-        pool.concat(static_files_to_write)
-        collection_docs_to_write = []
-        collections.each_value { |c| collection_docs_to_write.concat(c.docs.select(&:write?)) }
-        pool.concat(collection_docs_to_write)
+        pool.concat(static_files)
+        pool.concat(docs_to_write)
       end
     end
 
