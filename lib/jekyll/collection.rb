@@ -185,7 +185,9 @@ module Jekyll
     #
     # Returns true if the 'write' metadata is true, false otherwise.
     def write?
-      !!metadata.fetch("output", false)
+      return @write_p if defined?(@write_p)
+
+      @write_p = !!metadata.fetch("output", false)
     end
 
     # The URL template to render collection's documents at.

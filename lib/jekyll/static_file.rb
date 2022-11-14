@@ -85,10 +85,10 @@ module Jekyll
     # Returns true unless the defaults for the destination path from
     # _config.yml contain `published: false`.
     def write?
-      publishable = defaults.fetch("published", true)
-      return publishable unless @collection
+      return @write_p if defined?(@write_p)
 
-      publishable && @collection.write?
+      publishable = defaults.fetch("published", true)
+      @write_p = @collection ? (publishable && @collection.write?) : publishable
     end
 
     # Write the static file to the destination directory (if modified).
