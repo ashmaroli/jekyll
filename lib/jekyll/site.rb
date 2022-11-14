@@ -211,6 +211,15 @@ module Jekyll
       setup_resource_pool
       register_resources_for_link_tag
 
+      p_data = { "RESOURCE TYPE" => "COUNT" }
+      p_data["PAGES"] = pages.length
+      p_data["DOCUMENTS"] = documents.count { |item| item.is_a?(Jekyll::Document) }
+      col_sf_count = documents.count { |item| item.is_a?(Jekyll::StaticFile) }
+      p_data["COLL_FILES"] = col_sf_count
+      p_data["STATIC FILES"] = static_files.length + col_sf_count
+      Jekyll.logger.info "\nContent Type Count:"
+      Jekyll.logger.info Profiler.tabulate(Array(p_data))
+
       render_docs(payload)
       render_pages(payload)
 
