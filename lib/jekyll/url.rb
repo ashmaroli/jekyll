@@ -163,5 +163,35 @@ module Jekyll
 
       Addressable::URI.unencode(path)
     end
+
+    class << self
+      def compute_relative_url(url, site)
+        @baseurl ||= sanitized_baseurl(site)
+
+        Addressable::URI.parse(prepend_baseurl(url)).normalize.to_s
+      end
+
+      def compute_absolute_url(url, site)
+        @site_url ||= site.config["url"]
+        return compute_relative_url(url, site) if @site_url.nil? || @site_url == ""
+
+        Addressable::URI.parse(
+          PathManager.join(@site_url, prepend_baseurl(url))
+        ).normalize.to_s
+      end
+
+      private
+
+      def sanitized_baseurl(site)
+        baseurl = site.config["baseurl"]
+        return "/" unless baseurl.is_a?(String)
+
+        baseurl.chomp("/")
+      end
+
+      def prepend_baseurl(url)
+        PathManager.join(@baseurl, url)
+      end
+    end
   end
 end
