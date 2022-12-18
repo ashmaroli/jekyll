@@ -1,5 +1,6 @@
 version: "{build}"
 clone_depth: 5
+image: Visual Studio 2019
 
 branches:
   only:
