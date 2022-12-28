@@ -13,7 +13,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Navigation | Jekyll • Simple, blog-aware, static sites</title>
-<meta name="generator" content="Jekyll v4.3.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Navigation" />
 <meta name="author" content="tomjoht" />
 <meta property="og:locale" content="en_US" />
@@ -64,7 +64,7 @@
 </div>
     <div class="meta hide-on-mobiles">
       <ul>
-        <li><a href="https://github.com/jekyll/jekyll/releases/tag/v4.3.0">v4.3.0</a></li>
+        <li><a href="https://github.com/jekyll/jekyll/releases/tag/v4.3.1">v4.3.1</a></li>
         <li><a href="https://github.com/jekyll/jekyll">GitHub</a></li>
       </ul>
     </div>
@@ -725,11 +725,11 @@
 
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
   <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">include.nav</span><span class="w"> </span><span class="p">%}</span>
-    &lt;li&gt;&lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;&lt;/li&gt;
-
-    <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">subnav</span><span class="w"> </span><span class="p">%}</span>
-      <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>nav.html<span class="w"> </span><span class="na">nav</span><span class="o">=</span>item.subnav<span class="w"> </span><span class="p">%}</span>
-    <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+    &lt;li&gt;&lt;a href="<span class="p">{{</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="p">}}</span>"&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>&lt;/a&gt;
+      <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">item</span><span class="p">.</span><span class="nv">subnav</span><span class="w"> </span><span class="p">%}</span>
+        <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>nav.html<span class="w"> </span><span class="na">nav</span><span class="o">=</span>item.subnav<span class="w"> </span><span class="p">%}</span>
+      <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+    &lt;/li&gt;
   <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
 &lt;/ul&gt;
 </code></pre></div></div>
