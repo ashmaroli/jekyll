@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+unless Object.new.respond_to?(:tainted?)
+  class Object
+    ["taint", "tainted?", "untaint"].each { |name| define_method(name) {} }
+  end
+end
+
 $LOAD_PATH.unshift __dir__ # For use/testing when no gem is installed
 
 # Require all of the Ruby files in the given directory.
