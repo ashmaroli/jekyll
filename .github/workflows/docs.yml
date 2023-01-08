@@ -3,25 +3,14 @@ name: Build and deploy Jekyll documentation site
 on:
   push:
 
-env:
-  RUBY_VERSION: 2.7
-
 jobs:
   deploy_docs:
     runs-on: "ubuntu-latest"
-    env:
-      BUNDLE_PATH: "vendor/bundle"
-      BUNDLE_JOBS: 4
-      BUNDLE_RETRY: 3
     steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
       - name: Build and deploy docs site
-        uses: ashmaroli/deploy-jekyll-build@master
+        uses: ashmaroli/deploy-jekyll-build@ruby-ver
         with:
           src_dir: docs
+          cache_bundle: true
           build_opts: |
             verbose: true
