@@ -26,4 +26,4 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
-      - run: bundle exec ruby -e "puts JSON.pretty_generate(Hash(ENV))"
+      - run: bundle exec ruby -r "bundler/setup" -r "json" -e "puts JSON.pretty_generate(Hash(ENV))"
