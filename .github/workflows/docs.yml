@@ -6,12 +6,24 @@ on:
 jobs:
   deploy_docs:
     runs-on: "ubuntu-latest"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Ruby 2.7
+            ruby_version: "2.7"
+          - label: Ruby 3.0
+            ruby_version: "3.0"
+          - label: Ruby 3.1.2
+            ruby_version: "3.1.2"
+          - label: Ruby 3.2
+            ruby_version: "3.2"
     steps:
-      - name: Build and deploy docs site
-        uses: ashmaroli/deploy-jekyll-build@ruby-ver
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: "Set up ${{ matrix.label }}"
+        uses: ruby/setup-ruby@v1
         with:
-          src_dir: docs
-          cache_bundle: true
-          build_opts: |
-            verbose: true
-      - run: ruby -e "puts ENV"
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - run: bundle exec ruby -e "puts ENV"
