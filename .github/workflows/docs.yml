@@ -14,3 +14,4 @@ jobs:
           cache_bundle: true
           build_opts: |
             verbose: true
+      - run: ruby -e "puts ENV"
