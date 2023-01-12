@@ -29,10 +29,11 @@ jobs:
       with:
         ruby-version: 2.7
         bundler-cache: true
-    - name: Run Jekyll Build 3 times
-      run: |
-        bundle exec jekyll build -s sandbox -d sandbox/_site --trace
-        bundle exec jekyll build -s sandbox -d sandbox/_site --trace
-        bundle exec jekyll build -s sandbox -d sandbox/_site --trace
+#    - name: Run Jekyll Build 3 times
+#      run: |
+#        bundle exec jekyll build -s sandbox -d sandbox/_site --trace
+#        bundle exec jekyll build -s sandbox -d sandbox/_site --trace
+#        bundle exec jekyll build -s sandbox -d sandbox/_site --trace
     - name: Memory Analysis of Jekyll Build
-      run: bundle exec ruby jekyll/.github/workflows/actions/memprof.rb sandbox
+      run: |
+        echo "$(bundle exec ruby jekyll/.github/workflows/actions/memprof.rb sandbox)" >> $GITHUB_STEP_SUMMARY
