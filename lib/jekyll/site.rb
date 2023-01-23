@@ -299,6 +299,10 @@ module Jekyll
     end
     alias_method :to_liquid, :site_payload
 
+    def site_drop
+      @site_drop ||= Drops::SiteDrop.new(self)
+    end
+
     # Get the implementation class for the given Converter.
     # Returns the Converter instance implementing the given Converter.
     # klass - The Class of the Converter to fetch.
