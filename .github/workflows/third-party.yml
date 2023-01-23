@@ -36,4 +36,4 @@ jobs:
 #        bundle exec jekyll build -s sandbox -d sandbox/_site --trace
     - name: Memory Analysis of Jekyll Build
       run: |
-        echo "$(bundle exec ruby jekyll/.github/workflows/actions/memprof.rb sandbox)" >> $GITHUB_STEP_SUMMARY
+        bundle exec ruby jekyll/.github/workflows/actions/memprof.rb sandbox
