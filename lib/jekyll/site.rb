@@ -76,10 +76,10 @@ module Jekyll
 
       reset
       read
-      generate
-      render
-      cleanup
-      write
+#     generate
+#     render
+#     cleanup
+#     write
     end
 
     def print_stats
