@@ -76,7 +76,7 @@ module Jekyll
 
       reset
       read
-#     generate
+      generate
 #     render
 #     cleanup
 #     write
