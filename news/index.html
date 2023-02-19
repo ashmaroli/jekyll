@@ -13,7 +13,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>News | Jekyll • Simple, blog-aware, static sites</title>
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.2" />
 <meta property="og:title" content="News" />
 <meta name="author" content="all" />
 <meta property="og:locale" content="en_US" />
@@ -63,7 +63,7 @@
 </div>
     <div class="meta hide-on-mobiles">
       <ul>
-        <li><a href="https://github.com/jekyll/jekyll/releases/tag/v4.3.1">v4.3.1</a></li>
+        <li><a href="https://github.com/jekyll/jekyll/releases/tag/v4.3.2">v4.3.2</a></li>
         <li><a href="https://github.com/jekyll/jekyll">GitHub</a></li>
       </ul>
     </div>
@@ -73,7 +73,7 @@
   <li><a href="/">Home</a></li>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/resources/">Resources</a></li>
-    <li class="current"><a href="/news/">News</a></li>
+    <li class="current" ><a href="/news/">News</a></li>
     <li><a href="https://github.com/jekyll/jekyll">GitHub</a></li>
 </ul>
 </nav>
@@ -85,6 +85,8 @@
     <option value="">Navigate the blog…</option>
     <option value="/news/">Home</option>
     <optgroup label="posts">
+      <option value="/news/2023/01/29/jekyll-3-9-3-released/">Jekyll 3.9.3 Released</option>
+      <option value="/news/2023/01/20/jekyll-4-3-2-released/">Jekyll 4.3.2 Released</option>
       <option value="/news/2022/12/21/jekyll-sass-converter-3.0-released/">Jekyll Sass Converter 3.0 Released</option>
       <option value="/news/2022/10/26/jekyll-4-3-1-released/">Jekyll 4.3.1 Released</option>
       <option value="/news/2022/10/20/jekyll-4-3-0-released/">Jekyll 4.3.0 Released</option>
@@ -146,7 +148,7 @@
       <option value="/news/2015/10/26/jekyll-3-0-released/">Jekyll 3.0 Released</option>
       <option value="/news/2015/02/26/introducing-jekyll-talk/">Join the Discussion at Jekyll Talk</option>
       <option value="/news/2015/01/24/jekyll-3-0-0-beta1-released/">Jekyll 3.0.0.beta1 Released</option>
-      <option value="/news/2015/01/20/jekyll-meet-and-greet/">Jekyll Meet &amp; Greet at GitHub HQ</option>
+      <option value="/news/2015/01/20/jekyll-meet-and-greet/">Jekyll Meet & Greet at GitHub HQ</option>
       <option value="/news/2014/12/22/jekyll-2-5-3-released/">Jekyll Release for the Holidays! v2.5.3 Out</option>
       <option value="/news/2014/12/17/alfredxing-welcome-to-jekyll-core/">Alfred Xing has joined the Jekyll core team</option>
       <option value="/news/2014/11/12/jekyll-2-5-2-released/">Jekyll 2.5.2 Released</option>
@@ -182,81 +184,63 @@
       </optgroup>
   </select>
 </div>
-<div class="unit four-fifths">
-<article>
+<div class="unit four-fifths"><article>
   <h2>
-    <a href="/news/2022/12/21/jekyll-sass-converter-3.0-released/">Jekyll Sass Converter 3.0 Released</a>
+    <a href="/news/2023/01/29/jekyll-3-9-3-released/">Jekyll 3.9.3 Released</a>
   </h2>
   <span class="post-category">
-    <span class="label">community</span>
+    <span class="label">release</span>
   </span>
   <div class="post-meta">
-    <span class="post-date">21 Dec 2022</span>
-    <a href="https://github.com/ashmaroli" class="post-author">
-      <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+    <span class="post-date">29 Jan 2023</span>
+    <a href="https://github.com/parkr" class="post-author">
+      <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
     </a>
   </div>
-  <div class="post-content">
-<p>Jekyll Sass Converter 3.0 shipped recently and is available to those using Jekyll 4.3 and above. This release contains major changes.
-Specifically, the plugin has <strong>stopped using <code class="language-plaintext highlighter-rouge">sassc</code> for converting your Sass partials and stylesheets</strong> into CSS files.
-Instead, the converter now uses the <code class="language-plaintext highlighter-rouge">sass-embedded</code> gem acting as an interface to Dart Sass, which is the current primary
-implementation of Sass under active development. The secondary implementation <code class="language-plaintext highlighter-rouge">libsass</code> which the <code class="language-plaintext highlighter-rouge">sassc</code> gem interfaced
-with has been deprecated by its developers.</p>
+  <div class="post-content"><p>Jekyll 3.9.3 is a bug fix release loosening version restrictions for
+dependencies <code class="language-plaintext highlighter-rouge">i18n</code> and <code class="language-plaintext highlighter-rouge">tzinfo</code> gems. You can now use Jekyll v3.9 with
+newer versions of these gems!</p>
 
-<p>However, Dart Sass isn’t <em>fully compatible</em> with older Ruby Sass workflow.</p>
+<p>More details in <a href="/docs/history/#v3-9-3">the full release notes</a>.</p>
 
-<h2 id="requirements">Requirements</h2>
-
-<ul>
-  <li>Minimum Ruby Version: <code class="language-plaintext highlighter-rouge">Ruby 2.6.0</code> (all platforms).</li>
-  <li>Minimum Rubygems Version: <code class="language-plaintext highlighter-rouge">3.3.22</code> (for Linux-based platforms).</li>
-</ul>
-
-<h2 id="migration-guide">Migration Guide</h2>
-
-<h3 id="dropped-implmentation-option">Dropped <code class="language-plaintext highlighter-rouge">implmentation</code> Option</h3>
-
-<p>In <code class="language-plaintext highlighter-rouge">v3.0.x</code>, <code class="language-plaintext highlighter-rouge">sass-embedded</code> is the only supported Sass implmentation, and therefore the config option
-<code class="language-plaintext highlighter-rouge">sass.implementation</code> introduced in <code class="language-plaintext highlighter-rouge">v2.2.0</code> has been removed.</p>
-
-<h3 id="dropped-add_charset-option">Dropped <code class="language-plaintext highlighter-rouge">add_charset</code> Option</h3>
-
-<p>The converter will no longer emit <code class="language-plaintext highlighter-rouge">@charset "UTF-8";</code> or a <code class="language-plaintext highlighter-rouge">U+FEFF</code> (byte-order marker) for <code class="language-plaintext highlighter-rouge">sassify</code> and <code class="language-plaintext highlighter-rouge">scssify</code>
-Jekyll filters and hence the redundant option <code class="language-plaintext highlighter-rouge">sass.add_charset</code> is no longer active.</p>
-
-<h3 id="dropped-line_comments-option">Dropped <code class="language-plaintext highlighter-rouge">line_comments</code> Option</h3>
-
-<p><code class="language-plaintext highlighter-rouge">sass-embedded</code> does not support <code class="language-plaintext highlighter-rouge">sass.line_comments</code> option.</p>
-
-<h3 id="dropped-support-of-importing-files-with-non-standard-extension-names">Dropped support of importing files with non-standard extension names</h3>
-
-<p><code class="language-plaintext highlighter-rouge">sass-embedded</code> only allows importing files that have extension names of <code class="language-plaintext highlighter-rouge">.sass</code>, <code class="language-plaintext highlighter-rouge">.scss</code> or <code class="language-plaintext highlighter-rouge">.css</code>. SCSS syntax in
-files with <code class="language-plaintext highlighter-rouge">.css</code> extension name will result in a syntax error.</p>
-
-<h3 id="dropped-support-of-importing-files-relative-to-site-source">Dropped support of importing files relative to site source</h3>
-
-<p>In <code class="language-plaintext highlighter-rouge">v2.x</code>, the Converter allowed imports using paths relative to site source directory, even if the site source
-directory is not present in Sass’ <code class="language-plaintext highlighter-rouge">load_paths</code> option. This is a side effect of a bug in the converter, which will remain as is in
-<code class="language-plaintext highlighter-rouge">v2.x</code> due to its usage in the wild.</p>
-
-<p>In <code class="language-plaintext highlighter-rouge">v3.x</code>, imports using paths relative to site source directory will not work out of box. To allow these imports, <code class="language-plaintext highlighter-rouge">.</code>
-(meaning current directory, or site source directory) need to be explicitly listed under <code class="language-plaintext highlighter-rouge">load_paths</code> option.</p>
-
-<h3 id="dropped-support-of-importing-files-with-the-same-filename-as-their-parent-file">Dropped support of importing files with the same filename as their parent file</h3>
-
-<p>In <code class="language-plaintext highlighter-rouge">v2.x</code>, the Converter allowed imports of files with the same filename as their parent file from <code class="language-plaintext highlighter-rouge">sass_dir</code> or
-<code class="language-plaintext highlighter-rouge">load_paths</code>. This is a side effect of a bug in the Converter, which will remain as is in <code class="language-plaintext highlighter-rouge">v2.x</code> due to its usage in the
-wild.</p>
-
-<p>In <code class="language-plaintext highlighter-rouge">v3.x</code>, imports using the same filename of parent file will create a circular import. To fix such imports, rename
-either of the files, or use complete relative path from the parent file.</p>
-
-<h3 id="behavioral-differences-in-sass-implementation">Behavioral Differences in Sass Implementation</h3>
-
-<p>There are a few intentional behavioral differences between Dart Sass and Ruby Sass. Please refer
-<a href="https://github.com/sass/dart-sass#behavioral-differences-from-ruby-sass">Behavioral Differences from Ruby Sass</a> for details.</p>
-
+<p>Happy Jekylling!</p>
 </div>
+</article>
+<article>
+  <div class="cell-left">
+    <span class="post-category">
+      <span class="label">release</span>
+    </span>
+  </div>
+  <div class="cell-right">
+    <div class="post-meta">
+      <h2 class="post-title">
+        <a href="/news/2023/01/20/jekyll-4-3-2-released/">Jekyll 4.3.2 Released</a>
+      </h2>
+      <span class="post-date">20 Jan 2023</span>
+      <a href="https://github.com/ashmaroli" class="post-author">
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
+      </a>
+    </div>
+  </div>
+</article>
+<article>
+  <div class="cell-left">
+    <span class="post-category">
+      <span class="label">community</span>
+    </span>
+  </div>
+  <div class="cell-right">
+    <div class="post-meta">
+      <h2 class="post-title">
+        <a href="/news/2022/12/21/jekyll-sass-converter-3.0-released/">Jekyll Sass Converter 3.0 Released</a>
+      </h2>
+      <span class="post-date">21 Dec 2022</span>
+      <a href="https://github.com/ashmaroli" class="post-author">
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
+      </a>
+    </div>
+  </div>
 </article>
 <article>
   <div class="cell-left">
@@ -271,7 +255,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">26 Oct 2022</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -289,7 +273,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">20 Oct 2022</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -307,7 +291,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">27 Mar 2022</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -325,7 +309,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">03 Mar 2022</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -343,7 +327,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">27 Sep 2021</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -361,7 +345,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">14 Sep 2021</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -379,7 +363,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">08 Apr 2021</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -397,7 +381,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">14 Dec 2020</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -415,7 +399,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">05 Aug 2020</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -433,7 +417,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">24 Jun 2020</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -451,7 +435,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">27 May 2020</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -469,7 +453,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">08 May 2020</span>
       <a href="https://github.com/dirtyf" class="post-author">
-        <img class="avatar avatar-small" alt="dirtyf" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=96 4x"><span class="author-name">dirtyf</span>
+        <img class="avatar avatar-small" alt="dirtyf" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/dirtyf?v=3&s=24" srcset="https://avatars3.githubusercontent.com/dirtyf?v=3&s=24 1x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=48 2x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=72 3x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=96 4x" /><span class="author-name">dirtyf</span>
       </a>
     </div>
   </div>
@@ -487,7 +471,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">20 Aug 2019</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -505,7 +489,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">04 Aug 2019</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -523,7 +507,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">02 Jul 2019</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -541,7 +525,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">18 Mar 2019</span>
       <a href="https://github.com/dirtyf" class="post-author">
-        <img class="avatar avatar-small" alt="dirtyf" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=96 4x"><span class="author-name">dirtyf</span>
+        <img class="avatar avatar-small" alt="dirtyf" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/dirtyf?v=3&s=24" srcset="https://avatars3.githubusercontent.com/dirtyf?v=3&s=24 1x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=48 2x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=72 3x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=96 4x" /><span class="author-name">dirtyf</span>
       </a>
     </div>
   </div>
@@ -559,7 +543,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">04 Nov 2018</span>
       <a href="https://github.com/oe" class="post-author">
-        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=96 4x"><span class="author-name">oe</span>
+        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&s=96 4x" /><span class="author-name">oe</span>
       </a>
     </div>
   </div>
@@ -577,7 +561,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Sep 2018</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -595,7 +579,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">01 Aug 2018</span>
       <a href="https://github.com/oe" class="post-author">
-        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=96 4x"><span class="author-name">oe</span>
+        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&s=96 4x" /><span class="author-name">oe</span>
       </a>
     </div>
   </div>
@@ -613,7 +597,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">05 Jun 2018</span>
       <a href="https://github.com/pathawks" class="post-author">
-        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=96 4x"><span class="author-name">pathawks</span>
+        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&s=96 4x" /><span class="author-name">pathawks</span>
       </a>
     </div>
   </div>
@@ -631,7 +615,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 May 2018</span>
       <a href="https://github.com/pathawks" class="post-author">
-        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=96 4x"><span class="author-name">pathawks</span>
+        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&s=96 4x" /><span class="author-name">pathawks</span>
       </a>
     </div>
   </div>
@@ -649,7 +633,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">01 May 2018</span>
       <a href="https://github.com/pathawks" class="post-author">
-        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=96 4x"><span class="author-name">pathawks</span>
+        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&s=96 4x" /><span class="author-name">pathawks</span>
       </a>
     </div>
   </div>
@@ -667,7 +651,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Apr 2018</span>
       <a href="https://github.com/oe" class="post-author">
-        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=96 4x"><span class="author-name">oe</span>
+        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&s=96 4x" /><span class="author-name">oe</span>
       </a>
     </div>
   </div>
@@ -685,7 +669,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Apr 2018</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -703,7 +687,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">24 Feb 2018</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -721,7 +705,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Feb 2018</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -739,7 +723,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">25 Jan 2018</span>
       <a href="https://github.com/ashmaroli" class="post-author">
-        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&amp;s=96 4x"><span class="author-name">ashmaroli</span>
+        <img class="avatar avatar-small" alt="ashmaroli" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24" srcset="https://avatars0.githubusercontent.com/ashmaroli?v=3&s=24 1x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=48 2x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=72 3x, https://avatars0.githubusercontent.com/ashmaroli?v=3&s=96 4x" /><span class="author-name">ashmaroli</span>
       </a>
     </div>
   </div>
@@ -757,7 +741,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">02 Jan 2018</span>
       <a href="https://github.com/DirtyF" class="post-author">
-        <img class="avatar avatar-small" alt="DirtyF" width="24" height="24" data-proofer-ignore="true" src="https://avatars1.githubusercontent.com/DirtyF?v=3&amp;s=24" srcset="https://avatars1.githubusercontent.com/DirtyF?v=3&amp;s=24 1x, https://avatars1.githubusercontent.com/DirtyF?v=3&amp;s=48 2x, https://avatars1.githubusercontent.com/DirtyF?v=3&amp;s=72 3x, https://avatars1.githubusercontent.com/DirtyF?v=3&amp;s=96 4x"><span class="author-name">DirtyF</span>
+        <img class="avatar avatar-small" alt="DirtyF" width="24" height="24" data-proofer-ignore="true" src="https://avatars1.githubusercontent.com/DirtyF?v=3&s=24" srcset="https://avatars1.githubusercontent.com/DirtyF?v=3&s=24 1x, https://avatars1.githubusercontent.com/DirtyF?v=3&s=48 2x, https://avatars1.githubusercontent.com/DirtyF?v=3&s=72 3x, https://avatars1.githubusercontent.com/DirtyF?v=3&s=96 4x" /><span class="author-name">DirtyF</span>
       </a>
     </div>
   </div>
@@ -775,7 +759,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">21 Oct 2017</span>
       <a href="https://github.com/dirtyf" class="post-author">
-        <img class="avatar avatar-small" alt="dirtyf" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/dirtyf?v=3&amp;s=96 4x"><span class="author-name">dirtyf</span>
+        <img class="avatar avatar-small" alt="dirtyf" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/dirtyf?v=3&s=24" srcset="https://avatars3.githubusercontent.com/dirtyf?v=3&s=24 1x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=48 2x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=72 3x, https://avatars3.githubusercontent.com/dirtyf?v=3&s=96 4x" /><span class="author-name">dirtyf</span>
       </a>
     </div>
   </div>
@@ -793,7 +777,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Oct 2017</span>
       <a href="https://github.com/oe" class="post-author">
-        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&amp;s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&amp;s=96 4x"><span class="author-name">oe</span>
+        <img class="avatar avatar-small" alt="oe" width="24" height="24" data-proofer-ignore="true" src="https://avatars2.githubusercontent.com/oe?v=3&s=24" srcset="https://avatars2.githubusercontent.com/oe?v=3&s=24 1x, https://avatars2.githubusercontent.com/oe?v=3&s=48 2x, https://avatars2.githubusercontent.com/oe?v=3&s=72 3x, https://avatars2.githubusercontent.com/oe?v=3&s=96 4x" /><span class="author-name">oe</span>
       </a>
     </div>
   </div>
@@ -811,7 +795,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">21 Sep 2017</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -829,7 +813,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">12 Aug 2017</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -847,7 +831,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">17 Jul 2017</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -865,7 +849,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">15 Jun 2017</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -883,7 +867,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">21 Mar 2017</span>
       <a href="https://github.com/pathawks" class="post-author">
-        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&amp;s=96 4x"><span class="author-name">pathawks</span>
+        <img class="avatar avatar-small" alt="pathawks" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/pathawks?v=3&s=24" srcset="https://avatars3.githubusercontent.com/pathawks?v=3&s=24 1x, https://avatars3.githubusercontent.com/pathawks?v=3&s=48 2x, https://avatars3.githubusercontent.com/pathawks?v=3&s=72 3x, https://avatars3.githubusercontent.com/pathawks?v=3&s=96 4x" /><span class="author-name">pathawks</span>
       </a>
     </div>
   </div>
@@ -901,7 +885,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">09 Mar 2017</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -919,7 +903,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">02 Mar 2017</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -937,7 +921,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">18 Jan 2017</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -955,7 +939,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">14 Nov 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -973,7 +957,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">06 Oct 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -991,7 +975,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">24 Aug 2016</span>
       <a href="https://github.com/mertkahyaoglu" class="post-author">
-        <img class="avatar avatar-small" alt="mertkahyaoglu" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&amp;s=96 4x"><span class="author-name">mertkahyaoglu</span>
+        <img class="avatar avatar-small" alt="mertkahyaoglu" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&s=24 1x, https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&s=48 2x, https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&s=72 3x, https://avatars0.githubusercontent.com/mertkahyaoglu?v=3&s=96 4x" /><span class="author-name">mertkahyaoglu</span>
       </a>
     </div>
   </div>
@@ -1009,7 +993,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">02 Aug 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1027,7 +1011,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">26 Jul 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1045,7 +1029,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">03 Jun 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1063,7 +1047,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 May 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1081,7 +1065,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">18 May 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1099,7 +1083,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">18 May 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1117,7 +1101,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">26 Apr 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1135,7 +1119,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Apr 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1153,7 +1137,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Apr 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1171,7 +1155,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">10 Mar 2016</span>
       <a href="https://github.com/benbalter" class="post-author">
-        <img class="avatar avatar-small" alt="benbalter" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=96 4x"><span class="author-name">benbalter</span>
+        <img class="avatar avatar-small" alt="benbalter" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/benbalter?v=3&s=24" srcset="https://avatars0.githubusercontent.com/benbalter?v=3&s=24 1x, https://avatars0.githubusercontent.com/benbalter?v=3&s=48 2x, https://avatars0.githubusercontent.com/benbalter?v=3&s=72 3x, https://avatars0.githubusercontent.com/benbalter?v=3&s=96 4x" /><span class="author-name">benbalter</span>
       </a>
     </div>
   </div>
@@ -1189,7 +1173,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">19 Feb 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1207,7 +1191,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">08 Feb 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1225,7 +1209,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">28 Jan 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1243,7 +1227,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">24 Jan 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1261,7 +1245,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">20 Jan 2016</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1279,7 +1263,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">17 Nov 2015</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1297,7 +1281,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">26 Oct 2015</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1315,7 +1299,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">26 Feb 2015</span>
       <a href="https://github.com/alfredxing" class="post-author">
-        <img class="avatar avatar-small" alt="alfredxing" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/alfredxing?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/alfredxing?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/alfredxing?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/alfredxing?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/alfredxing?v=3&amp;s=96 4x"><span class="author-name">alfredxing</span>
+        <img class="avatar avatar-small" alt="alfredxing" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/alfredxing?v=3&s=24" srcset="https://avatars0.githubusercontent.com/alfredxing?v=3&s=24 1x, https://avatars0.githubusercontent.com/alfredxing?v=3&s=48 2x, https://avatars0.githubusercontent.com/alfredxing?v=3&s=72 3x, https://avatars0.githubusercontent.com/alfredxing?v=3&s=96 4x" /><span class="author-name">alfredxing</span>
       </a>
     </div>
   </div>
@@ -1333,7 +1317,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">24 Jan 2015</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1347,11 +1331,11 @@ either of the files, or use complete relative path from the parent file.</p>
   <div class="cell-right">
     <div class="post-meta">
       <h2 class="post-title">
-        <a href="/news/2015/01/20/jekyll-meet-and-greet/">Jekyll Meet &amp; Greet at GitHub HQ</a>
+        <a href="/news/2015/01/20/jekyll-meet-and-greet/">Jekyll Meet & Greet at GitHub HQ</a>
       </h2>
       <span class="post-date">20 Jan 2015</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1369,7 +1353,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">22 Dec 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1387,7 +1371,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">17 Dec 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1405,7 +1389,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">12 Nov 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1423,7 +1407,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">09 Nov 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1441,7 +1425,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">05 Nov 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1459,7 +1443,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">09 Sep 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1477,7 +1461,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">10 Aug 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1495,7 +1479,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">29 Jul 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1513,7 +1497,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">01 Jul 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1531,7 +1515,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">28 Jun 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1549,7 +1533,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">04 Jun 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1567,7 +1551,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">08 May 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1585,7 +1569,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">06 May 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1603,7 +1587,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">27 Mar 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1621,7 +1605,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">24 Mar 2014</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1639,7 +1623,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">13 Jan 2014</span>
       <a href="https://github.com/benbalter" class="post-author">
-        <img class="avatar avatar-small" alt="benbalter" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/benbalter?v=3&amp;s=96 4x"><span class="author-name">benbalter</span>
+        <img class="avatar avatar-small" alt="benbalter" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/benbalter?v=3&s=24" srcset="https://avatars0.githubusercontent.com/benbalter?v=3&s=24 1x, https://avatars0.githubusercontent.com/benbalter?v=3&s=48 2x, https://avatars0.githubusercontent.com/benbalter?v=3&s=72 3x, https://avatars0.githubusercontent.com/benbalter?v=3&s=96 4x" /><span class="author-name">benbalter</span>
       </a>
     </div>
   </div>
@@ -1657,7 +1641,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">16 Dec 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1675,7 +1659,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">09 Dec 2013</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -1693,7 +1677,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">07 Dec 2013</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -1711,7 +1695,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">26 Nov 2013</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -1729,7 +1713,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">04 Nov 2013</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -1747,7 +1731,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">28 Oct 2013</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -1765,7 +1749,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">14 Sep 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1783,7 +1767,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">06 Sep 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1801,7 +1785,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">25 Jul 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1819,7 +1803,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">25 Jul 2013</span>
       <a href="https://github.com/mattr-" class="post-author">
-        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&amp;s=96 4x"><span class="author-name">mattr-</span>
+        <img class="avatar avatar-small" alt="mattr-" width="24" height="24" data-proofer-ignore="true" src="https://avatars0.githubusercontent.com/mattr-?v=3&s=24" srcset="https://avatars0.githubusercontent.com/mattr-?v=3&s=24 1x, https://avatars0.githubusercontent.com/mattr-?v=3&s=48 2x, https://avatars0.githubusercontent.com/mattr-?v=3&s=72 3x, https://avatars0.githubusercontent.com/mattr-?v=3&s=96 4x" /><span class="author-name">mattr-</span>
       </a>
     </div>
   </div>
@@ -1837,7 +1821,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">24 Jul 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1855,7 +1839,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">14 Jul 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1873,7 +1857,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">07 Jun 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1891,7 +1875,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">12 May 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1909,7 +1893,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">08 May 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1927,7 +1911,7 @@ either of the files, or use complete relative path from the parent file.</p>
       </h2>
       <span class="post-date">05 May 2013</span>
       <a href="https://github.com/parkr" class="post-author">
-        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&amp;s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&amp;s=96 4x"><span class="author-name">parkr</span>
+        <img class="avatar avatar-small" alt="parkr" width="24" height="24" data-proofer-ignore="true" src="https://avatars3.githubusercontent.com/parkr?v=3&s=24" srcset="https://avatars3.githubusercontent.com/parkr?v=3&s=24 1x, https://avatars3.githubusercontent.com/parkr?v=3&s=48 2x, https://avatars3.githubusercontent.com/parkr?v=3&s=72 3x, https://avatars3.githubusercontent.com/parkr?v=3&s=96 4x" /><span class="author-name">parkr</span>
       </a>
     </div>
   </div>
@@ -1945,20 +1929,20 @@ either of the files, or use complete relative path from the parent file.</p>
     </ul>
     <h4>Recent Releases</h4>
     <ul>
-      <li>
+      <li >
+        <a href="/news/2023/01/29/jekyll-3-9-3-released/">Version 3.9.3</a>
+      </li>
+      <li >
+        <a href="/news/2023/01/20/jekyll-4-3-2-released/">Version 4.3.2</a>
+      </li>
+      <li >
         <a href="/news/2022/10/26/jekyll-4-3-1-released/">Version 4.3.1</a>
       </li>
-      <li>
+      <li >
         <a href="/news/2022/10/20/jekyll-4-3-0-released/">Version 4.3.0</a>
       </li>
-      <li>
+      <li >
         <a href="/news/2022/03/27/jekyll-3-9-2-released/">Version 3.9.2</a>
-      </li>
-      <li>
-        <a href="/news/2022/03/03/jekyll-4-2-2-released/">Version 4.2.2</a>
-      </li>
-      <li>
-        <a href="/news/2021/09/27/jekyll-4-2-1-released/">Version 4.2.1</a>
       </li>
       <li>
         <a href="/docs/history/">History »</a>
@@ -1997,7 +1981,7 @@ either of the files, or use complete relative path from the parent file.</p>
         <a href="/news/2015/02/26/introducing-jekyll-talk/">Join the Discussion at Jekyll Talk</a>
       </li>
       <li>
-        <a href="/news/2015/01/20/jekyll-meet-and-greet/">Jekyll Meet &amp; Greet at GitHub HQ</a>
+        <a href="/news/2015/01/20/jekyll-meet-and-greet/">Jekyll Meet & Greet at GitHub HQ</a>
       </li>
       <li>
         <a href="/news/2014/12/17/alfredxing-welcome-to-jekyll-core/">Alfred Xing has joined the Jekyll core team</a>
@@ -2015,7 +1999,7 @@ either of the files, or use complete relative path from the parent file.</p>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">
       <p>Jekyll is lovingly maintained by the <a href="/team/">core team</a> of volunteers. </p>
-      <p>The contents of this website are <br>© 2023 under the terms of the <a href="https://github.com/jekyll/jekyll/blob/master/LICENSE">MIT License</a>.</p>
+      <p>The contents of this website are <br />&copy;&nbsp;2023 under the terms of the <a href="https://github.com/jekyll/jekyll/blob/master/LICENSE">MIT&nbsp;License</a>.</p>
     </div>
     <div class="unit two-thirds align-right center-on-mobiles">
       <p>
